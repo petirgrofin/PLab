@@ -1,0 +1,24 @@
+{
+  "title": "Conjuntos",
+  "sections": [
+    {
+      "text": "En el año 2056, la tripulación cósmica Atlas viaja por el universo en una nave espacial recolectando objetos extraños para el Archivo de Conocimiento Galáctico.",
+      "image": "/cat2.jpg"
+    },
+    {
+      "text": "Sin embargo, debido a una pequeña colisión con un asteroide, los contenedores dentro de la nave se desorganizaron.",
+      "image": "/cat3.avif"
+    },
+    {
+      "text": "A continuación se presenta una linda imagen",
+      "image": "/cat1.jpg"
+    },
+    {
+      "text": "A continuación se presenta un diagrama de Venn. Selecciona una o varias zonas para observar lo que representan.",
+      "component": {
+        "name": "VennDiagramRegions"
+        
+      }
+    }
+  ]
+}
