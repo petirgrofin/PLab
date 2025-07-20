@@ -2,14 +2,29 @@ import { useRef, useState } from "react"
 import SetIntro from "./SetIntro.json"
 import useFadeOutOnScroll from "../hooks/useFadeOutOnScroll";
 import useAutoScrollToCurrent from "../hooks/useAutoScrollToCurrent";
-import VennDiagramRegions from "../Components/VennDiagramRegions";
-import VennDiagramDnd from "../Components/VennDiagramDnd";
+import VennDiagramInfo from "../Components/VennDiagramInfo";
+import { VennDiagramDragNDrop } from "../Components/VennDiagramDragNDrop";
+import BasicTable from "../Components/BasicTable";
+import AsideButton from "../Components/AsideButton";
+import { Aside } from "../Components/Aside";
+
+function getComponent(name){
+    switch (name){
+        case "BasicTable":
+            return <BasicTable/>
+        case "VennDiagramDragNDrop":
+            return <VennDiagramDragNDrop/>
+        case "VennDiagramInfo":
+            return <VennDiagramInfo/>
+    }
+}
 
 const Template = () => {
 
     // The shownIndex is used to determine which sections of the article are shown (i.e., if shownIndex is 2, then
     // the first three sections are shown)
     const [shownIndex, setShownIndex] = useState(0);
+    const [isAsideActive, setIsAsideActive] = useState(false);
     const sectionRefs = useRef([]);
 
     useFadeOutOnScroll(sectionRefs, shownIndex);
@@ -18,10 +33,11 @@ const Template = () => {
     const lessonData = SetIntro;
     if (!lessonData) return <div>Loading...</div>;
     
+    // max-h-[calc(100vh-170px)] overflow-y-scroll makes the fade out and auto scroll awkward
     return (
-    <div className="bg-white flex flex-col items-center mt-16 gap-4 font-nunito">
+    <div className="bg-white flex flex-col items-center mt-16 gap-4 font-nunito max-h-[calc(100vh-170px)] overflow-y-scroll">
         <header className='fixed w-screen shadow-sm flex top-0 h-16 border-b-2 border-b-[#E5E5E5] bg-white z-10'></header>
-        <article className='flex flex-col gap-6 justify-center pt-14 w-full max-w-xl mx-auto px-4'>
+        <article className='flex flex-col gap-6 justify-center pt-14 max-w-xl mx-auto px-4'>
             <h1 className='font-bold text-4xl'>{lessonData.title}</h1>
             {lessonData.sections.map((section, i) => {
                 return (
@@ -32,9 +48,20 @@ const Template = () => {
                     ${shownIndex < i ? 'hidden' : ''} 
                     ${shownIndex > i ? 'opacity-0' : ''} 
                     ${shownIndex === i && shownIndex !== 0 ? 'min-h-[calc(100vh-120px)]' : ''}`}>
-                        <p>{section.text}</p>
-                        <img src={section.image} alt="" />
-                        {section.component ? <VennDiagramRegions></VennDiagramRegions> : <></>}
+                        {section.content.map((item, i) => {
+                            if (item.type == "text"){
+                                return <p key={i}>{item.value}</p>
+                            } 
+                            if (item.type == "component"){
+                                return getComponent(item.name);
+                            }
+                            if (item.type == "image"){
+                                return <img src={item.src} />
+                            }
+                            if (item.type == "aside"){
+                                return <AsideButton setIsAsideActive={setIsAsideActive} text={item.buttonText}></AsideButton>
+                            }
+                        })}
                     </section>
                 )
             })}
@@ -46,6 +73,16 @@ const Template = () => {
                 }
             }} className='bg-[#333333] shadow-[0_2px_4px_rgba(0,0,0,0.5)] text-white font-bold p-4 rounded-full w-sm cursor-pointer hover:bg-[#4a4a4a]'>Continuar</button>
         </div>
+        <Aside onClose={() => {setIsAsideActive(false)}} isActive={isAsideActive}>
+                <h2 className='font-bold text-4xl'>Diagramas de Venn</h2>
+                <p>Este es un Diagrama de Venn.</p>
+                <ul>
+                    <li><b>Verde</b>: Solo practica atletismo</li>
+                    <li><b>Celeste</b>: Practica ambos</li>
+                    <li><b>Naranja</b>: Solo practica baloncesto</li>
+                    <li><b>Rectángulo exterior</b>: No practica ninguno</li>
+                </ul>
+        </Aside>
     </div>
     )
 

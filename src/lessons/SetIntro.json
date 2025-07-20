@@ -1,24 +1,20 @@
 {
-  "title": "Conjuntos",
+  "title": "Operaciones sobre conjuntos",
   "sections": [
     {
-      "text": "En el año 2056, la tripulación cósmica Atlas viaja por el universo en una nave espacial recolectando objetos extraños para el Archivo de Conocimiento Galáctico.",
-      "image": "/cat2.jpg"
+      "content": [
+        { "type": "text", "value": "Se realizó una encuesta a 5 estudiantes acerca de los deportes que practican." },
+        { "type": "component", "name": "BasicTable" },
+        { "type": "text", "value": "Reorganiza la información de la tabla en un diagrama de Venn arrastrando los nombres a la región que corresponda" },
+        { "type": "component", "name": "VennDiagramDragNDrop" },
+        { "type": "aside", "buttonText": "¿Qué es esto?", "info": "Este es un diagrama de Venn"}
+      ]
     },
     {
-      "text": "Sin embargo, debido a una pequeña colisión con un asteroide, los contenedores dentro de la nave se desorganizaron.",
-      "image": "/cat3.avif"
-    },
-    {
-      "text": "A continuación se presenta una linda imagen",
-      "image": "/cat1.jpg"
-    },
-    {
-      "text": "A continuación se presenta un diagrama de Venn. Selecciona una o varias zonas para observar lo que representan.",
-      "component": {
-        "name": "VennDiagramRegions"
-        
-      }
+      "content": [
+        { "type": "text", "value": "Los diagramas de Venn permiten observar las relaciones existentes entre dos o varios conjuntos. Selecciona una o varias zonas para observar lo que representan." },
+        { "type": "component", "name": "VennDiagramInfo" }
+      ]
     }
   ]
 }

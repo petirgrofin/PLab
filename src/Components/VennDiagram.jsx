@@ -1,91 +1,57 @@
-function makeLensShapes(cxA, cxB, cy, r) {
+import { REGION_IDS } from "../Constants/regions";
+import { DEFAULT_VENN_CONFIG } from "../Constants/vennConfig";
+import { constructVennDiagram } from "../utils/vennUtils";
+import { VennRegion } from "./VennRegion";
+import { InlineMath } from "react-katex";
 
-    // Finding the intersections is possible through basic triangle geometry
-    const dx = cxB - cxA;
-    const a = dx / 2;
+/********************************************
+ * VennDiagram 
+ * ------------------------------------------
+ *
+ * Props:
+ *   selectedRegions: string[]                // controlled selection (required for now)
+ *   setSelectedRegions: (ids:string[])=>void // updater (required for now)
+ *   interactive?: boolean = true             // allow user clicks?
+ */
+export default function VennDiagram({ selectedRegions, setSelectedRegions, interactive = true }) {
 
-    if (dx >= 2 * r) return { lens: "", left: "", right: "" };
-
-    const h = Math.sqrt(r * r - a * a);
-    const px = (cxA + cxB) / 2;
-    const py = cy;
-
-    const intersection1 = { x: px, y: py + h };
-    const intersection2 = { x: px, y: py - h };
-
-    const lensPath = `
-      M ${intersection1.x} ${intersection1.y}
-      A ${r} ${r} 0 0 1 ${intersection2.x} ${intersection2.y}
-      A ${r} ${r} 0 0 1 ${intersection1.x} ${intersection1.y}
-      Z
-    `;
-
-    const leftPath = `
-      M ${intersection2.x} ${intersection2.y}
-      A ${r} ${r} 0 1 0 ${intersection1.x} ${intersection1.y}
-      A ${r} ${r} 0 0 1 ${intersection2.x} ${intersection2.y}
-      Z
-    `;
-
-    const rightPath = `
-      M ${intersection1.x} ${intersection1.y}
-      A ${r} ${r} 0 1 0 ${intersection2.x} ${intersection2.y}
-      A ${r} ${r} 0 0 1 ${intersection1.x} ${intersection1.y}
-      Z
-    `;
-
-    return {
-      lens: lensPath.trim(),
-      left: leftPath.trim(),
-      right: rightPath.trim()
-    };
-}
-
-const VennDiagram = ({selectedRegions, setSelectedRegions}) => {
-
-  const width = 500; // 565
-  const height = 300;
-  const radius = 100;
-  const overlap = 60;
-
-  const cxA = width / 2 - overlap;
-  const cxB = width / 2 + overlap;
-  const cy = height / 2;
-
-  const { lens, left, right } = makeLensShapes(cxA, cxB, cy, radius);
-
-  // Sorting layers based on selectedRegion for visual "raise"
-  const shapes = [
-    { id: "AdB", d: left, fill: selectedRegions.includes("AdB") ? "gray" : "white"},
-    { id: "BdA", d: right, fill: selectedRegions.includes("BdA") ? "gray" : "white" },
-    { id: "AiB", d: lens, fill: selectedRegions.includes("AiB") ? "gray" : "white"}
-  ];
-
-  function onRegionClick(regionId){
-    if (selectedRegions.includes(regionId)){
-      setSelectedRegions(selectedRegions.filter((region) => {return region !== regionId}));
-    }
-    else{
-      setSelectedRegions([...selectedRegions, regionId])
+  const shapes = constructVennDiagram(DEFAULT_VENN_CONFIG);
+  
+  function onRegionClick(regionId) {
+    if (!interactive) return; // ignore if read‑only
+    if (selectedRegions.includes(regionId)) {
+      setSelectedRegions(selectedRegions.filter((r) => r !== regionId));
+    } else {
+      setSelectedRegions([...selectedRegions, regionId]);
     }
   }
 
   return (
-    <svg className="m-auto" width={width} height={height}>
-      <rect onClick={() => {onRegionClick("(AuB)'")}} style={{cursor: "pointer"}} width={width} height={height} fill={`${selectedRegions.includes("(AuB)'") ? 'gray' : 'white'}`} strokeWidth={2} stroke="black"></rect>
-      {shapes.map(({ id, d, fill }) => (
-        <path
+    <svg className="m-auto" width={DEFAULT_VENN_CONFIG.width} height={DEFAULT_VENN_CONFIG.height}>
+      <VennRegion
+        regionId={REGION_IDS.Outside}
+        width={DEFAULT_VENN_CONFIG.width}
+        height={DEFAULT_VENN_CONFIG.height}
+        selected={selectedRegions.includes(REGION_IDS.Outside)}
+        interactive={interactive}
+        onSelect={onRegionClick}
+      />
+      {shapes.map(({ id, d }) => (
+        <VennRegion
           key={id}
+          regionId={id}
           d={d}
-          fill={fill}
-          stroke={"black"}
-          strokeWidth={2}
-          onClick={() => {onRegionClick(id)}}
-          style={{ cursor: "pointer" }}
+          selected={selectedRegions.includes(id)}
+          interactive={interactive}
+          onSelect={onRegionClick}
         />
       ))}
+      <foreignObject x={100} y={30} width={30} height={30}>
+        <InlineMath math={"A"}/>
+      </foreignObject>
+      <foreignObject x={380} y={30} width={30} height={30}>
+        <InlineMath math={"B"}/>
+      </foreignObject>
     </svg>
   );
-};
-
-export default VennDiagram;
+}
