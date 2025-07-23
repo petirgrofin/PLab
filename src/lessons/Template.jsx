@@ -7,6 +7,11 @@ import { VennDiagramDragNDrop } from "../Components/VennDiagramDragNDrop";
 import BasicTable from "../Components/BasicTable";
 import AsideButton from "../Components/AsideButton";
 import { Aside } from "../Components/Aside";
+import SetClassifierDndKit from "../Components/SetClassifierDND";
+import CoinSampleSpaceDnD from "../Components/CoinSampleSpaceDnD";
+import DiceSampleSpaceSelector from "../Components/DiceSampleSpaceSelector";
+import CoinFlipSimulator from "../Components/CoinFlipSimulator";
+import { TwoSetVennCardinality } from "../Components/VennCardinality";
 
 function getComponent(name){
     switch (name){
@@ -16,6 +21,16 @@ function getComponent(name){
             return <VennDiagramDragNDrop/>
         case "VennDiagramInfo":
             return <VennDiagramInfo/>
+        case "SetClassifierDND":
+            return <SetClassifierDndKit/>
+        case "CoinSampleSpaceDnD":
+            return <CoinSampleSpaceDnD/>
+        case "DiceSampleSpaceSelector":
+            return <DiceSampleSpaceSelector/>
+        case "CoinFlipSimulator":
+            return <CoinFlipSimulator/>
+        case "VennCardinality":
+            return <TwoSetVennCardinality/>
     }
 }
 
@@ -35,7 +50,7 @@ const Template = () => {
     
     // max-h-[calc(100vh-170px)] overflow-y-scroll makes the fade out and auto scroll awkward
     return (
-    <div className="bg-white flex flex-col items-center mt-16 gap-4 font-nunito max-h-[calc(100vh-170px)] overflow-y-scroll">
+    <div className="bg-white flex flex-col items-center mt-16 gap-4 font-nunito">
         <header className='fixed w-screen shadow-sm flex top-0 h-16 border-b-2 border-b-[#E5E5E5] bg-white z-10'></header>
         <article className='flex flex-col gap-6 justify-center pt-14 max-w-xl mx-auto px-4'>
             <h1 className='font-bold text-4xl'>{lessonData.title}</h1>

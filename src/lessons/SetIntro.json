@@ -15,6 +15,36 @@
         { "type": "text", "value": "Los diagramas de Venn permiten observar las relaciones existentes entre dos o varios conjuntos. Selecciona una o varias zonas para observar lo que representan." },
         { "type": "component", "name": "VennDiagramInfo" }
       ]
+    },
+    {
+      "content": [
+        {"type": "text", "value": "Crea el siguiente conjunto de forma interactiva"},
+        {"type": "component", "name": "SetClassifierDND"}
+      ]
+    },
+    {
+      "content": [
+        {"type": "text", "value": "Crea el siguiente espacio muestral"},
+        {"type": "component", "name": "CoinSampleSpaceDnD"}
+      ]
+    },
+    {
+      "content": [
+        {"type": "text", "value": "Selecciona regiones del espacio muestral"},
+        {"type": "component", "name": "DiceSampleSpaceSelector"}
+      ]
+    },
+    {
+      "content": [
+        {"type": "text", "value": "Tira la moneda"},
+        {"type": "component", "name": "CoinFlipSimulator"}
+      ]
+    },
+    {
+      "content": [
+        {"type": "text", "value": "Completa el siguiente diagrama de Venn"},
+        {"type": "component", "name": "VennCardinality"}
+      ]
     }
   ]
 }
