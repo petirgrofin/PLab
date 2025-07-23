@@ -1,0 +1,50 @@
+{
+  "title": "Operaciones sobre conjuntos",
+  "sections": [
+    {
+      "content": [
+        { "type": "text", "value": "Se realizó una encuesta a 5 estudiantes acerca de los deportes que practican." },
+        { "type": "component", "name": "BasicTable" },
+        { "type": "text", "value": "Reorganiza la información de la tabla en un diagrama de Venn arrastrando los nombres a la región que corresponda" },
+        { "type": "component", "name": "VennDiagramDragNDrop" },
+        { "type": "aside", "buttonText": "¿Qué es esto?", "info": "Este es un diagrama de Venn"}
+      ]
+    },
+    {
+      "content": [
+        { "type": "text", "value": "Los diagramas de Venn permiten observar las relaciones existentes entre dos o varios conjuntos. Selecciona una o varias zonas para observar lo que representan." },
+        { "type": "component", "name": "VennDiagramInfo" }
+      ]
+    },
+    {
+      "content": [
+        {"type": "text", "value": "Crea el siguiente conjunto de forma interactiva"},
+        {"type": "component", "name": "SetClassifierDndKit"}
+      ]
+    },
+    {
+      "content": [
+        {"type": "text", "value": "Crea el siguiente espacio muestral"},
+        {"type": "component", "name": "CoinSampleSpaceDnD"}
+      ]
+    },
+    {
+      "content": [
+        {"type": "text", "value": "Selecciona regiones del espacio muestral"},
+        {"type": "component", "name": "DiceSampleSpaceSelector"}
+      ]
+    },
+    {
+      "content": [
+        {"type": "text", "value": "Tira la moneda"},
+        {"type": "component", "name": "CoinFlipSimulator"}
+      ]
+    },
+    {
+      "content": [
+        {"type": "text", "value": "Completa el siguiente diagrama de Venn"},
+        {"type": "component", "name": "VennCardinality"}
+      ]
+    }
+  ]
+}
