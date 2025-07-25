@@ -1,0 +1,67 @@
+{
+  "title": "Diagramas de Venn y gustos musicales",
+  "sections": [
+    {
+      "content": [
+        { "type": "text", "value": "En una escuela se hizo una encuesta a 5 estudiantes acerca de sus gustos musicales." },
+        {
+          "type": "component",
+          "name": "BasicTable",
+          "props": {
+            "headers": ["Estudiantes", "Le gusta el rock", "Le gusta el pop"],
+            "rows": [
+              ["Lucía", "Sí", "Sí"],
+              ["Carlos", "No", "No"],
+              ["Mateo", "Sí", "Sí"],
+              ["Valentina", "No", "Sí"],
+              ["Francisco", "Sí", "No"]
+            ]
+          }
+        },
+        { "type": "text", "value": "Arrastra cada nombre a la zona correcta del diagrama.\n- Verde: Le gustan rock y pop.\n- Azul: Le gusta solo rock.\n- Rojo: Le gusta solo pop.\n- Rectángulo exterior: No le gustan ninguno de los dos géneros." },
+        { "type": "component", "name": "VennDiagramDragNDrop" }
+      ]
+    },
+    {
+      "content": [
+        { "type": "text", "value": "Los siguientes diagramas de Venn muestran los resultados de una encuesta acerca de los instrumentos que tocan los estudiantes de un colegio." },
+        { "type": "component", "name": "VennDiagram" }  
+    ]
+    },
+    {
+      "content": [
+        { "type": "text", "value": "Ej1: Seleccione la región que contiene estudiantes que tocan tanto saxofón como guitarra." },
+        { "type": "component", "name": "VennDiagram" },
+        { "type": "text", "value": "Esta región representa la **intersección** entre ambos conjuntos. Es un conjunto que contiene todos los elementos de $S$ que también pertenecen a $G$." }
+      ]
+    },
+    {
+      "content": [
+        { "type": "text", "value": "Ej2: Seleccione la región que contiene estudiantes que *solo* tocan saxofón." },
+        { "type": "component", "name": "VennDiagram" },
+        { "type": "text", "value": "Esta región representa la diferencia entre el conjunto $G$ y el conjunto $S$." }
+      ]
+    },
+    {
+      "content": [
+        { "type": "text", "value": "Ej3: Seleccione las regiones que contiene estudiantes que tocan saxofón." },
+        { "type": "component", "name": "VennDiagram" },
+        { "type": "text", "value": "Estas regiones representan el conjunto $G$." }
+      ]
+    },
+    {
+      "content": [
+        { "type": "text", "value": "Ej4: Seleccione las regiones que contienen estudiantes que tocan saxofón o guitarra." },
+        { "type": "component", "name": "VennDiagram" },
+        { "type": "text", "value": "Estas regiones representan la **unión** entre ambos conjuntos. Es un conjunto que contiene todos los elementos de $G$ y de $S$." }
+      ]
+    },
+    {
+      "content": [
+        { "type": "text", "value": "Ej5: Seleccione la región que contiene estudiantes que no tocan saxofón." },
+        { "type": "component", "name": "VennDiagram" },
+        { "type": "text", "value": "Esta región representa el complemento de $S$." }
+      ]
+    }
+  ]
+}

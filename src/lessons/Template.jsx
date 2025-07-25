@@ -1,6 +1,9 @@
 import { useRef, useState } from "react"
 import SetIntro from "./SetIntro.json"
 import Test from "./Test.json"
+import Probability from "./Probability.json"
+import SetOperations from "./SetOperations.json"
+import SampleSpaces from "./SampleSpaces.json"
 import useFadeOutOnScroll from "../hooks/useFadeOutOnScroll";
 import useAutoScrollToCurrent from "../hooks/useAutoScrollToCurrent";
 import VennDiagramInfo from "../Components/VennDiagramInfo";
@@ -16,8 +19,9 @@ import { TwoSetVennCardinality } from "../Components/VennCardinality";
 import { BlockMath } from "react-katex";
 import Definition from "../Components/Definition";
 import { renderInlineMathText } from "../utils/latexUtils";
-import { DemoMultipleChoiceExercise } from "../Components/MultipleChoiceExercise";
+import {MultipleChoiceExercise, DemoMultipleChoiceExercise } from "../Components/MultipleChoiceExercise";
 import { DemoMultiSelectTextQ, DemoMultiSelectTextR, MultiSelectExercise} from "../Components/MultiSelectExercise";
+import VennDiagram from "../Components/VennDiagram";
 
 const COMPONENT_REGISTRY = {
   BasicTable,
@@ -28,10 +32,12 @@ const COMPONENT_REGISTRY = {
   DiceSampleSpaceSelector,
   CoinFlipSimulator,
   VennCardinality: TwoSetVennCardinality,
-  MultipleChoiceExercise: DemoMultipleChoiceExercise,
+  MultipleChoiceExercise,
   DemoMultiSelectTextQ,
   DemoMultiSelectTextR,
-  MultiSelectExercise
+  MultiSelectExercise,
+  VennDiagram,
+  Definition
 };
 
 
@@ -76,7 +82,7 @@ const Template = () => {
     useFadeOutOnScroll(sectionRefs, shownIndex);
     useAutoScrollToCurrent(sectionRefs, shownIndex);
 
-    const lessonData = Test;
+    const lessonData = SampleSpaces;
     if (!lessonData) return <div>Loading...</div>;
     
     // max-h-[calc(100vh-170px)] overflow-y-scroll makes the fade out and auto scroll awkward

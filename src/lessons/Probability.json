@@ -1,0 +1,155 @@
+{
+  "title": "Introducción a la probabilidad",
+  "sections": [
+    {
+      "content": [
+        {
+          "type": "text",
+          "value": "La probabilidad es una herramienta que permite describir la certidumbre de que ocurra un evento. Es frecuentemente utilizada para describir los resultados de experimentos aleatorios."
+        },
+        {
+          "type": "text",
+          "value": "Suponga que tenemos una moneda justa (sus caras son simétricas, no hay sesgo al lanzarse y las condiciones no favorecen ninguna cara). La moneda tiene dos caras: escudo y corona."
+        },
+        {
+          "type": "text",
+          "value": "Si la lanzamos sobre una mesa, ¿cuál es la probabilidad de que caiga escudo?"
+        },
+        {
+          "type": "component",
+          "name": "MultipleChoiceExercise",
+          "props": {
+            "question": "¿Cuál es la probabilidad de que caiga escudo?",
+            "options": [
+              "Menor a 50%",
+              "Igual a 50%",
+              "Mayor a 50%"
+            ],
+            "correctIndex": 1
+          }
+        }
+      ]
+    },
+    {
+        "content": [
+            {
+          "type": "text",
+          "value": "Intuitivamente, sabemos que la probabilidad de que caiga escudo es mitad y mitad (50%), puesto que nuestro experimento no favorece ninguna cara de la moneda."
+        },
+        {
+          "type": "text",
+          "value": "Cuando conocemos todos los resultados de un evento y estos son igualmente probables (es decir, no hay razones por las que creer que un resultado predomina sobre otro), podemos definir la probabilidad del siguiente modo:"
+        },
+        {
+          "type": "text",
+          "value": "$$P(\\text{evento}) = \\frac{\\text{número de casos favorables}}{\\text{número de casos posibles}}$$"
+        }
+        ]
+    },
+    {
+        "content": [
+            {
+          "type": "text",
+          "value": "Bajo esta definición, si queremos averiguar la probabilidad de que la moneda caiga en corona, podemos plantear que:"
+        },
+        {
+          "type": "text",
+          "value": "$$P(\\text{corona}) = \\frac{\\text{número de casos favorables}}{\\text{número de casos posibles}} = \\frac{1}{2}$$"
+        },
+        {
+          "type": "text",
+          "value": "Puesto que solo hay dos casos posibles (escudo o corona) y solo un caso favorable (corona), obtenemos que la probabilidad es de $0.5$, o bien $50\\%$."
+        }
+        ]
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "value": "Podemos comprobar este resultado con otro experimento."
+        },
+        {
+          "type": "text",
+          "value": "Lanza la moneda varias veces y observa la distribución de los resultados obtenidos."
+        },
+        {
+          "type": "component",
+          "name": "CoinFlipSimulator",
+          "props": {
+            "fair": true
+          }
+        },
+        {
+          "type": "component",
+          "name": "FreeResponse",
+          "props": {
+            "question": "Ej1: ¿Cuál es la probabilidad aproximada de que obtengamos un escudo?"
+          }
+        }
+      ]
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "value": "Cuando no se sabe si los casos posibles son igualmente probables, se suele utilizar una definición alternativa de la probabilidad:"
+        },
+        {
+          "type": "text",
+          "value": "$$P(\\text{evento}) \\approx \\frac{\\text{número de veces que ocurrió el evento}}{\\text{número total de repeticiones del experimento}}$$"
+        },
+        {
+          "type": "text",
+          "value": "Cuando tenemos una moneda injusta o cargada, los resultados no van a ser igual de probables."
+        },
+        {
+          "type": "text",
+          "value": "Lanza esta moneda injusta varias veces y observa la distribución de los resultados obtenidos."
+        },
+        {
+          "type": "component",
+          "name": "CoinFlipSimulator",
+          "props": {
+            "fair": false
+          }
+        },
+        {
+          "type": "component",
+          "name": "FreeResponse",
+          "props": {
+            "question": "Ej2: ¿Cuál es la probabilidad aproximada de que obtengamos un escudo?"
+          }
+        }
+      ]
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "value": "Las siguientes preguntas se refieren a un dado justo de 6 caras:"
+        },
+        {
+          "type": "component",
+          "name": "FreeResponse",
+          "props": {
+            "question": "Ej3: ¿Cuál es la probabilidad de que el dado caiga en 6?"
+          }
+        },
+        {
+          "type": "component",
+          "name": "FreeResponse",
+          "props": {
+            "question": "Ej4: ¿Cuál es la probabilidad de que el dado caiga ya sea en un 4 o en un 3?"
+          }
+        },
+        {
+          "type": "component",
+          "name": "FreeResponse",
+          "props": {
+            "question": "Ej5: ¿Cuál es la probabilidad de que el dado caiga en un 7?"
+          }
+        }
+      ]
+    }
+  ]
+}

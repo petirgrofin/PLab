@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { REGION_IDS } from "../Constants/regions";
 import { DEFAULT_VENN_CONFIG } from "../Constants/vennConfig";
 import { constructVennDiagram } from "../utils/vennUtils";
@@ -9,16 +10,26 @@ import { InlineMath } from "react-katex";
  * ------------------------------------------
  *
  * Props:
- *   selectedRegions: string[]                // controlled selection (required for now)
- *   setSelectedRegions: (ids:string[])=>void // updater (required for now)
- *   interactive?: boolean = true             // allow user clicks?
+ *   selectedRegions?: string[]                // optional external control
+ *   setSelectedRegions?: (ids:string[])=>void // optional external updater
+ *   interactive?: boolean = true              // allow user clicks?
  */
-export default function VennDiagram({ selectedRegions, setSelectedRegions, interactive = true }) {
+export default function VennDiagram({
+  selectedRegions: controlledSelectedRegions,
+  setSelectedRegions: controlledSetSelectedRegions,
+  interactive = true
+}) {
+  const [internalSelected, setInternalSelected] = useState([]);
+  const isControlled = controlledSelectedRegions !== undefined && controlledSetSelectedRegions !== undefined;
+
+  const selectedRegions = isControlled ? controlledSelectedRegions : internalSelected;
+  const setSelectedRegions = isControlled ? controlledSetSelectedRegions : setInternalSelected;
 
   const shapes = constructVennDiagram(DEFAULT_VENN_CONFIG);
-  
+
   function onRegionClick(regionId) {
-    if (!interactive) return; // ignore if read‑only
+    if (!interactive) return;
+
     if (selectedRegions.includes(regionId)) {
       setSelectedRegions(selectedRegions.filter((r) => r !== regionId));
     } else {
@@ -47,10 +58,10 @@ export default function VennDiagram({ selectedRegions, setSelectedRegions, inter
         />
       ))}
       <foreignObject x={100} y={30} width={30} height={30}>
-        <InlineMath math={"A"}/>
+        <InlineMath math={"A"} />
       </foreignObject>
       <foreignObject x={380} y={30} width={30} height={30}>
-        <InlineMath math={"B"}/>
+        <InlineMath math={"B"} />
       </foreignObject>
     </svg>
   );
