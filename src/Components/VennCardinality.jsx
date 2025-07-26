@@ -59,7 +59,7 @@ export function TwoSetVennCardinality({
   // Input positions (px, relative to wrapper). Tuned heuristically.
   const positions = useMemo(
     () => ({
-      [REGION_IDS.Outside]: { left: 8, top: 8 },
+      [REGION_IDS.Outside]: { left: 64, top: 32 },
       [REGION_IDS.OnlyA]: { left: cxA - radius * 0.45, top: cy },
       [REGION_IDS.OnlyB]: { left: cxB + radius * 0.45, top: cy },
       [REGION_IDS.Intersection]: { left: width / 2, top: cy },
@@ -148,7 +148,7 @@ export function TwoSetVennCardinality({
 
   // ------------------------------------------------------------------ UI
   return (
-    <div className={"relative inline-block select-none " + className} style={{ width, height }}>
+    <div className={"mx-auto relative inline-block select-none " + className} style={{ width, height }}>
       <svg
         width={width}
         height={height}
@@ -189,11 +189,11 @@ export function TwoSetVennCardinality({
         />
       ))}
 
-      {showTotals && (
-        <div className="mt-2 w-full text-xs text-gray-700 font-medium flex flex-col gap-1 absolute left-1/2 -translate-x-1/2" style={{ top: height + 8 }}>
+      {/*showTotals && (
+        <div className="mt-2 w-full text-xs text-gray-700 font-medium flex flex-col gap-1">
           <TotalsTable derived={derived} />
         </div>
-      )}
+      )*/}
     </div>
   );
 }

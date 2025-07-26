@@ -32,7 +32,7 @@ import * as d3 from "d3";
 
 // ----- Utility random flip -----
 function flipCoin() {
-  return Math.random() < 0.5 ? "H" : "T"; // fair coin
+  return Math.random() < 0.7 ? "H" : "T"; // fair coin
 }
 
 // ----- Bar Chart Subcomponent (D3) -----
@@ -260,10 +260,10 @@ export default function CoinFlipSimulator({
   // Render
   return (
     <div className="w-full max-w-xl mx-auto flex flex-col items-center gap-6 font-nunito">
-      <h2 className="text-lg font-bold">Coin Flip Simulator</h2>
+      {/*<h2 className="text-lg font-bold">Coin Flip Simulator</h2>
       <p className="text-center text-sm text-slate-600 max-w-prose">
         Flip a fair coin repeatedly and watch the observed frequencies approach 50% each (Law of Large Numbers).
-      </p>
+      </p>*/}
 
       {/* Controls */}
       <div className="flex flex-wrap items-center justify-center gap-2 text-sm">
@@ -272,16 +272,16 @@ export default function CoinFlipSimulator({
           onClick={flipOnce}
           className="px-3 py-1 rounded bg-yellow-400 hover:bg-yellow-300 text-yellow-900 font-semibold shadow-sm"
         >
-          Flip Once
+          Lanzar una vez
         </button>
         <button
           type="button"
           onClick={() => flipMany(1000)}
           className="px-3 py-1 rounded bg-indigo-600 hover:bg-indigo-500 text-white font-semibold shadow-sm"
         >
-          Flip 1,000 Times
+          Lanzar 1,000 veces
         </button>
-        <div className="flex items-center gap-1">
+        {/*<div className="flex items-center gap-1">
           <input
             type="number"
             min={1}
@@ -296,7 +296,7 @@ export default function CoinFlipSimulator({
           >
             Flip N
           </button>
-        </div>
+        </div>*/}
         <button
           type="button"
           onClick={() => {
@@ -306,7 +306,7 @@ export default function CoinFlipSimulator({
           }}
           className="px-2 py-1 rounded border border-rose-300 text-rose-600 hover:bg-rose-50 text-xs"
         >
-          Reset
+          Reiniciar
         </button>
       </div>
 
@@ -334,11 +334,11 @@ export default function CoinFlipSimulator({
         <CoinBarChart heads={heads} tails={tails} />
       </div>
 
-      {/* Sparkline */}
+      {/* Sparkline 
       <div className="w-full p-2 border rounded bg-white shadow-sm">
         <div className="text-[10px] text-slate-500 mb-1 text-center">Running proportion of Heads (line) vs 0.5 (dashed)</div>
         <ProportionSparkline history={history} />
-      </div>
+      </div>*/}
     </div>
   );
 }

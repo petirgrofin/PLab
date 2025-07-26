@@ -83,9 +83,9 @@ export default function DiceSampleSpaceSelector({
   return (
     <div className="w-full max-w-xl mx-auto flex flex-col items-center gap-4 font-nunito">
       {/* Controls / instructions */}
-      <p className="text-center text-sm text-slate-600 max-w-prose">
+      {/*<p className="text-center text-sm text-slate-600 max-w-prose">
         Click cells to select outcomes that belong to an event. Row = first die, Column = second die.
-      </p>
+      </p>*/}
       <div className="flex items-center gap-2 text-xs text-slate-600">
         <label className="flex items-center gap-1 cursor-pointer select-none">
           <input
@@ -94,7 +94,7 @@ export default function DiceSampleSpaceSelector({
             checked={showSumsLocal}
             onChange={(e) => setShowSumsLocal(e.target.checked)}
           />
-          Show sums
+          Mostrar sumas
         </label>
       </div>
 
@@ -156,15 +156,15 @@ export default function DiceSampleSpaceSelector({
           onClick={() => setSelected(new Set())}
           className="px-2 py-1 rounded border border-slate-300 hover:bg-slate-100 text-xs"
         >
-          Clear
+          Limpiar
         </button>
-        <button
+        {/*<button
           type="button"
           onClick={handleSubmit}
           className="px-2 py-1 rounded bg-indigo-600 text-white hover:bg-indigo-700 text-xs"
         >
           Submit Selection
-        </button>
+        </button>*/}
       </div>
     </div>
   );

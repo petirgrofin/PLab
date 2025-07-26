@@ -151,9 +151,9 @@ export default function CoinSampleSpaceDnD() {
   return (
     <DndContext sensors={sensors} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
       <div className="w-full max-w-xl mx-auto flex flex-col items-center gap-6 font-nunito">
-        <p className="text-center text-sm text-slate-600 max-w-prose">
+        {/*<p className="text-center text-sm text-slate-600 max-w-prose">
           Drag <span className="font-bold">H</span> or <span className="font-bold">T</span> from the pool into each outcome card to build the sample space of two coin tosses.
-        </p>
+        </p>*/}
 
         <div className="flex items-center gap-4 p-4 border rounded-lg bg-white shadow-sm">
           {POOL_COINS.map((c) => (

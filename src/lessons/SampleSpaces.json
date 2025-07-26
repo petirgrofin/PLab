@@ -6,7 +6,11 @@
         { "type": "text", "value": "Tiremos una moneda de dos caras:" },
         { "type": "component", "name": "CoinFlipAnimation", "props": { "flips": 1 } },
         { "type": "text", "value": "Tirar una moneda tiene dos posibles resultados: que caiga en cara o que caiga en escudo." },
-        { "type": "component", "name": "CoinFaceImages" },
+        { "type": "component", "name": "CoinFaceImages" }
+      ]
+    },
+    {
+      "content": [
         {
           "type": "component",
           "name": "Definition",
@@ -26,19 +30,58 @@
           "type": "text",
           "value": "Pero, ¿qué pasa si cambiamos el experimento? En vez de tirar la moneda una sola vez, la tiraremos dos veces y registraremos el resultado."
         },
-        { "type": "component", "name": "CoinFlipAnimation", "props": { "flips": 2 } },
+        { "type": "component", "name": "CoinFlipAnimation", "props": { "flips": 2 } }
+      ]
+    },
+    {
+      "content": [
         {
           "type": "text",
           "value": "Construye el espacio muestral arrastrando las caras de la moneda para formar todos los posibles resultados del experimento anterior."
         },
-        { "type": "component", "name": "CoinSampleSpaceDnD" },
-        {
-          "type": "text",
-          "value": "El anterior espacio muestral se puede escribir como $\\Omega = \\{HH, HT, TH, TT\\}$."
-        },
+        { "type": "component", "name": "CoinSampleSpaceDnD" }
+      ]
+    },
+    {
+      "content": [
         {
           "type": "text",
           "value": "Los espacios muestrales son de gran utilidad para calcular probabilidades."
+        },
+        {
+          "type": "text",
+          "value": "Suponga que tiramos un dado de seis caras dos veces y sumamos los resultados obtenidos en la cara superior."
+        },
+        { "type": "component", "name": "DiceThrowAnimation"}
+      ]
+    },
+    {
+      "content": [
+        { "type": "text", "value": "Los resultados se registran en la siguiente tabla, que representa el espacio muestral del experimento:"},
+        {
+          "type": "text",
+          "value": "Selecciona las regiones del espacio muestral en las que la suma es mayor a 9."
+        },
+        { "type": "component", "name": "DiceSampleSpaceSelector", "props": {} }
+      ]
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "value": "Hay cinco eventos del espacio muestral que presentan una suma mayor a 9"
+        },
+        {
+          "type": "image",
+          "src": "/solvedSampleSpace.png"
+        },
+        {
+          "type": "text",
+          "value": "¿Cuál es la probabilidad de que la suma de los resultados obtenidos sea mayor a 9?"
+        },
+        {
+          "type": "component",
+          "name": "FreeResponse"
         }
       ]
     },
@@ -46,18 +89,41 @@
       "content": [
         {
           "type": "text",
-          "value": "Suponga que tiramos un dado de seis caras dos veces y sumamos los resultados obtenidos en la cara superior. Los resultados se registran en la siguiente tabla, que representa el espacio muestral del experimento:"
-        },
-        { "type": "component", "name": "DiceSampleSpaceSelector", "props": {} },
-        {
-          "type": "text",
-          "value": "Selecciona las regiones del espacio muestral en las que la suma es mayor a 9."
+          "value": "Los espacios muestrales también se pueden visualizar por medio de diagramas de Venn."
         },
         {
           "type": "component",
-          "name": "FreeResponse",
+          "name": "VennDiagramStatic"
+        },
+        {
+          "type": "text", 
+          "value": "El universo $U$ corresponde con el espacio muestral $\\Omega$, mientras que los conjuntos $A$ y $B$ representan eventos."
+        }
+      ]
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "value": "Cuando los eventos no pueden ocurrir simultáneamente, se llaman mutuamente excluyentes. En el diagrama de Venn, no existe su intersección."
+        },
+        {
+          "type": "component",
+          "name": "VennDiagramMutuallyExclusive"
+        }
+      ]
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "value": "Cuando los eventos pueden ocurrir simultáneamente, se llaman no mutuamente excluyentes. En el diagrama de Venn, su intersección sí existe."
+        },
+        {
+          "type": "component",
+          "name": "VennDiagramStatic",
           "props": {
-            "question": "¿Cuál es la probabilidad de que la suma de los resultados obtenidos sea mayor a 9?"
+            "highlightedRegions": ["AiB"]
           }
         }
       ]
@@ -66,15 +132,16 @@
       "content": [
         {
           "type": "text",
-          "value": "Los espacios muestrales también se pueden representar por medio de diagramas de Venn."
-        },
-        {
-          "type": "text",
           "value": "Supongamos que se realiza una encuesta a un grupo de 30 estudiantes sobre su participación en actividades extracurriculares. Se les preguntó si participaban en el club de ciencia o el club de teatro. Los resultados se muestran a continuación:"
         },
         {
-          "type": "text",
-          "value": "- 10 estudiantes participan solo en el club de ciencia\n- 8 estudiantes participan solo en el club de teatro\n- 6 estudiantes participan en ambos clubes\n- 6 estudiantes no participan en ningún club"
+          "type": "ul",
+          "listItems": [
+            "10 estudiantes participan solo en el club de ciencia",
+            "8 estudiantes participan solo en el club de teatro",
+            "6 estudiantes participan en ambos clubes",
+            "6 estudiantes no participan en ningún club"
+          ]
         },
         {
           "type": "text",
@@ -84,7 +151,7 @@
           "type": "component",
           "name": "VennCardinality",
           "props": {
-            "sets": ["Ciencia", "Teatro"],
+            "sets": ["C", "T"],
             "data": {
               "soloCiencia": 10,
               "soloTeatro": 8,
@@ -92,36 +159,68 @@
               "ninguno": 6
             }
           }
-        },
-        {
-          "type": "component",
-          "name": "FreeResponse",
-          "props": {
-            "question": "Si se elige un estudiante al azar, ¿cuál es la probabilidad de que solo participe en el club de teatro?"
-          }
-        },
-        {
-          "type": "component",
-          "name": "FreeResponse",
-          "props": {
-            "question": "Si se elige un estudiante al azar, ¿cuál es la probabilidad de que participe en ambos clubes?"
-          }
-        },
-        {
-          "type": "component",
-          "name": "FreeResponse",
-          "props": {
-            "question": "Si se elige un estudiante al azar, ¿cuál es la probabilidad de que participe solo en el club de teatro?"
-          }
-        },
-        {
-          "type": "component",
-          "name": "FreeResponse",
-          "props": {
-            "question": "Si se elige un estudiante al azar, ¿cuál es la probabilidad de que no participe en el club de ciencia?"
-          }
         }
       ]
+    },
+    {
+      "content": [
+        {
+          "type": "text",
+          "value": "Confeccionar un diagrama de Venn puede aclarar las cardinalidades de los conjuntos, permitiendo calcular probabilidades con mayor facilidad"
+        },
+        {
+          "type": "component",
+          "name": "VennDiagramStatic",
+          "props": {
+            "leftSet": "C",
+            "rightSet": "T",
+            "cardinalities": {
+              "AdB": 10,
+              "BdA": 8,
+              "AiB": 6,
+              "(AuB)'": 6
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "¿Cuál es la probabilidad de que un estudiante elegido al azar esté en ambos clubes?"
+        },
+        {
+          "type": "component",
+          "name": "FreeResponse"
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "type": "component",
+      "name": "FreeResponse",
+      "props": {
+        "question": "Si se elige un estudiante al azar, ¿cuál es la probabilidad de que solo participe en el club de teatro?"
+      }
+    },
+    {
+      "type": "component",
+      "name": "FreeResponse",
+      "props": {
+        "question": "Si se elige un estudiante al azar, ¿cuál es la probabilidad de que participe en ambos clubes?"
+      }
+    },
+    {
+      "type": "component",
+      "name": "FreeResponse",
+      "props": {
+        "question": "Si se elige un estudiante al azar, ¿cuál es la probabilidad de que participe solo en el club de teatro?"
+      }
+    },
+    {
+      "type": "component",
+      "name": "FreeResponse",
+      "props": {
+        "question": "Si se elige un estudiante al azar, ¿cuál es la probabilidad de que no participe en el club de ciencia?"
+      }
     }
   ]
 }

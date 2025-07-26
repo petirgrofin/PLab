@@ -17,6 +17,8 @@ import { InlineMath } from "react-katex";
 export default function VennDiagram({
   selectedRegions: controlledSelectedRegions,
   setSelectedRegions: controlledSetSelectedRegions,
+  leftSet = "A",
+  rightSet = "B",
   interactive = true
 }) {
   const [internalSelected, setInternalSelected] = useState([]);
@@ -38,7 +40,7 @@ export default function VennDiagram({
   }
 
   return (
-    <svg className="m-auto" width={DEFAULT_VENN_CONFIG.width} height={DEFAULT_VENN_CONFIG.height}>
+    <svg className="ml-auto mr-auto" width={DEFAULT_VENN_CONFIG.width} height={DEFAULT_VENN_CONFIG.height}>
       <VennRegion
         regionId={REGION_IDS.Outside}
         width={DEFAULT_VENN_CONFIG.width}
@@ -58,10 +60,10 @@ export default function VennDiagram({
         />
       ))}
       <foreignObject x={100} y={30} width={30} height={30}>
-        <InlineMath math={"A"} />
+        <InlineMath math={leftSet} />
       </foreignObject>
       <foreignObject x={380} y={30} width={30} height={30}>
-        <InlineMath math={"B"} />
+        <InlineMath math={rightSet} />
       </foreignObject>
     </svg>
   );

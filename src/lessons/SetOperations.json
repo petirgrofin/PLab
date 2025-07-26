@@ -1,5 +1,5 @@
 {
-  "title": "Diagramas de Venn y gustos musicales",
+  "title": "Operaciones sobre conjuntos",
   "sections": [
     {
       "content": [
@@ -18,49 +18,56 @@
             ]
           }
         },
-        { "type": "text", "value": "Arrastra cada nombre a la zona correcta del diagrama.\n- Verde: Le gustan rock y pop.\n- Azul: Le gusta solo rock.\n- Rojo: Le gusta solo pop.\n- Rectángulo exterior: No le gustan ninguno de los dos géneros." },
+        { "type": "text", "value": "Arrastra cada nombre a la zona correcta del diagrama de Venn" },
         { "type": "component", "name": "VennDiagramDragNDrop" }
       ]
     },
     {
       "content": [
-        { "type": "text", "value": "Los siguientes diagramas de Venn muestran los resultados de una encuesta acerca de los instrumentos que tocan los estudiantes de un colegio." },
+        { "type": "text", "value": "Los diagramas de Venn nos permiten visualizar las relaciones que existen entre los conjuntos" },
+        { "type": "component", "name": "VennDiagramInfo" }
+      ]
+    },
+    {
+      "content": [
+        { "type": "text", "value": "El conjunto $G$ representa a las personas que tocan guitarra, mientras que el conjunto $S$ a los que tocan saxofón. " },
+        { "type": "text", "value": "Seleccione las regiones que contienen estudiantes que tocan saxofón o guitarra."},
         { "type": "component", "name": "VennDiagram" }  
     ]
     },
     {
       "content": [
-        { "type": "text", "value": "Ej1: Seleccione la región que contiene estudiantes que tocan tanto saxofón como guitarra." },
+        { "type": "text", "value": "Seleccione la región que contiene estudiantes que tocan tanto saxofón como guitarra." },
         { "type": "component", "name": "VennDiagram" },
         { "type": "text", "value": "Esta región representa la **intersección** entre ambos conjuntos. Es un conjunto que contiene todos los elementos de $S$ que también pertenecen a $G$." }
       ]
     },
     {
       "content": [
-        { "type": "text", "value": "Ej2: Seleccione la región que contiene estudiantes que *solo* tocan saxofón." },
+        { "type": "text", "value": "Seleccione la región que contiene estudiantes que *solo* tocan saxofón." },
         { "type": "component", "name": "VennDiagram" },
-        { "type": "text", "value": "Esta región representa la diferencia entre el conjunto $G$ y el conjunto $S$." }
+        { "type": "explanation", "value": "Esta región representa la diferencia entre el conjunto $G$ y el conjunto $S$." }
       ]
     },
     {
       "content": [
-        { "type": "text", "value": "Ej3: Seleccione las regiones que contiene estudiantes que tocan saxofón." },
+        { "type": "text", "value": "Seleccione las regiones que contiene estudiantes que tocan saxofón." },
         { "type": "component", "name": "VennDiagram" },
-        { "type": "text", "value": "Estas regiones representan el conjunto $G$." }
+        { "type": "explanation", "value": "Estas regiones representan el conjunto $G$." }
       ]
     },
     {
       "content": [
-        { "type": "text", "value": "Ej4: Seleccione las regiones que contienen estudiantes que tocan saxofón o guitarra." },
+        { "type": "text", "value": "Seleccione las regiones que contienen estudiantes que tocan saxofón o guitarra." },
         { "type": "component", "name": "VennDiagram" },
-        { "type": "text", "value": "Estas regiones representan la **unión** entre ambos conjuntos. Es un conjunto que contiene todos los elementos de $G$ y de $S$." }
+        { "type": "explanation", "value": "Estas regiones representan la **unión** entre ambos conjuntos. Es un conjunto que contiene todos los elementos de $G$ y de $S$." }
       ]
     },
     {
       "content": [
-        { "type": "text", "value": "Ej5: Seleccione la región que contiene estudiantes que no tocan saxofón." },
+        { "type": "text", "value": "Seleccione la región que contiene estudiantes que no tocan saxofón." },
         { "type": "component", "name": "VennDiagram" },
-        { "type": "text", "value": "Esta región representa el complemento de $S$." }
+        { "type": "explanation", "value": "Esta región representa el complemento de $S$." }
       ]
     }
   ]
