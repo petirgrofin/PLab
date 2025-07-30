@@ -60,22 +60,22 @@ export default function CoursesPage() {
   return (
     <div>
       <Navbar />
-      <div className="p-6">
-        <h2 className="text-2xl mb-4">Available Courses</h2>
+      <div className="p-6 mx-[20%] mt-10">
+        <h2 className="text-2xl mb-4 font-bold">Cursos disponibles</h2>
         <ul className="space-y-3">
           {allCourses.map((course) => (
             <li
               key={course.id}
               className="flex justify-between items-center bg-white p-4 shadow rounded"
             >
-              <span>{course.title}</span>
+              <span className="font-semibold">{course.title}</span>
               <button
                 onClick={() => handleJoin(course)}
                 disabled={isJoined(course)}
                 className={`px-3 py-1 rounded ${
                   isJoined(course)
                     ? "bg-gray-400 cursor-not-allowed"
-                    : "bg-blue-500 text-white"
+                    : "bg-black font-semibold text-white hover:bg-gray-800 hover:cursor-pointer"
                 }`}
               >
                 {isJoined(course) ? "Joined" : "Join"}

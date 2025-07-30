@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function SignupPage() {
   const navigate = useNavigate();
@@ -38,25 +38,34 @@ export default function SignupPage() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <h2 className="text-2xl mb-4">Sign Up</h2>
-      <input
-        type="text"
-        placeholder="Nombre de usuario"
-        className="mb-2 p-2 border rounded"
-        value={nombreUsuario}
-        onChange={(e) => setNombreUsuario(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Contraseña"
-        className="mb-4 p-2 border rounded"
-        value={contrasena}
-        onChange={(e) => setContrasena(e.target.value)}
-      />
-      {error && <p className="text-red-500 mb-2">{error}</p>}
-      <button onClick={handleSignup} className="bg-green-500 text-white px-4 py-2 rounded">
-        Join
-      </button>
+        <div className="flex flex-col items-center gap-4 w-[20%] rounded-lg border-1 border-slate-300 p-10 shadow-xl bg-[#FAFAFA]">
+            <h2 className="text-3xl mb-4 font-semibold">Regístrate</h2>
+
+            <label className="w-full flex flex-col">Nombre de usuario
+                <input
+                    type="text"
+                    placeholder="Nombre de usuario"
+                    className="mb-2 p-2 border rounded"
+                    value={nombreUsuario}
+                    onChange={(e) => setNombreUsuario(e.target.value)}
+                />
+            </label>
+
+            <label className="w-full flex flex-col">Contraseña
+                <input
+                    type="password"
+                    placeholder="Contraseña"
+                    className="mb-4 p-2 border rounded"
+                    value={contrasena}
+                    onChange={(e) => setContrasena(e.target.value)}
+                />
+            </label>
+            {error && <p className="text-red-500 mb-2">{error}</p>}
+            <button onClick={handleSignup} className="bg-black font-semibold text-white w-full px-4 py-2 rounded hover:bg-gray-800 hover:cursor-pointer">
+                Registrarme
+            </button>
+            <span>¿Ya tienes cuenta? <Link to='/login' className="font-semibold text-blue-500 hover:underline">Accede</Link></span>
+        </div>
     </div>
   );
 }
