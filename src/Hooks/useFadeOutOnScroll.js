@@ -3,13 +3,16 @@ import useScrollDirection from "./useScrollDirection";
 
 const useFadeOutOnScroll = (refs, shownIndex) => {
   const scrollDir = useScrollDirection();
+
   useEffect(() => {
+
     const handleScroll = () => {
+
       refs.current.forEach((el, i) => {
         if (!el) return;
         const rect = el.getBoundingClientRect();
 
-        if (i < shownIndex) {
+        if (shownIndex > i) {
           if (scrollDir === "up" && rect.bottom > 0) {
             el.classList.remove("opacity-0");
           } else if (scrollDir === "down" && rect.bottom < window.innerHeight / 2) {
@@ -25,3 +28,4 @@ const useFadeOutOnScroll = (refs, shownIndex) => {
 };
 
 export default useFadeOutOnScroll;
+

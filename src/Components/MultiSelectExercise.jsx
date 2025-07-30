@@ -1,4 +1,5 @@
-import { useState, useId, useCallback, useMemo } from "react";
+import { useState, useId, useCallback, useMemo, useEffect } from "react";
+import { useComponentContext } from "../lessons/ComponentContext";
 
 /**
  * MultiSelectExercise
@@ -71,7 +72,7 @@ export function MultiSelectExercise({
         next = [...selected, id];
       }
       if (!isControlled) setInternal(next);
-      onChange?.(next);
+      onChange?.(next);;
     },
     [disabled, selected, isControlled, onChange]
   );
@@ -169,6 +170,12 @@ export function MultiSelectExercise({
  * ------------------------------------------------------ */
 export function DemoMultiSelectTextQ() {
   const [selected, setSelected] = useState([]);
+  const { setExerciseResponse } = useComponentContext();
+  
+  useEffect(() => {
+    setExerciseResponse({multiSelect: true, id: "Q", response: selected});
+  }, [selected]);
+  
   const options = [
     { id: "A", label: "Cristal rojo" },
     { id: "B", label: "Cristal rojo 2" },
@@ -183,15 +190,18 @@ export function DemoMultiSelectTextQ() {
         value={selected}
         onChange={setSelected}
       />
-      <div className="mt-4 text-sm text-gray-600">
-        Seleccionadas: <strong>{selected.join(", ") || "(ninguna)"}</strong>
-      </div>
     </div>
   );
 }
 
 export function DemoMultiSelectTextR() {
   const [selected, setSelected] = useState([]);
+  const { setExerciseResponse } = useComponentContext();
+  
+  useEffect(() => {
+    setExerciseResponse({multiSelect: true, id: "R", response: selected});
+  }, [selected]);
+
   const options = [
     { id: "A", label: "Cristal morado 2" },
     { id: "B", label: "Cristal morado" },

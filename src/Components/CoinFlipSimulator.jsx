@@ -31,8 +31,8 @@ import * as d3 from "d3";
 */
 
 // ----- Utility random flip -----
-function flipCoin() {
-  return Math.random() < 0.7 ? "H" : "T"; // fair coin
+function flipCoin(probabilityHeads) {
+  return Math.random() < probabilityHeads ? "H" : "T"; // fair coin
 }
 
 // ----- Bar Chart Subcomponent (D3) -----
@@ -190,6 +190,7 @@ export default function CoinFlipSimulator({
   initialTails = 0,
   onChange,
   maxHistory = 5000,
+  probabilityHeads = 0.5
 }) {
   const [heads, setHeads] = useState(initialHeads);
   const [tails, setTails] = useState(initialTails);
@@ -205,7 +206,7 @@ export default function CoinFlipSimulator({
     (n) => {
       if (n <= 0) return;
       let h = 0;
-      for (let i = 0; i < n; i++) if (flipCoin() === "H") h += 1;
+      for (let i = 0; i < n; i++) if (flipCoin(probabilityHeads) === "H") h += 1;
       const t = n - h;
       setHeads((prev) => prev + h);
       setTails((prev) => prev + t);
@@ -231,7 +232,7 @@ export default function CoinFlipSimulator({
         let addH = 0;
         let addT = 0;
         for (let i = 0; i < n; i++) {
-          const r = flipCoin();
+          const r = flipCoin(probabilityHeads);
           newHist.push(r);
           if (r === "H") addH += 1; else addT += 1;
         }
@@ -313,12 +314,12 @@ export default function CoinFlipSimulator({
       {/* Counts + probs */}
       <div className="grid grid-cols-3 gap-4 text-center text-sm">
         <div className="p-2 rounded border bg-white shadow-sm">
-          <div className="font-bold">Heads</div>
+          <div className="font-bold">Cabeza</div>
           <div>{heads}</div>
           <div className="text-xs text-slate-500">{(pH * 100).toFixed(1)}%</div>
         </div>
         <div className="p-2 rounded border bg-white shadow-sm">
-          <div className="font-bold">Tails</div>
+          <div className="font-bold">Escudo</div>
           <div>{tails}</div>
           <div className="text-xs text-slate-500">{(pT * 100).toFixed(1)}%</div>
         </div>

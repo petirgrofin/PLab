@@ -6,7 +6,8 @@
         { "type": "text", "value": "En el año 2056, la tripulación cósmica Atlas viaja por el universo en una nave espacial recolectando objetos extraños para el Archivo de Conocimiento Galáctico." },
         { "type": "text", "value": "Sin embargo, debido a una pequeña colisión con un asteroide, los contenedores dentro de la nave se desorganizaron." },
         { "type": "text", "value": "Reorganiza los objetos en los contenedores según corresponda." },
-        { "type": "component", "name": "SetClassifierDndKit" }
+        { "type": "component", "id": 0, "isExercise": true, "name": "SetClassifierDndKit" },
+        { "type": "explanation", "id": 0, "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit augue nec metus dignissim auctor sit amet ac magna. Etiam efficitur, ante ut ornare placerat, urna risus sagittis enim, ac hendrerit est odio in eros. Integer eget consequat mauris, sit amet elementum magna. Vestibulum blandit eget diam et congue. Sed vel sapien lectus. Integer ultricies turpis in risus sagittis, et aliquet neque convallis. Nam non semper erat. Vestibulum felis sem, euismod vel luctus vitae, interdum ut dui. Ut scelerisque accumsan elit, sit amet pulvinar erat feugiat in. Curabitur consectetur quam non euismod varius. In quis ornare ligula, vel sodales est. Nulla facilisi. In a arcu et ex auctor consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus ullamcorper luctus nulla et pellentesque. Pellentesque vulputate eleifend elementum."}
       ]
     },
     {
@@ -58,21 +59,23 @@
       "content": [
         { "type": "text", "value": "El conjunto $Q$ está definido del siguiente modo:" },
         { "type": "formula", "value": "Q =\\{c \\in \\text{Cristales} \\mid \\text{color de c es rojo} \\}" },
-        { "type": "component", "name": "DemoMultiSelectTextQ", "props": {
+        { "type": "component", "id": 1, "isExercise": true, "name": "DemoMultiSelectTextQ", "props": {
             "options": [
                 { "id": "A", "label": "Cristal rojo" },
                 { "id": "B", "label": "Cristal rojo 2" },
                 { "id": "C", "label": "Cristal azul" },
                 { "id": "D", "label": "Cristal verde" }
             ]
-        }}
+        }},
+        { "type": "explanation", "id": 1, "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit augue nec metus dignissim auctor sit amet ac magna. Etiam efficitur, ante ut ornare placerat, urna risus sagittis enim, ac hendrerit est odio in eros. Integer eget consequat mauris, sit amet elementum magna. Vestibulum blandit eget diam et congue. Sed vel sapien lectus. Integer ultricies turpis in risus sagittis, et aliquet neque convallis. Nam non semper erat. Vestibulum felis sem, euismod vel luctus vitae, interdum ut dui. Ut scelerisque accumsan elit, sit amet pulvinar erat feugiat in. Curabitur consectetur quam non euismod varius. In quis ornare ligula, vel sodales est. Nulla facilisi. In a arcu et ex auctor consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus ullamcorper luctus nulla et pellentesque. Pellentesque vulputate eleifend elementum."}
       ]
     },
     {
       "content": [
         { "type": "text", "value": "El conjunto $R$ está definido del siguiente modo:" },
         { "type": "formula", "value": "R =\\{c \\in \\text{Cristales} \\mid \\text{color de c es azul o color de c es morado} \\}" },
-        { "type": "component", "name": "DemoMultiSelectTextR" }
+        { "type": "component", "isExercise": true, "id": 2, "name": "DemoMultiSelectTextR" },
+        { "type": "explanation", "id": 2, "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit augue nec metus dignissim auctor sit amet ac magna. Etiam efficitur, ante ut ornare placerat, urna risus sagittis enim, ac hendrerit est odio in eros. Integer eget consequat mauris, sit amet elementum magna. Vestibulum blandit eget diam et congue. Sed vel sapien lectus. Integer ultricies turpis in risus sagittis, et aliquet neque convallis. Nam non semper erat. Vestibulum felis sem, euismod vel luctus vitae, interdum ut dui. Ut scelerisque accumsan elit, sit amet pulvinar erat feugiat in. Curabitur consectetur quam non euismod varius. In quis ornare ligula, vel sodales est. Nulla facilisi. In a arcu et ex auctor consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus ullamcorper luctus nulla et pellentesque. Pellentesque vulputate eleifend elementum."}
       ]
     }
   ]

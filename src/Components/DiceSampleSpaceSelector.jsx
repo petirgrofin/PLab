@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useCallback } from "react";
+import { useComponentContext } from "../lessons/ComponentContext";
 
 /*
   DiceSampleSpaceSelector
@@ -45,17 +46,27 @@ export default function DiceSampleSpaceSelector({
     return s;
   });
 
+  const { setExerciseResponse } = useComponentContext();
+
   // local toggle for showing sums (user UI control)
   const [showSumsLocal, setShowSumsLocal] = useState(showSums);
 
   const toggle = useCallback((d1, d2) => {
-    setSelected((prev) => {
-      const next = new Set(prev);
+
+      const next = new Set(selected);
       const k = keyFor(d1, d2);
-      if (next.has(k)) next.delete(k); else next.add(k);
-      return next;
-    });
-  }, []);
+      if (next.has(k)) next.delete(k); else next.add(k);  
+      setSelected(next);
+
+      // Format the response and pass it as exerciseResponse
+      const selectedArray = Array.from(next).map((key) => {
+        const [d1, d2] = key.split("-").map(Number);
+        return `(${d1}, ${d2})`;
+      });
+
+      setExerciseResponse({"diceSampleSpace": true, response: selectedArray})
+
+  }, [selected]);
 
   // Fire onChange when selection changes.
   const selectedArray = useMemo(() => {
@@ -70,11 +81,6 @@ export default function DiceSampleSpaceSelector({
   React.useEffect(() => {
     if (onChange) onChange(selectedArray);
   }, [selectedArray, onChange]);
-
-  const handleSubmit = useCallback(() => {
-    if (onSubmit) onSubmit(selectedArray);
-    else console.log("DiceSampleSpaceSelector submit:", selectedArray);
-  }, [onSubmit, selectedArray]);
 
   const cellBase = compact ? "w-8 h-8 text-[10px]" : "w-10 h-10 text-xs";
   const cellSelected = "bg-indigo-300 border-indigo-600 text-indigo-900 font-bold";

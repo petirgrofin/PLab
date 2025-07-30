@@ -19,7 +19,8 @@
           }
         },
         { "type": "text", "value": "Arrastra cada nombre a la zona correcta del diagrama de Venn" },
-        { "type": "component", "name": "VennDiagramDragNDrop" }
+        { "type": "component", "isExercise": true, "id": 0, "name": "VennDiagramDragNDrop"},
+        { "type": "explanation", "id": 0, "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit augue nec metus dignissim auctor sit amet ac magna. Etiam efficitur, ante ut ornare placerat, urna risus sagittis enim, ac hendrerit est odio in eros. Integer eget consequat mauris, sit amet elementum magna."}
       ]
     },
     {
@@ -31,43 +32,53 @@
     {
       "content": [
         { "type": "text", "value": "El conjunto $G$ representa a las personas que tocan guitarra, mientras que el conjunto $S$ a los que tocan saxofón. " },
-        { "type": "text", "value": "Seleccione las regiones que contienen estudiantes que tocan saxofón o guitarra."},
-        { "type": "component", "name": "VennDiagram" }  
+        { "type": "text", "value": "Seleccione las regiones que contienen estudiantes que tocan **solo** saxofón."},
+        { "type": "component", "name": "VennDiagram", "id": 1, "isExercise": true, "props": {
+          "leftSet": "S",
+          "rightSet": "G"
+        }},
+        { "type": "explanation", "id": 1, "explanation": "Esta región representa la diferencia entre el conjunto $G$ y el conjunto $S$." }
+
     ]
     },
     {
       "content": [
-        { "type": "text", "value": "Seleccione la región que contiene estudiantes que tocan tanto saxofón como guitarra." },
-        { "type": "component", "name": "VennDiagram" },
-        { "type": "text", "value": "Esta región representa la **intersección** entre ambos conjuntos. Es un conjunto que contiene todos los elementos de $S$ que también pertenecen a $G$." }
-      ]
-    },
-    {
-      "content": [
-        { "type": "text", "value": "Seleccione la región que contiene estudiantes que *solo* tocan saxofón." },
-        { "type": "component", "name": "VennDiagram" },
-        { "type": "explanation", "value": "Esta región representa la diferencia entre el conjunto $G$ y el conjunto $S$." }
+        { "type": "text", "value": "Seleccione la región que contiene estudiantes que tocan saxofón **y** guitarra." },
+        { "type": "component", "name": "VennDiagram", "id": 2, "isExercise": true, "props": {
+          "leftSet": "S",
+          "rightSet": "G"
+        }},
+        { "type": "explanation", "id": 2, "explanation": "Esta región representa la **intersección** entre ambos conjuntos. Es un conjunto que contiene todos los elementos de $S$ que también pertenecen a $G$." }
       ]
     },
     {
       "content": [
         { "type": "text", "value": "Seleccione las regiones que contiene estudiantes que tocan saxofón." },
-        { "type": "component", "name": "VennDiagram" },
-        { "type": "explanation", "value": "Estas regiones representan el conjunto $G$." }
+        { "type": "component", "name": "VennDiagram", "id": 3, "isExercise": true, "props": {
+          "leftSet": "S",
+          "rightSet": "G"
+        }},
+        { "type": "explanation", "id": 3, "explanation": "Estas regiones representan el conjunto $G$." }
       ]
     },
     {
       "content": [
         { "type": "text", "value": "Seleccione las regiones que contienen estudiantes que tocan saxofón o guitarra." },
-        { "type": "component", "name": "VennDiagram" },
-        { "type": "explanation", "value": "Estas regiones representan la **unión** entre ambos conjuntos. Es un conjunto que contiene todos los elementos de $G$ y de $S$." }
+        { "type": "component", "name": "VennDiagram", "id": 4, "isExercise": true, "props": {
+          "leftSet": "S",
+          "rightSet": "G"
+        }},
+        { "type": "explanation", "id": 4, "explanation": "Estas regiones representan la **unión** entre ambos conjuntos. Es un conjunto que contiene todos los elementos de $G$ y de $S$." }
       ]
     },
     {
       "content": [
         { "type": "text", "value": "Seleccione la región que contiene estudiantes que no tocan saxofón." },
-        { "type": "component", "name": "VennDiagram" },
-        { "type": "explanation", "value": "Esta región representa el complemento de $S$." }
+        { "type": "component", "name": "VennDiagram", "id": 5, "isExercise": true, "props": {
+          "leftSet": "S",
+          "rightSet": "G"
+        }},
+        { "type": "explanation", "id": 5, "explanation": "Esta región representa el complemento de $S$." }
       ]
     }
   ]

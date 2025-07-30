@@ -1,6 +1,30 @@
 import React from "react";
+import { renderInlineMathText } from "../utils/latexUtils";
 
-export function Aside({ isActive, onClose, children }) {
+function renderInfo(info) {
+  if (!info){
+    return null;
+  }
+  return info.map((item, index) => {
+    if (item.type === "p") {
+      return <p key={index} className="mb-2">{renderInlineMathText(item.value)}</p>;
+    }
+
+    if (item.type === "ul") {
+      return (
+        <ul key={index} className="list-disc list-inside mb-2">
+          {item.items.map((li, liIndex) => (
+            <li key={liIndex}>{renderInlineMathText(li)}</li>
+          ))}
+        </ul>
+      );
+    }
+
+    return null;
+  });
+}
+
+export function Aside({ isActive, onClose, title, info }) {
   return (
     <div>
       <div
@@ -14,7 +38,10 @@ export function Aside({ isActive, onClose, children }) {
         >
           ✕
         </button>
-        <div className="m-6 p-4 overflow-y-auto h-full flex flex-col gap-4">{children}</div>
+        <div className="m-6 p-4 overflow-y-auto h-full flex flex-col gap-4">
+          <h2 className="font-bold text-2xl mb-2">{title}</h2>
+          {renderInfo(info)}
+        </div>
       </div>
       {isActive && (
         <div

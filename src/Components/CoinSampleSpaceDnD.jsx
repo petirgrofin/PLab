@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   DndContext,
   useDraggable,
@@ -8,6 +8,8 @@ import {
   useSensor,
   useSensors,
 } from "@dnd-kit/core";
+
+import { useComponentContext } from "../lessons/ComponentContext";
 
 const REGION_IDS = ["region1", "region2", "region3", "region4"];
 
@@ -89,6 +91,7 @@ export default function CoinSampleSpaceDnD() {
   const [activeSide, setActiveSide] = useState(null);
   const originRef = useRef(null);
   const sensors = useSensors(useSensor(PointerSensor));
+  const { setExerciseResponse } = useComponentContext();
 
   function handleDragStart(event) {
     const { active } = event;
@@ -146,6 +149,14 @@ export default function CoinSampleSpaceDnD() {
     setRegionSlots(cleared);
   }
 
+  useEffect(() => {
+    const isComplete = REGION_IDS.every((r) => regionSlots[r][0] && regionSlots[r][1]);
+    if (!isComplete) return;
+
+    const completedCombos = REGION_IDS.map((r) => regionSlots[r].join(""));
+    setExerciseResponse({"coinSampleSpace": true, "response": completedCombos});
+  }, [regionSlots, setExerciseResponse]);
+
   const completed = REGION_IDS.filter((r) => regionSlots[r][0] && regionSlots[r][1]).length;
 
   return (
@@ -169,13 +180,13 @@ export default function CoinSampleSpaceDnD() {
 
         <div className="flex items-center gap-4 text-sm">
           <span>
-            Completed: {completed}/4
+            Completados: {completed}/4
           </span>
           <button
             onClick={clearAll}
             className="px-2 py-1 rounded border border-slate-300 hover:bg-slate-100 text-xs"
           >
-            Reset all
+            Reiniciar
           </button>
         </div>
 

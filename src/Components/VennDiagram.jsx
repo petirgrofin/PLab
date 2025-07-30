@@ -4,6 +4,7 @@ import { DEFAULT_VENN_CONFIG } from "../Constants/vennConfig";
 import { constructVennDiagram } from "../utils/vennUtils";
 import { VennRegion } from "./VennRegion";
 import { InlineMath } from "react-katex";
+import { useComponentContext } from "../lessons/ComponentContext";
 
 /********************************************
  * VennDiagram 
@@ -27,16 +28,18 @@ export default function VennDiagram({
   const selectedRegions = isControlled ? controlledSelectedRegions : internalSelected;
   const setSelectedRegions = isControlled ? controlledSetSelectedRegions : setInternalSelected;
 
+  const { setExerciseResponse } = useComponentContext();
+
   const shapes = constructVennDiagram(DEFAULT_VENN_CONFIG);
 
   function onRegionClick(regionId) {
     if (!interactive) return;
 
-    if (selectedRegions.includes(regionId)) {
-      setSelectedRegions(selectedRegions.filter((r) => r !== regionId));
-    } else {
-      setSelectedRegions([...selectedRegions, regionId]);
-    }
+    const updatedRegion = selectedRegions.includes(regionId) ? 
+    selectedRegions.filter((r) => r !== regionId) : [...selectedRegions, regionId]
+
+    setSelectedRegions(updatedRegion);
+    setExerciseResponse({"vennDiagramSelect": true, "response": updatedRegion})
   }
 
   return (

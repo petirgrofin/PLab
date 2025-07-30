@@ -33,7 +33,11 @@
       ]
     },
     {
-        "content": [
+      "content": [
+        {
+          "type": "text",
+          "value": "Dado que es una moneda justa, es igual de probable que caiga en escudo que en corona."
+        },
         {
           "type": "text",
           "value": "Intuitivamente, sabemos que la probabilidad de que caiga escudo es la misma de que caiga corona, puesto que la moneda es justa"
@@ -81,7 +85,7 @@
           "type": "component",
           "name": "CoinFlipSimulator",
           "props": {
-            "fair": true
+            "probabilityHeads": 0.5
           }
         }
       ]
@@ -117,7 +121,7 @@
           "type": "component",
           "name": "CoinFlipSimulator",
           "props": {
-            "fair": false
+            "probabilityHeads": 0.7
           }
         }
       ]
@@ -138,12 +142,13 @@
         },
         {
           "type": "component",
-          "name": "FreeResponse"
-        }
+          "name": "FreeResponse",
+          "isExercise": true,
+          "id": 0
+        },
+        { "type": "explanation", "id": 0, "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit augue nec metus dignissim auctor sit amet ac magna. Etiam efficitur, ante ut ornare placerat, urna risus sagittis enim, ac hendrerit est odio in eros. Integer eget consequat mauris, sit amet elementum magna. Vestibulum blandit eget diam et congue. Sed vel sapien lectus. Integer ultricies turpis in risus sagittis, et aliquet neque convallis. Nam non semper erat. Vestibulum felis sem, euismod vel luctus vitae, interdum ut dui. Ut scelerisque accumsan elit, sit amet pulvinar erat feugiat in. Curabitur consectetur quam non euismod varius. In quis ornare ligula, vel sodales est. Nulla facilisi. In a arcu et ex auctor consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus ullamcorper luctus nulla et pellentesque. Pellentesque vulputate eleifend elementum."}
       ]
-    }
-  ],
-  "exercises": [
+    },
     {
       "content": [
         {
@@ -152,8 +157,12 @@
         },
         {
           "type": "component",
-          "name": "FreeResponse"
-        }
+          "name": "FreeResponse",
+          "isExercise": true,
+          "id": 1
+        },
+        { "type": "explanation", "id": 1, "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit augue nec metus dignissim auctor sit amet ac magna. Etiam efficitur, ante ut ornare placerat, urna risus sagittis enim, ac hendrerit est odio in eros. Integer eget consequat mauris, sit amet elementum magna. Vestibulum blandit eget diam et congue. Sed vel sapien lectus. Integer ultricies turpis in risus sagittis, et aliquet neque convallis. Nam non semper erat. Vestibulum felis sem, euismod vel luctus vitae, interdum ut dui. Ut scelerisque accumsan elit, sit amet pulvinar erat feugiat in. Curabitur consectetur quam non euismod varius. In quis ornare ligula, vel sodales est. Nulla facilisi. In a arcu et ex auctor consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus ullamcorper luctus nulla et pellentesque. Pellentesque vulputate eleifend elementum."}
+
       ]
     },
     {
@@ -164,8 +173,12 @@
         },
         {
           "type": "component",
-          "name": "FreeResponse"
-        }
+          "name": "FreeResponse",
+          "isExercise": true,
+          "id": 2
+        },
+        { "type": "explanation", "id": 2, "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit augue nec metus dignissim auctor sit amet ac magna. Etiam efficitur, ante ut ornare placerat, urna risus sagittis enim, ac hendrerit est odio in eros. Integer eget consequat mauris, sit amet elementum magna. Vestibulum blandit eget diam et congue. Sed vel sapien lectus. Integer ultricies turpis in risus sagittis, et aliquet neque convallis. Nam non semper erat. Vestibulum felis sem, euismod vel luctus vitae, interdum ut dui. Ut scelerisque accumsan elit, sit amet pulvinar erat feugiat in. Curabitur consectetur quam non euismod varius. In quis ornare ligula, vel sodales est. Nulla facilisi. In a arcu et ex auctor consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus ullamcorper luctus nulla et pellentesque. Pellentesque vulputate eleifend elementum."}
+
       ]
     },
     {
@@ -176,9 +189,15 @@
         },
         {
           "type": "component",
-          "name": "FreeResponse"
-        }
+          "name": "FreeResponse",
+          "isExercise": true,
+          "id": 3
+        },
+        { "type": "explanation", "id": 3, "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit augue nec metus dignissim auctor sit amet ac magna. Etiam efficitur, ante ut ornare placerat, urna risus sagittis enim, ac hendrerit est odio in eros. Integer eget consequat mauris, sit amet elementum magna. Vestibulum blandit eget diam et congue. Sed vel sapien lectus. Integer ultricies turpis in risus sagittis, et aliquet neque convallis. Nam non semper erat. Vestibulum felis sem, euismod vel luctus vitae, interdum ut dui. Ut scelerisque accumsan elit, sit amet pulvinar erat feugiat in. Curabitur consectetur quam non euismod varius. In quis ornare ligula, vel sodales est. Nulla facilisi. In a arcu et ex auctor consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus ullamcorper luctus nulla et pellentesque. Pellentesque vulputate eleifend elementum."}
       ]
     }
+  ],
+  "exercises": [
+    
   ]
 }

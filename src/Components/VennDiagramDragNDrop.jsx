@@ -7,8 +7,10 @@ import {
   pointerWithin,
 } from "@dnd-kit/core";
 
+import { useComponentContext } from "../lessons/ComponentContext";
+
 import { REGION_IDS } from "../Constants/regions";
-import { DRAG_AND_DROP_VENN_CONFIG} from "../Constants/vennConfig";
+import { DRAG_AND_DROP_VENN_CONFIG } from "../Constants/vennConfig";
 import { constructVennDiagram } from "../utils/vennUtils";
 import { VennRegion } from "./VennRegion";
 
@@ -28,7 +30,7 @@ function getLabelCoords(config) {
     [REGION_IDS.Outside]: { x: 30, y: 30 },
     [REGION_IDS.OnlyA]: { x: cxA - radius / 4 - 40, y: cy - 60},
     [REGION_IDS.OnlyB]: { x: cxB + radius / 4 - 20, y: cy - 60 },
-    [REGION_IDS.Intersection]: { x: (cxA + cxB) / 2 - 25, y: cy - 60 },
+    [REGION_IDS.Intersection]: { x: (cxA + cxB) / 2 - 25, y: cy - 50 },
   };
 }
 
@@ -98,6 +100,16 @@ function RegionDropZone({ shape, interactive, selected, onSelect, setHoveredRegi
   );
 }
 
+function computeExerciseResponse(assignments) {
+  const map = Object.fromEntries(Object.values(REGION_IDS).map((id) => [id, []]));
+  for (const [name, regionId] of Object.entries(assignments)) {
+    if (regionId && map[regionId]) {
+      map[regionId].push(name);
+    }
+  }
+  return map;
+}
+
 /* ---------------------------
    VennDiagramDragNDrop
 --------------------------- */
@@ -108,10 +120,13 @@ export function VennDiagramDragNDrop({
   setSelectedRegions,
   interactive = false,
 }) {
+
   const controlled = Array.isArray(selectedRegions) && typeof setSelectedRegions === "function";
   const [internalSel, setInternalSel] = useState([]);
   const sel = controlled ? selectedRegions : internalSel;
   const updateSel = controlled ? setSelectedRegions : setInternalSel;
+
+  const { setExerciseResponse } = useComponentContext();
 
   const [hoveredRegion, setHoveredRegion] = useState(null);
 
@@ -138,15 +153,15 @@ export function VennDiagramDragNDrop({
   const labelCoords = useMemo(() => getLabelCoords(config), [config]);
 
     const regionNamesMap = useMemo(() => {
-    const map = Object.fromEntries(
-        Object.values(REGION_IDS).map((id) => [id, []])
-    );
-    for (const [name, regionId] of Object.entries(assignments)) {
-        if (regionId && map[regionId]) {
-        map[regionId].push(name);
-        }
-    }
-    return map;
+      const map = Object.fromEntries(
+          Object.values(REGION_IDS).map((id) => [id, []])
+      );
+      for (const [name, regionId] of Object.entries(assignments)) {
+          if (regionId && map[regionId]) {
+          map[regionId].push(name);
+          }
+      }
+      return map;
     }, [assignments]);
 
   const handleSelect = useCallback(
@@ -159,17 +174,19 @@ export function VennDiagramDragNDrop({
 
   const [activeId, setActiveId] = useState(null);
   const handleDragStart = ({ active }) => setActiveId(active.id);
-    const handleDragEnd = ({active, over}) => {
+
+  const handleDragEnd = ({active, over}) => {
+
     setActiveId(null);
-    setAssignments((prev) => {
-        if (!over) {
-        // dropped outside the SVG entirely -> return to pool
-        return {...prev, [active.id]: null};
-        }
-        // dropped on a diagram region (incl. Outside rectangle)
-        return {...prev, [active.id]: over.id};
-    });
-    };
+
+    const map = !over ? {...assignments, [active.id]: null} : {...assignments, [active.id]: over.id}
+
+    setExerciseResponse({"vennDiagramDND": true, response: computeExerciseResponse(map)});
+    setAssignments(map);
+
+    console.log(computeExerciseResponse(map))
+
+  };
 
   const { width, height } = config;
 

@@ -1,0 +1,5 @@
+{
+  "ge10": ["Cristal de berilo (12g)", "Cristal de rubí (14g)"],
+  "le10": ["Cristal de amatista (8g)", "Cristal de cuarzo (5g)", "Cristal de topacio (7g)"],
+  "nonCrystal": ["Guijarro de arcilla (no cristalino)"]
+}

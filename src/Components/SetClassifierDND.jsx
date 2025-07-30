@@ -1,7 +1,7 @@
 // SetClassifierDndKit.jsx
 // Requires: npm i @dnd-kit/core @dnd-kit/utilities
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import {
   DndContext,
   useDraggable,
@@ -12,20 +12,22 @@ import {
   DragOverlay,
 } from '@dnd-kit/core';
 import { CSS } from '@dnd-kit/utilities';
+import { useComponentContext } from '../lessons/ComponentContext';
 
 const initialItems = {
-  amethyst8:   { id: 'amethyst8', label: 'Amethyst crystal (8g)', mass: 8,  crystalline: true,  container: null },
-  quartz5:     { id: 'quartz5',   label: 'Quartz crystal (5g)',   mass: 5,  crystalline: true,  container: null },
-  topaz7:      { id: 'topaz7',    label: 'Topaz crystal (7g)',    mass: 7,  crystalline: true,  container: null },
-  beryl12:     { id: 'beryl12',   label: 'Beryl crystal (12g)',   mass: 12, crystalline: true,  container: null },
-  ruby14:      { id: 'ruby14',    label: 'Ruby crystal (14g)',    mass: 14, crystalline: true,  container: null },
-  clayPebble:  { id: 'clayPebble',label: 'Clay pebble (non crystaline, 3g)', mass: 3, crystalline: false, container: null },
+  amethyst8:   { id: 'amethyst8', label: 'Cristal de amatista (8g)', mass: 8,  crystalline: true,  container: null },
+  quartz5:     { id: 'quartz5',   label: 'Cristal de cuarzo (5g)',   mass: 5,  crystalline: true,  container: null },
+  topaz7:      { id: 'topaz7',    label: 'Cristal de topacio (7g)',  mass: 7,  crystalline: true,  container: null },
+  beryl12:     { id: 'beryl12',   label: 'Cristal de berilo (12g)',  mass: 12, crystalline: true,  container: null },
+  ruby14:      { id: 'ruby14',    label: 'Cristal de rubí (14g)',    mass: 14, crystalline: true,  container: null },
+  clayPebble:  { id: 'clayPebble',label: 'Guijarro de arcilla (no cristalino)', mass: 3, crystalline: false, container: null },
 };
 
+
 const containers = [
-  { id: 'ge10', label: '≥ 10 grams' },
-  { id: 'le10', label: '≤ 10 grams' },
-  { id: 'nonCrystal', label: 'non crystaline objects' },
+  { id: 'ge10', label: '≥ 10 gramos' },
+  { id: 'le10', label: '< 10 gramos' },
+  { id: 'nonCrystal', label: 'objetos no cristalinos' },
 ];
 
 function DraggableItem({ item }) {
@@ -75,6 +77,8 @@ export default function SetClassifierDndKit() {
   }, [items]);
 
   const activeItem = activeId ? items[activeId] : null;
+  const { setExerciseResponse } = useComponentContext();
+  const unclassified = Object.values(items).filter(it => !it.container);
 
   function handleDragStart(event) {
     setActiveId(event.active.id);
@@ -84,17 +88,35 @@ export default function SetClassifierDndKit() {
     const { active, over } = event;
     setActiveId(null);
     if (!over) return;
+
     const overId = over.id;
     if (!containers.find(c => c.id === overId)) return;
-    setItems(prev => ({ ...prev, [active.id]: { ...prev[active.id], container: overId } }));
+
+    setItems(prev => ({
+      ...prev,
+      [active.id]: { ...prev[active.id], container: overId }
+    }));
   }
 
-  const unclassified = Object.values(items).filter(it => !it.container);
+  useEffect(() => {
+    const responseMap = {};
+    containers.forEach(c => {
+      responseMap[c.id] = Object.values(items)
+        .filter(it => it.container === c.id)
+        .map(it => it.label)
+    });
+
+    setExerciseResponse({
+      id: 0,
+      response: responseMap,
+      setClassifier: true
+    });
+  }, [items]); // <-- only runs when items changes
 
   return (
     <DndContext sensors={sensors} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
       <div className="mb-4">
-        <h3 className="font-semibold text-lg mb-2">Unclassified Objects</h3>
+        <h3 className="font-semibold text-lg mb-2">Objetos no clasificados</h3>
         <div className="flex flex-wrap gap-2 p-2 border-2 border-dashed rounded bg-gray-50">
           {unclassified.map(it => (<DraggableItem key={it.id} item={it} />))}
         </div>

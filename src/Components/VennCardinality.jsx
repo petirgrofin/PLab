@@ -2,6 +2,8 @@ import React, { useState, useMemo, useRef } from "react";
 import { REGION_IDS } from "../Constants/regions";
 import { VennRegion } from "./VennRegion"; // adjust path if different
 import { constructVennDiagram } from "../utils/vennUtils"; // adjust path if different
+import { useComponentContext } from "../lessons/ComponentContext";
+import { InlineMath } from "react-katex";
 
 /** ********************************************************************
  * TwoSetVennCardinality
@@ -42,10 +44,13 @@ export function TwoSetVennCardinality({
   initialCounts = {},
   onCountsChange,
   showTotals = true,
+  leftSet = "C",
+  rightSet = "T",
   className = "",
   inputClassName = "",
   showRegionOutlines = true,
 }) {
+  
   // ------------------------------------------------------------------
   // Build the geometry once (stable for given dims).
   const config = { width, height, radius, overlap };
@@ -59,7 +64,7 @@ export function TwoSetVennCardinality({
   // Input positions (px, relative to wrapper). Tuned heuristically.
   const positions = useMemo(
     () => ({
-      [REGION_IDS.Outside]: { left: 64, top: 32 },
+      [REGION_IDS.Outside]: { left: 52, top: 32 },
       [REGION_IDS.OnlyA]: { left: cxA - radius * 0.45, top: cy },
       [REGION_IDS.OnlyB]: { left: cxB + radius * 0.45, top: cy },
       [REGION_IDS.Intersection]: { left: width / 2, top: cy },
@@ -76,6 +81,8 @@ export function TwoSetVennCardinality({
   }));
 
   const [selectedRegion, setSelectedRegion] = useState(null);
+
+  const { setExerciseResponse } = useComponentContext();
 
   // Refs so clicking the svg region can focus input.
   const inputRefs = {
@@ -111,11 +118,10 @@ export function TwoSetVennCardinality({
   const handleInputChange = (regionId, value) => {
     // Allow empty string while editing; convert on blur.
     const numeric = value === "" ? "" : Math.max(0, parseInt(value, 10) || 0);
-    setCounts((prev) => {
-      const next = { ...prev, [regionId]: numeric };
+      const next = { ...counts, [regionId]: numeric };
       emit(next);
-      return next;
-    });
+      setCounts(next);
+      setExerciseResponse({"vennCardinality": true, "response": next})
   };
 
   const handleInputBlur = (regionId) => {
@@ -167,6 +173,12 @@ export function TwoSetVennCardinality({
             {...strokeProps}
           />
         ))}
+        <foreignObject x={100} y={40} width={30} height={30}>
+          <InlineMath math={leftSet} />
+        </foreignObject>
+        <foreignObject x={380} y={40} width={30} height={30}>
+          <InlineMath math={rightSet} />
+        </foreignObject>
       </svg>
 
       {Object.entries(positions).map(([rid, pos]) => (

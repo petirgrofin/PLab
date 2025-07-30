@@ -1,22 +1,22 @@
 import React from 'react';
 import { InlineMath, BlockMath } from 'react-katex';
 
-function tokenizeMath(input) {
+// Step 1: Enhanced tokenizer
+function tokenizeMathAndBold(input) {
   const tokens = [];
   let lastIndex = 0;
 
-  // Matches $$...$$, $...$, \(...\), or \[...\]
-  const regex =
-    /(\$\$)([\s\S]+?)(\$\$)|(\$)([^$]+?)(\$)|\\\((.+?)\\\)|\\\[([\s\S]+?)\\\]/g;
+  // Matches math: $$...$$ | $...$ | \(..\) | \[..\]
+  const mathRegex = /(\$\$)([\s\S]+?)(\$\$)|(\$)([^$]+?)(\$)|\\\((.+?)\\\)|\\\[([\s\S]+?)\\\]/g;
 
   let match;
-  while ((match = regex.exec(input)) !== null) {
+  while ((match = mathRegex.exec(input)) !== null) {
     const matchStart = match.index;
-    const matchEnd = regex.lastIndex;
+    const matchEnd = mathRegex.lastIndex;
 
-    // Push preceding plain text
     if (matchStart > lastIndex) {
-      tokens.push({ kind: 'text', value: input.slice(lastIndex, matchStart) });
+      const textSegment = input.slice(lastIndex, matchStart);
+      tokens.push(...tokenizeBold(textSegment)); // tokenize bold inside text
     }
 
     if (match[1] === '$$') {
@@ -32,21 +32,48 @@ function tokenizeMath(input) {
     lastIndex = matchEnd;
   }
 
-  // Add trailing text
   if (lastIndex < input.length) {
-    tokens.push({ kind: 'text', value: input.slice(lastIndex) });
+    tokens.push(...tokenizeBold(input.slice(lastIndex)));
   }
 
   return tokens;
 }
 
+// Step 2: Tokenize bold inside a plain text segment
+function tokenizeBold(text) {
+  const tokens = [];
+  let lastIndex = 0;
+  const boldRegex = /\*\*(.+?)\*\*/g;
+  let match;
+
+  while ((match = boldRegex.exec(text)) !== null) {
+    const matchStart = match.index;
+    const matchEnd = boldRegex.lastIndex;
+
+    if (matchStart > lastIndex) {
+      tokens.push({ kind: 'text', value: text.slice(lastIndex, matchStart) });
+    }
+
+    tokens.push({ kind: 'bold', value: match[1] }); // bold content only
+    lastIndex = matchEnd;
+  }
+
+  if (lastIndex < text.length) {
+    tokens.push({ kind: 'text', value: text.slice(lastIndex) });
+  }
+
+  return tokens;
+}
+
+// Step 3: Renderer
 export function renderInlineMathText(value, keyPrefix = 'txt') {
-  const tokens = tokenizeMath(value);
+  const tokens = tokenizeMathAndBold(value);
   return (
     <>
       {tokens.map((t, i) => {
         const key = `${keyPrefix}-${i}`;
         if (t.kind === 'text') return <React.Fragment key={key}>{t.value}</React.Fragment>;
+        if (t.kind === 'bold') return <strong key={key}>{t.value}</strong>;
         if (t.kind === 'math-inline') return <InlineMath key={key} math={t.value} />;
         if (t.kind === 'math-block') return <BlockMath key={key} math={t.value} />;
         return null;

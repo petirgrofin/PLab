@@ -39,7 +39,9 @@
           "type": "text",
           "value": "Construye el espacio muestral arrastrando las caras de la moneda para formar todos los posibles resultados del experimento anterior."
         },
-        { "type": "component", "name": "CoinSampleSpaceDnD" }
+        { "type": "component", "isExercise": true, "id": "0", "name": "CoinSampleSpaceDnD" },
+        { "type": "explanation", "id": "0", "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit augue nec metus dignissim auctor sit amet ac magna. Etiam efficitur, ante ut ornare placerat, urna risus sagittis enim, ac hendrerit est odio in eros. Integer eget consequat mauris, sit amet elementum magna. Vestibulum blandit eget diam et congue. Sed vel sapien lectus. Integer ultricies turpis in risus sagittis, et aliquet neque convallis. Nam non semper erat. Vestibulum felis sem, euismod vel luctus vitae, interdum ut dui. Ut scelerisque accumsan elit, sit amet pulvinar erat feugiat in. Curabitur consectetur quam non euismod varius. In quis ornare ligula, vel sodales est. Nulla facilisi. In a arcu et ex auctor consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus ullamcorper luctus nulla et pellentesque. Pellentesque vulputate eleifend elementum."}
+
       ]
     },
     {
@@ -62,7 +64,8 @@
           "type": "text",
           "value": "Selecciona las regiones del espacio muestral en las que la suma es mayor a 9."
         },
-        { "type": "component", "name": "DiceSampleSpaceSelector", "props": {} }
+        { "type": "component", "isExercise": true, "id": "1", "name": "DiceSampleSpaceSelector", "props": {} },
+        { "type": "explanation", "id": "1", "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit augue nec metus dignissim auctor sit amet ac magna. Etiam efficitur, ante ut ornare placerat, urna risus sagittis enim, ac hendrerit est odio in eros. Integer eget consequat mauris, sit amet elementum magna. Vestibulum blandit eget diam et congue. Sed vel sapien lectus. Integer ultricies turpis in risus sagittis, et aliquet neque convallis. Nam non semper erat. Vestibulum felis sem, euismod vel luctus vitae, interdum ut dui. Ut scelerisque accumsan elit, sit amet pulvinar erat feugiat in. Curabitur consectetur quam non euismod varius. In quis ornare ligula, vel sodales est. Nulla facilisi. In a arcu et ex auctor consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus ullamcorper luctus nulla et pellentesque. Pellentesque vulputate eleifend elementum."}
       ]
     },
     {
@@ -81,8 +84,11 @@
         },
         {
           "type": "component",
-          "name": "FreeResponse"
-        }
+          "name": "FreeResponse",
+          "id": "20",
+          "isExercise": true
+        },
+        { "type": "explanation", "id": "20", "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit augue nec metus dignissim auctor sit amet ac magna. Etiam efficitur, ante ut ornare placerat, urna risus sagittis enim, ac hendrerit est odio in eros. Integer eget consequat mauris, sit amet elementum magna. Vestibulum blandit eget diam et congue. Sed vel sapien lectus. Integer ultricies turpis in risus sagittis, et aliquet neque convallis. Nam non semper erat. Vestibulum felis sem, euismod vel luctus vitae, interdum ut dui. Ut scelerisque accumsan elit, sit amet pulvinar erat feugiat in. Curabitur consectetur quam non euismod varius. In quis ornare ligula, vel sodales est. Nulla facilisi. In a arcu et ex auctor consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus ullamcorper luctus nulla et pellentesque. Pellentesque vulputate eleifend elementum."}
       ]
     },
     {
@@ -150,6 +156,8 @@
         {
           "type": "component",
           "name": "VennCardinality",
+          "isExercise": true,
+          "id": "11",
           "props": {
             "sets": ["C", "T"],
             "data": {
@@ -159,7 +167,8 @@
               "ninguno": 6
             }
           }
-        }
+        },
+        { "type": "explanation", "id": "11", "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit augue nec metus dignissim auctor sit amet ac magna. Etiam efficitur, ante ut ornare placerat, urna risus sagittis enim, ac hendrerit est odio in eros. Integer eget consequat mauris, sit amet elementum magna. Vestibulum blandit eget diam et congue. Sed vel sapien lectus. Integer ultricies turpis in risus sagittis, et aliquet neque convallis. Nam non semper erat. Vestibulum felis sem, euismod vel luctus vitae, interdum ut dui. Ut scelerisque accumsan elit, sit amet pulvinar erat feugiat in. Curabitur consectetur quam non euismod varius. In quis ornare ligula, vel sodales est. Nulla facilisi. In a arcu et ex auctor consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus ullamcorper luctus nulla et pellentesque. Pellentesque vulputate eleifend elementum."}
       ]
     },
     {
@@ -188,39 +197,12 @@
         },
         {
           "type": "component",
-          "name": "FreeResponse"
-        }
+          "name": "FreeResponse",
+          "isExercise": true,
+          "id": "4"
+        },
+        { "type": "explanation", "id": "4", "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit augue nec metus dignissim auctor sit amet ac magna. Etiam efficitur, ante ut ornare placerat, urna risus sagittis enim, ac hendrerit est odio in eros. Integer eget consequat mauris, sit amet elementum magna. Vestibulum blandit eget diam et congue. Sed vel sapien lectus. Integer ultricies turpis in risus sagittis, et aliquet neque convallis. Nam non semper erat. Vestibulum felis sem, euismod vel luctus vitae, interdum ut dui. Ut scelerisque accumsan elit, sit amet pulvinar erat feugiat in. Curabitur consectetur quam non euismod varius. In quis ornare ligula, vel sodales est. Nulla facilisi. In a arcu et ex auctor consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus ullamcorper luctus nulla et pellentesque. Pellentesque vulputate eleifend elementum."}
       ]
-    }
-  ],
-  "exercises": [
-    {
-      "type": "component",
-      "name": "FreeResponse",
-      "props": {
-        "question": "Si se elige un estudiante al azar, ¿cuál es la probabilidad de que solo participe en el club de teatro?"
-      }
-    },
-    {
-      "type": "component",
-      "name": "FreeResponse",
-      "props": {
-        "question": "Si se elige un estudiante al azar, ¿cuál es la probabilidad de que participe en ambos clubes?"
-      }
-    },
-    {
-      "type": "component",
-      "name": "FreeResponse",
-      "props": {
-        "question": "Si se elige un estudiante al azar, ¿cuál es la probabilidad de que participe solo en el club de teatro?"
-      }
-    },
-    {
-      "type": "component",
-      "name": "FreeResponse",
-      "props": {
-        "question": "Si se elige un estudiante al azar, ¿cuál es la probabilidad de que no participe en el club de ciencia?"
-      }
     }
   ]
 }

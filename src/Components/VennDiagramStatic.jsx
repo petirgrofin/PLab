@@ -10,8 +10,6 @@ export default function VennDiagramStatic({
   cardinalities = {},
   highlightedRegions = []
 }) {
-    console.log(highlightedRegions)
-    console.log(cardinalities)
   const shapes = constructVennDiagram(DEFAULT_VENN_CONFIG);
   const { width, height, overlap } = DEFAULT_VENN_CONFIG;
 
