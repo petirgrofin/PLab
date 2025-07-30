@@ -18,6 +18,7 @@ import AsideButton from "../components/AsideButton";
 import DropdownExplanation from "../components/DropdownExplanation";
 import { BlockMath } from "react-katex";
 import { renderInlineMathText } from "./latexUtils";
+import DiceThrowAnimation from "../components/DiceThrowAnimation";
 
 const COMPONENT_REGISTRY = {
   BasicTable,
@@ -37,7 +38,8 @@ const COMPONENT_REGISTRY = {
   NarrativeQuestion,
   FreeResponse,
   VennDiagramStatic,
-  VennDiagramMutuallyExclusive
+  VennDiagramMutuallyExclusive,
+  DiceThrowAnimation
 };
 
 export function getComponent(name, props = {}, key) {

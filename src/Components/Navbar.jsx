@@ -18,7 +18,7 @@ export default function Navbar() {
 
   return (
     <nav className="bg-white shadow-md p-4 flex justify-between items-center">
-      <h1 className="text-xl font-semibold">Brilliant</h1>
+      <h1 className="text-xl font-semibold">PLab</h1>
       <div className="space-x-4 flex items-center">
         <Link to="/main" className="text-white hover:bg-gray-800 bg-black px-4 py-2 rounded-sm font-semibold transition-all">
           Home

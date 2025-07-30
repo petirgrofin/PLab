@@ -3,11 +3,7 @@
   "sections": [
     {
       "content": [
-        { "type": "text", "value": "Tiremos una moneda de dos caras:" },
-        { "type": "component", "name": "CoinFlipAnimation", "props": { "flips": 1 } },
-        { "type": "text", "value": "Tirar una moneda tiene dos posibles resultados: que caiga en cara o que caiga en escudo." },
-        { "type": "component", "name": "CoinFaceImages" }
-      ]
+        { "type": "text", "value": "Tiremos una moneda de dos caras:" },        { "type": "text", "value": "Tirar una moneda tiene dos posibles resultados: que caiga en cara o que caiga en escudo." }      ]
     },
     {
       "content": [
@@ -29,8 +25,7 @@
         {
           "type": "text",
           "value": "Pero, ¿qué pasa si cambiamos el experimento? En vez de tirar la moneda una sola vez, la tiraremos dos veces y registraremos el resultado."
-        },
-        { "type": "component", "name": "CoinFlipAnimation", "props": { "flips": 2 } }
+        }
       ]
     },
     {
