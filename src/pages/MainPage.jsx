@@ -4,185 +4,53 @@ import { Link } from "react-router-dom";
 import { X, CircleSmall } from 'lucide-react'
 
 export default function MainPage() {
-//   const [joinedCourses, setJoinedCourses] = useState([]);
-//   const [courseLessons, setCourseLessons] = useState({});
+  const [joinedCourses, setJoinedCourses] = useState([]);
+  const [courseLessons, setCourseLessons] = useState({});
   const [loading, setLoading] = useState(false);
 
-  const joinedCourses = [
-    {
-        "curso_id": 1,
-        "titulo": "Introducción a la Probabilidad",
-        "descripcion": "Curso básico para comprender eventos aleatorios y calcular probabilidades inciertas."
-    },
-    {
-        "curso_id": 2,
-        "titulo": "Introducción a la Teoría de Conjuntos",
-        "descripcion": "Curso sobre el manejo de conjuntos, sus operaciones y su uso del lenguaje matemático."
-    },
-    {
-        "curso_id": 3,
-        "titulo": "Lógica Proposicional",
-        "descripcion": "Aprende a usar conectores lógicos, tablas de verdad y razonamientos válidos."
-    },
-    {
-        "curso_id": 4,
-        "titulo": "Álgebra Elemental",
-        "descripcion": "Refuerza conocimientos sobre ecuaciones, expresiones algebraicas y factorización."
-    },
-    {
-        "curso_id": 5,
-        "titulo": "Funciones y Relaciones",
-        "descripcion": "Estudia distintos tipos de funciones, su representación y análisis."
-    },
-    {
-        "curso_id": 6,
-        "titulo": "Estadística Descriptiva",
-        "descripcion": "Aprende a organizar, resumir y visualizar datos usando medidas estadísticas."
-    }
-]
 
-    const courseLessons = {
-    "1": [
-        {
-            "titulo": "Probabilidad",
-            "curso_id": 1,
-            "orden_en_curso": 1,
-            "id": 1,
-            "contenido": "Conceptos básicos de probabilidad"
-        },
-        {
-            "titulo": "Espacios muestrales",
-            "curso_id": 1,
-            "orden_en_curso": 2,
-            "id": 2,
-            "contenido": "Definición de espacio muestral"
-        }
-    ],
-    "2": [
-        {
-            "titulo": "Conjuntos",
-            "curso_id": 2,
-            "orden_en_curso": 1,
-            "id": 3,
-            "contenido": "Definición y ejemplos"
-        },
-        {
-            "titulo": "Operaciones sobre conjuntos",
-            "curso_id": 2,
-            "orden_en_curso": 2,
-            "id": 4,
-            "contenido": "Unión, intersección y diferencia"
-        }
-    ],
-    "3": [
-        {
-            "titulo": "Lógica proposicional",
-            "curso_id": 3,
-            "orden_en_curso": 1,
-            "id": 5,
-            "contenido": "Proposiciones, conectores y tablas de verdad"
-        },
-        {
-            "titulo": "Razonamiento lógico",
-            "curso_id": 3,
-            "orden_en_curso": 2,
-            "id": 6,
-            "contenido": "Tautologías, contradicciones y argumentos válidos"
-        }
-    ],
-    "4": [
-        {
-            "titulo": "Álgebra básica",
-            "curso_id": 4,
-            "orden_en_curso": 1,
-            "id": 7,
-            "contenido": "Ecuaciones y simplificación de expresiones"
-        },
-        {
-            "titulo": "Técnicas algebraicas",
-            "curso_id": 4,
-            "orden_en_curso": 2,
-            "id": 8,
-            "contenido": "Factorización y productos notables"
-        }
-    ],
-    "5": [
-        {
-            "titulo": "Relaciones y funciones",
-            "curso_id": 5,
-            "orden_en_curso": 1,
-            "id": 9,
-            "contenido": "Relaciones, dominio y codominio"
-        },
-        {
-            "titulo": "Funciones elementales",
-            "curso_id": 5,
-            "orden_en_curso": 2,
-            "id": 10,
-            "contenido": "Tipos de funciones y sus representaciones"
-        }
-    ],
-    "6": [
-        {
-            "titulo": "Medidas de tendencia central",
-            "curso_id": 6,
-            "orden_en_curso": 1,
-            "id": 11,
-            "contenido": "Media, mediana y moda"
-        },
-        {
-            "titulo": "Medidas de dispersión",
-            "curso_id": 6,
-            "orden_en_curso": 2,
-            "id": 12,
-            "contenido": "Rango, varianza y desviación estándar"
-        }
-    ]
-}
+   useEffect(() => {
+     const token = localStorage.getItem("access_token");
+     if (!token) {
+       setLoading(false);
+       return;
+     }
 
+     try {
+       const payload = JSON.parse(atob(token.split(".")[1]));
+       const userId = parseInt(payload.sub);
 
-//   useEffect(() => {
-//     const token = localStorage.getItem("access_token");
-//     if (!token) {
-//       setLoading(false);
-//       return;
-//     }
+       fetch(`http://localhost:8000/usuarios/${userId}/cursos`, {
+         headers: { Authorization: `Bearer ${token}` },
+       })
+         .then((res) => res.json())
+         .then(async (courses) => {
+           setJoinedCourses(courses);
 
-//     try {
-//       const payload = JSON.parse(atob(token.split(".")[1]));
-//       const userId = parseInt(payload.sub);
-
-//       fetch(`http://localhost:8000/usuarios/${userId}/cursos`, {
-//         headers: { Authorization: `Bearer ${token}` },
-//       })
-//         .then((res) => res.json())
-//         .then(async (courses) => {
-//           setJoinedCourses(courses);
-
-//           // Ahora traemos las lecciones de cada curso
-//           const lessonsByCourse = {};
-//           for (const course of courses) {
-//             try {
-//               const res = await fetch(
-//                 `http://localhost:8000/cursos/${course.curso_id}/lecciones`,
-//                 {
-//                   headers: { Authorization: `Bearer ${token}` },
-//                 }
-//               );
-//               const data = await res.json();
-//               lessonsByCourse[course.curso_id] = data;
-//             } catch (e) {
-//               lessonsByCourse[course.curso_id] = [];
-//             }
-//           }
-//           setCourseLessons(lessonsByCourse);
-//           setLoading(false);
-//         })
-//         .catch(() => setLoading(false));
-//     } catch {
-//       setLoading(false);
-//     }
-//   }, []);
+           // Ahora traemos las lecciones de cada curso
+           const lessonsByCourse = {};
+           for (const course of courses) {
+             try {
+               const res = await fetch(
+                 `http://localhost:8000/cursos/${course.curso_id}/lecciones`,
+                 {
+                   headers: { Authorization: `Bearer ${token}` },
+                 }
+               );
+               const data = await res.json();
+               lessonsByCourse[course.curso_id] = data;
+             } catch (e) {
+               lessonsByCourse[course.curso_id] = [];
+             }
+           }
+           setCourseLessons(lessonsByCourse);
+           setLoading(false);
+         })
+         .catch(() => setLoading(false));
+     } catch {
+       setLoading(false);
+     }
+   }, []);
 
   const handleLeave = async (courseId) => {
     const token = localStorage.getItem("access_token");
