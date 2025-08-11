@@ -16,7 +16,7 @@
         },
         {
           "type": "text",
-          "value": "Si le asignamos una letra a cada resultado ($H$ para cara y $T$ para escudo), el espacio muestral de tirar una moneda es el conjunto $\\Omega = \\{H, T\\}$."
+          "value": "Si le asignamos una letra a cada resultado ($C$ para cara y $E$ para escudo), el espacio muestral de tirar una moneda es el conjunto $\\Omega = \\{C, E\\}$."
         }
       ]
     },

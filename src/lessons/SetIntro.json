@@ -7,7 +7,7 @@
         { "type": "text", "value": "Sin embargo, debido a una pequeña colisión con un asteroide, los contenedores dentro de la nave se desorganizaron." },
         { "type": "text", "value": "Reorganiza los objetos en los contenedores según corresponda." },
         { "type": "component", "id": 0, "isExercise": true, "name": "SetClassifierDndKit" },
-        { "type": "explanation", "id": 0, "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit augue nec metus dignissim auctor sit amet ac magna. Etiam efficitur, ante ut ornare placerat, urna risus sagittis enim, ac hendrerit est odio in eros. Integer eget consequat mauris, sit amet elementum magna. Vestibulum blandit eget diam et congue. Sed vel sapien lectus. Integer ultricies turpis in risus sagittis, et aliquet neque convallis. Nam non semper erat. Vestibulum felis sem, euismod vel luctus vitae, interdum ut dui. Ut scelerisque accumsan elit, sit amet pulvinar erat feugiat in. Curabitur consectetur quam non euismod varius. In quis ornare ligula, vel sodales est. Nulla facilisi. In a arcu et ex auctor consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus ullamcorper luctus nulla et pellentesque. Pellentesque vulputate eleifend elementum."}
+        { "type": "explanation", "id": 0, "src":"/solvedSet.png", "explanation": "Si se ordenan los cristales adecuadamente resulta esta distribución."}
       ]
     },
     {

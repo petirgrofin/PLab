@@ -59,7 +59,7 @@ export function renderContentBlock(item, i, setAsideContent, setAsideTitle, setI
     return item.props ? getComponent(item.name, item.props, i) : getComponent(item.name, {}, i);
   }
   if (item.type === "image") {
-    return <img className="object-scale-down" key={i} src={item.src} alt="" />;
+    return <img className="object-scale-down h-[300px]" key={i} src={item.src} alt="" />;
   }
   if (item.type === "aside") {
     return (
@@ -76,7 +76,7 @@ export function renderContentBlock(item, i, setAsideContent, setAsideTitle, setI
   }
 
   if (item.type === "explanation"){
-    return <DropdownExplanation key={i} explanation={item.explanation} id={item.id}/>
+    return <DropdownExplanation key={i} src={item?.src} explanation={item.explanation} id={item.id}/>
   }
 
   if (item.type === "formula") {

@@ -14,8 +14,8 @@ import { useComponentContext } from "../lessons/ComponentContext";
 const REGION_IDS = ["region1", "region2", "region3", "region4"];
 
 const POOL_COINS = [
-  { id: "source-H", side: "H" },
-  { id: "source-T", side: "T" },
+  { id: "source-E", side: "E" },
+  { id: "source-C", side: "C" },
 ];
 
 function DraggableCoin({ id, side }) {
@@ -36,7 +36,7 @@ function DraggableCoin({ id, side }) {
       {...attributes}
       style={style}
       className={`w-12 h-12 select-none flex items-center justify-center rounded-full border-2 text-lg font-bold cursor-grab active:cursor-grabbing ${
-        side === "H" ? "bg-yellow-100 border-yellow-400 text-yellow-700" : "bg-gray-100 border-gray-400 text-gray-700"
+        side === "E" ? "bg-yellow-100 border-yellow-400 text-yellow-700" : "bg-gray-100 border-gray-400 text-gray-700"
       }`}
     >
       {side}
@@ -75,7 +75,7 @@ function Region({ id, slots, onClear }) {
         onClick={() => onClear(id)}
         className="text-[10px] px-2 py-0.5 rounded border border-slate-300 hover:bg-slate-100"
       >
-        clear
+        Limpiar
       </button>
     </div>
   );
@@ -194,7 +194,7 @@ export default function CoinSampleSpaceDnD() {
           {activeSide ? (
             <div
               className={`w-12 h-12 flex items-center justify-center rounded-full border-2 text-lg font-bold ${
-                activeSide === "H"
+                activeSide === "E"
                   ? "bg-yellow-100 border-yellow-400 text-yellow-700"
                   : "bg-gray-100 border-gray-400 text-gray-700"
               }`}

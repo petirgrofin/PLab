@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { useComponentContext } from "../lessons/ComponentContext";
 import { renderInlineMathText } from "../utils/latexUtils";
 
-const DropdownExplanation = ({ explanation, id }) => {
+const DropdownExplanation = ({ explanation, id, src }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isExerciseCompleted, setIsExerciseCompleted] = useState(false); // workaround using an id
   const explanationRef = useRef(null);
@@ -62,6 +62,7 @@ const DropdownExplanation = ({ explanation, id }) => {
       >
         <div className="flex flex-col gap-4">
           <p className="font-bold font-nunito">Explicación</p>
+          {src !== undefined ? <img src={src} alt="" /> : <></>}
           <p className="font-nunito">{renderInlineMathText(explanation)}</p>
         </div>
       </div>
