@@ -21,10 +21,10 @@ export default function Navbar() {
       <h1 className="text-xl font-semibold">PLab</h1>
       <div className="space-x-4 flex items-center">
         <Link to="/main" className="text-white hover:bg-gray-800 bg-black px-4 py-2 rounded-sm font-semibold transition-all">
-          Home
+          Inicio
         </Link>
         <Link to="/courses" className="text-white hover:bg-gray-800 bg-black px-4 py-2 rounded-sm font-semibold transition-all">
-          Courses
+          Cursos
         </Link>
         <button
           onClick={handleLogout}

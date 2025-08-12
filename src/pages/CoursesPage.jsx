@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 
 const allCourses = [
-  { id: 1, title: "Introduction to Set Theory" },
-  { id: 2, title: "Introduction to Probability" }
+  { id: 1, title: "Introducción a la Teoría de Conjuntos" },
+  { id: 2, title: "Introducción a la Probabilidad" }
 ];
 
 export default function CoursesPage() {
