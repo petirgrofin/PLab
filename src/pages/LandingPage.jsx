@@ -7,15 +7,15 @@ export default function LandingPage() {
       <header className="w-full max-w-6xl flex justify-between items-center py-6">
         <h1 className="text-3xl font-bold text-gray-900">PLab</h1>
         <div className="space-x-4 font-semibold">
-          <Link to="/login" className="text-gray-700 hover:text-gray-800 transition">
+          {/* <Link to="/login" className="text-gray-700 hover:text-gray-800 transition">
             Log In
-          </Link>
-          <Link
+          </Link> */}
+{/*           <Link
             to="/signup"
             className="bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 transition"
           >
             Sign Up
-          </Link>
+          </Link> */}
         </div>
       </header>
 
@@ -27,7 +27,7 @@ export default function LandingPage() {
           Construye bases sólidas en matemáticas, ciencias e informática con lecciones prácticas.
         </p>
         <Link
-          to="/signup"
+          to="/main"
           className="inline-block bg-indigo-500 font-semibold text-white text-lg px-6 py-3 rounded-md hover:bg-indigo-700 transition"
         >
           Empieza ya
@@ -35,7 +35,7 @@ export default function LandingPage() {
       </main>
 
       <footer className="w-full max-w-6xl py-10 text-sm text-gray-400 text-center mt-20">
-        &copy; {new Date().getFullYear()} PLab. Todos los derechos reservados.
+        &copy; {new Date().getFullYear()} PLab. Hecho con ❤️ por Felipe Bolaños
       </footer>
     </div>
   );

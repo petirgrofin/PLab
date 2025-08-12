@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import { X, CircleSmall } from 'lucide-react'
 
 export default function MainPage() {
-  const [joinedCourses, setJoinedCourses] = useState([]);
-  const [courseLessons, setCourseLessons] = useState({});
+  //const [joinedCourses, setJoinedCourses] = useState([]);
+  //const [courseLessons, setCourseLessons] = useState({});
   const [loading, setLoading] = useState(false);
 
 
-   useEffect(() => {
+   /* useEffect(() => {
      const token = localStorage.getItem("access_token");
      if (!token) {
        setLoading(false);
@@ -91,6 +91,55 @@ export default function MainPage() {
       alert(err.message);
     }
   };
+ */
+
+  const joinedCourses = [
+    {
+        "curso_id": 2,
+        "titulo": "Introducción a la Teoría de Conjuntos",
+        "descripcion": "Curso sobre el manejo de conjuntos, sus operaciones y su uso del lenguaje matemático."
+    },
+    {
+        "curso_id": 1,
+        "titulo": "Introducción a la Probabilidad",
+        "descripcion": "Curso básico para comprender eventos aleatorios y calcular probabilidades inciertas."
+    },
+  ]
+
+  const courseLessons = {
+    "1": [
+        {
+            "titulo": "Probabilidad",
+            "curso_id": 1,
+            "orden_en_curso": 1,
+            "id": 1,
+            "contenido": "Conceptos básicos de probabilidad"
+        },
+        {
+            "titulo": "Espacios muestrales",
+            "curso_id": 1,
+            "orden_en_curso": 2,
+            "id": 2,
+            "contenido": "Definición de espacio muestral"
+        }
+    ],
+    "2": [
+        {
+            "titulo": "Conjuntos",
+            "curso_id": 2,
+            "orden_en_curso": 1,
+            "id": 3,
+            "contenido": "Definición y ejemplos"
+        },
+        {
+            "titulo": "Operaciones sobre conjuntos",
+            "curso_id": 2,
+            "orden_en_curso": 2,
+            "id": 4,
+            "contenido": "Unión, intersección y diferencia"
+        }
+    ],
+  }
 
   if (loading) return <p>Loading your courses...</p>;
 
@@ -119,12 +168,12 @@ export default function MainPage() {
                     <h3 className="font-semibold text-xl">{course.titulo}</h3>
                     <p>{course.descripcion}</p>
                   </div>
-                  <button
+                 {/*  <button
                     onClick={() => handleLeave(course.curso_id)}
                     className="flex justify-center items-center p-1 border-red-500 text-red-500 rounded transition-all hover:bg-red-500 hover:text-white hover:cursor-pointer"
                   >
                     <X size={30} />
-                  </button>
+                  </button> */}
                 </div>
 
                 <div className="w-full bg-white h-full border-t-1 border-t-slate-300 rounded-b-md p-4 overflow-y-auto">

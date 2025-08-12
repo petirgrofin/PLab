@@ -17,40 +17,32 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
+        {/*<Route path="/login" element={<LoginPage />} />*/}
+        {/* <Route path="/signup" element={<SignupPage />} /> */}
 
         {/* Protected routes */}
         <Route
           path="/main"
           element={
-            <PrivateRoute>
               <MainPage />
-            </PrivateRoute>
           }
         />
         <Route
           path="/courses"
           element={
-            <PrivateRoute>
               <CoursesPage />
-            </PrivateRoute>
           }
         />
         <Route
           path="/roadmap/:courseId"
           element={
-            <PrivateRoute>
               <RoadmapPage />
-            </PrivateRoute>
           }
         />
         <Route
           path="/lesson/:courseId/:lessonId"
           element={
-            <PrivateRoute>
               <Template />
-            </PrivateRoute>
           }
         />
 
