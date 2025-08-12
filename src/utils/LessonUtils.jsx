@@ -17,7 +17,7 @@ import VennDiagramMutuallyExclusive from "../Components/VennDiagramMutuallyExclu
 import AsideButton from "../Components/AsideButton";
 import DropdownExplanation from "../Components/DropdownExplanation";
 import { BlockMath } from "react-katex";
-import { renderInlineMathText } from "./latexUtils";
+import { renderInlineMathText } from "./LatexUtils";
 import DiceThrowAnimation from "../Components/DiceThrowAnimation";
 
 const COMPONENT_REGISTRY = {

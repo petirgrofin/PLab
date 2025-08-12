@@ -1,5 +1,5 @@
 import React from 'react'
-import { renderInlineMathText } from '../utils/latexUtils'
+import { renderInlineMathText } from '../utils/LatexUtils'
 
 const Definition = ({definition}) => {
   return (

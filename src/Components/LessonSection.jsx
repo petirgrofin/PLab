@@ -1,4 +1,4 @@
-import { renderContentBlock } from "../utils/lessonUtils";
+import { renderContentBlock } from "../utils/LessonUtils";
 
 const LessonSection = ({ articleRef, sectionRefs, lessonData, shownIndex, setIsAsideActive, setAsideTitle, setAsideContent}) => {
   return (

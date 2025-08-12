@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useComponentContext } from "../lessons/ComponentContext";
-import { renderInlineMathText } from "../utils/latexUtils";
+import { renderInlineMathText } from "../utils/LatexUtils";
 
 const DropdownExplanation = ({ explanation, id, src }) => {
   const [isOpen, setIsOpen] = useState(false);
