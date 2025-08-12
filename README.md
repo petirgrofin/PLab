@@ -1,12 +1,33 @@
-# React + Vite
+# Plataforma Digital de Aprendizaje de Probabilidad
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Plataforma educativa interactiva inspirada en **Brilliant**, diseñada para estudiantes de **12° grado**, con el objetivo de enseñar conceptos de **probabilidad** de forma visual, práctica y adaptada a los principios del aprendizaje activo.
 
-Currently, two official plugins are available:
+La primera unidad está enfocada en **teoría de conjuntos**, sirviendo como base para introducir eventos, probabilidad clásica, condicional y otros temas.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 📌 Características
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Módulos y Lecciones**: Contenido estructurado en módulos y lecciones.
+- **Ejercicios Interactivos**: Actividades dinámicas y visuales para practicar.
+- **Relación N:N entre Usuarios y Módulos**: Permite asignar múltiples módulos a cada usuario y viceversa.
+- **Arquitectura escalable**: Backend y frontend desacoplados.
+- **Diseño pensado para ampliaciones futuras**: Posibilidad de añadir más temas y funcionalidades.
+
+---
+
+## 🏗 Arquitectura
+
+El sistema está dividido en dos capas principales:
+
+1. **Frontend**
+   - Construido en **React**.
+   - Se comunica con el backend mediante API REST.
+   - Contiene las vistas de usuario, módulos, lecciones y ejercicios.
+
+2. **Backend**
+   - Implementado con **FastAPI**.
+   - Manejo de base de datos relacional (SQLite o PostgreSQL).
+   - Endpoints para CRUD de Usuarios, Módulos y Lecciones.
+   - Lógica de negocio y validaciones.
+
