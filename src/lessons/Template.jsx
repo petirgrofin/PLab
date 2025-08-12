@@ -64,7 +64,7 @@ const Template = () => {
   const totalExercises = lessonData.exercises?.length || 0;
 
   return (
-    <div className="bg-white flex flex-col items-center mt-16 gap-4 font-nunito">
+    <div className="bg-white flex flex-col items-center mt-16 gap-4 font-nunito mb-32">
       <LessonHeader
         isInExerciseMode={isInExerciseMode}
         currentExercise={currentExercise}

@@ -7,6 +7,7 @@ import {
   useDraggable,
   useDroppable,
   PointerSensor,
+  TouchSensor,
   useSensor,
   useSensors,
   DragOverlay,
@@ -35,6 +36,7 @@ function DraggableItem({ item }) {
   const style = {
     transform: transform ? CSS.Translate.toString(transform) : undefined,
     transition,
+    touchAction: 'none'
   };
   return (
     <button
@@ -65,7 +67,19 @@ function DroppableContainer({ container, children }) {
 export default function SetClassifierDndKit() {
   const [items, setItems] = useState(initialItems);
   const [activeId, setActiveId] = useState(null);
-  const sensors = useSensors(useSensor(PointerSensor, { activationConstraint: { distance: 5 } }));
+  const sensors = useSensors(
+      useSensor(PointerSensor, {
+        activationConstraint: {
+          distance: 5, // px to move before drag starts
+        },
+      }),
+      useSensor(TouchSensor, {
+        activationConstraint: {
+          delay: 150,
+          tolerance: 5,
+        },
+      })
+    );
 
   const itemsByContainer = useMemo(() => {
     const map = {};

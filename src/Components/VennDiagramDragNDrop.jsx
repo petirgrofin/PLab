@@ -55,6 +55,7 @@ export function DraggableChipPool({id}) {
       ? `translate3d(${transform.x}px, ${transform.y}px, 0)`
       : undefined,
     opacity: isDragging ? 0.6 : 1,
+    touchAction: 'none'
   };
 
   return (

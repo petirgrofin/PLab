@@ -27,6 +27,7 @@ function DraggableCoin({ id, side }) {
   const style = {
     transform: transform ? `translate3d(${transform.x}px, ${transform.y}px, 0)` : undefined,
     opacity: isDragging ? 0.5 : 1,
+    touchAction: 'none'
   };
 
   return (
