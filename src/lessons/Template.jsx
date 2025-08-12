@@ -1,19 +1,19 @@
 // Template.jsx
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
-import useFadeOutOnScroll from "../hooks/useFadeOutOnScroll";
-import useAutoScrollToCurrent from "../hooks/useAutoScrollToCurrent";
+import useFadeOutOnScroll from "../Hooks/useFadeOutOnScroll";
+import useAutoScrollToCurrent from "../Hooks/useAutoScrollToCurrent";
 import { ComponentContext } from "./ComponentContext";
 
-import { useLessonData } from "../hooks/useLessonData";
-import { useExerciseManager } from "../hooks/useExerciseManager";
+import { useLessonData } from "../Hooks/useLessonData";
+import { useExerciseManager } from "../Hooks/useExerciseManager";
 
-import LessonHeader from "../components/LessonHeader";
-import LessonSection from "../components/LessonSection";
-import ExerciseSection from "../components/ExerciseSection";
-import FooterControls from "../components/FooterControls";
-import FeedbackBanner from "../components/FeedbackBanner";
-import { Aside } from "../components/Aside";
+import LessonHeader from "../Components/LessonHeader";
+import LessonSection from "../Components/LessonSection";
+import ExerciseSection from "../Components/ExerciseSection";
+import FooterControls from "../Components/FooterControls";
+import FeedbackBanner from "../Components/FeedbackBanner";
+import { Aside } from "../Components/Aside";
 
 const Template = () => {
   const { lessonId } = useParams();

@@ -1,24 +1,24 @@
-import BasicTable from "../components/BasicTable";
-import { VennDiagramDragNDrop } from "../components/VennDiagramDragNDrop";
-import VennDiagramInfo from "../components/VennDiagramInfo";
-import SetClassifierDndKit from "../components/SetClassifierDND";
-import CoinSampleSpaceDnD from "../components/CoinSampleSpaceDnD";
-import DiceSampleSpaceSelector from "../components/DiceSampleSpaceSelector";
-import CoinFlipSimulator from "../components/CoinFlipSimulator";
-import { TwoSetVennCardinality } from "../components/VennCardinality";
-import { MultipleChoiceExercise } from "../components/MultipleChoiceExercise";
-import { DemoMultiSelectTextQ, DemoMultiSelectTextR, MultiSelectExercise } from "../components/MultiSelectExercise";
-import VennDiagram from "../components/VennDiagram";
-import Definition from "../components/Definition";
-import NarrativeQuestion from "../components/NarrativeQuestion";
-import FreeResponse from "../components/FreeResponse";
-import VennDiagramStatic from "../components/VennDiagramStatic";
-import VennDiagramMutuallyExclusive from "../components/VennDiagramMutuallyExclusive";
-import AsideButton from "../components/AsideButton";
-import DropdownExplanation from "../components/DropdownExplanation";
+import BasicTable from "../Components/BasicTable";
+import { VennDiagramDragNDrop } from "../Components/VennDiagramDragNDrop";
+import VennDiagramInfo from "../Components/VennDiagramInfo";
+import SetClassifierDndKit from "../Components/SetClassifierDND";
+import CoinSampleSpaceDnD from "../Components/CoinSampleSpaceDnD";
+import DiceSampleSpaceSelector from "../Components/DiceSampleSpaceSelector";
+import CoinFlipSimulator from "../Components/CoinFlipSimulator";
+import { TwoSetVennCardinality } from "../Components/VennCardinality";
+import { MultipleChoiceExercise } from "../Components/MultipleChoiceExercise";
+import { DemoMultiSelectTextQ, DemoMultiSelectTextR, MultiSelectExercise } from "../Components/MultiSelectExercise";
+import VennDiagram from "../Components/VennDiagram";
+import Definition from "../Components/Definition";
+import NarrativeQuestion from "../Components/NarrativeQuestion";
+import FreeResponse from "../Components/FreeResponse";
+import VennDiagramStatic from "../Components/VennDiagramStatic";
+import VennDiagramMutuallyExclusive from "../Components/VennDiagramMutuallyExclusive";
+import AsideButton from "../Components/AsideButton";
+import DropdownExplanation from "../Components/DropdownExplanation";
 import { BlockMath } from "react-katex";
 import { renderInlineMathText } from "./latexUtils";
-import DiceThrowAnimation from "../components/DiceThrowAnimation";
+import DiceThrowAnimation from "../Components/DiceThrowAnimation";
 
 const COMPONENT_REGISTRY = {
   BasicTable,
