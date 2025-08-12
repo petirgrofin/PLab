@@ -46,7 +46,7 @@ const DropdownExplanation = ({ explanation, id, src }) => {
   // workaround, but it will work for now since I don't have a lot of time to set up a proper rendering pipeline.
   
   return (
-    <div className={`mt-4 ${isExerciseCompleted ? 'opacity-100' : 'opacity-0'}`} ref={explanationRef}>
+    <div className={`mt-4 ${isExerciseCompleted ? 'opacity-100' : 'opacity-0'} ${isOpen && showExplanation ? 'mb-32' : 'mb-0'}`} ref={explanationRef}>
       <button
         disabled={!isExerciseCompleted}
         onClick={toggleExplanation}
