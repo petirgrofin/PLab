@@ -1,4 +1,4 @@
-import { renderContentBlock } from "../utils/lessonUtils";
+import { renderContentBlock } from "../utils/LessonUtils";
 
 const ExerciseSection = ({ fade, exercise }) => {
   return (
