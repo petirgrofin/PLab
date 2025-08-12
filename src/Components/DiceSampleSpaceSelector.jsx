@@ -92,7 +92,7 @@ export default function DiceSampleSpaceSelector({
       {/*<p className="text-center text-sm text-slate-600 max-w-prose">
         Click cells to select outcomes that belong to an event. Row = first die, Column = second die.
       </p>*/}
-      <div className="flex items-center gap-2 text-xs text-slate-600">
+      <div className="flex items-center gap-2 text-sm text-slate-600">
         <label className="flex items-center gap-1 cursor-pointer select-none">
           <input
             type="checkbox"
@@ -160,7 +160,7 @@ export default function DiceSampleSpaceSelector({
         <button
           type="button"
           onClick={() => setSelected(new Set())}
-          className="px-2 py-1 rounded border border-slate-300 hover:bg-slate-100 text-xs"
+          className="px-2 py-1 rounded border border-slate-300 hover:bg-slate-100 text-sm"
         >
           Limpiar
         </button>
