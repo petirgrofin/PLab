@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function LandingPage() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-6">
-        <img src="../../public/landing-background.png" alt="Background" className="absolute -z-20 m-auto top-5" />
+        <img src="/landing-background.png" alt="Background" className="absolute -z-20 m-auto top-5" />
       <header className="w-full max-w-6xl flex justify-between items-center py-6">
         <h1 className="text-3xl font-bold text-gray-900">PLab</h1>
         <div className="space-x-4 font-semibold">
