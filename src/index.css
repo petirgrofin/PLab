@@ -4,3 +4,8 @@
 @theme {
   --font-nunito: "Nunito", sans-serif; 
 }
+
+body{
+  margin: 0;
+  padding: 0;
+}

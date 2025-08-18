@@ -7,7 +7,7 @@ import DiceSampleSpaceSelector from "../Components/DiceSampleSpaceSelector";
 import CoinFlipSimulator from "../Components/CoinFlipSimulator";
 import { TwoSetVennCardinality } from "../Components/VennCardinality";
 import { MultipleChoiceExercise } from "../Components/MultipleChoiceExercise";
-import { DemoMultiSelectTextQ, DemoMultiSelectTextR, MultiSelectExercise } from "../Components/MultiSelectExercise";
+import { DemoMultiSelectImages, DemoMultiSelectTextQ, DemoMultiSelectTextR, MultiSelectExercise } from "../Components/MultiSelectExercise";
 import VennDiagram from "../Components/VennDiagram";
 import Definition from "../Components/Definition";
 import NarrativeQuestion from "../Components/NarrativeQuestion";
@@ -32,6 +32,7 @@ const COMPONENT_REGISTRY = {
   MultipleChoiceExercise,
   DemoMultiSelectTextQ,
   DemoMultiSelectTextR,
+  DemoMultiSelectImages,
   MultiSelectExercise,
   VennDiagram,
   Definition,
@@ -53,7 +54,7 @@ export function getComponent(name, props = {}, key) {
 
 export function renderContentBlock(item, i, setAsideContent, setAsideTitle, setIsAsideActive) {
   if (item.type === "text") {
-    return <div key={i}>{renderInlineMathText(item.value, `sec-${i}`)}</div>;
+    return item.px_size ? <div className="" key={i}>{renderInlineMathText(item.value, `sec-${i}`, item.px_size)}</div> : <div className="" key={i}>{renderInlineMathText(item.value, `sec-${i}`)}</div>;
   }
   if (item.type === "component") {
     return item.props ? getComponent(item.name, item.props, i) : getComponent(item.name, {}, i);

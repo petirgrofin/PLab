@@ -50,7 +50,8 @@
           "type": "component",
           "name": "Definition",
           "props":{
-            "definition": "$$P(\\text{evento}) = \\frac{\\text{número de casos favorables}}{\\text{número de casos posibles}}$$"
+            "definition": "$$P(\\text{evento}) = \\frac{\\text{número de casos favorables}}{\\text{número de casos posibles}}$$",
+            "px_size": 11
           }
         }
         ]
@@ -63,7 +64,8 @@
         },
         {
           "type": "text",
-          "value": "$$P(\\text{corona}) = \\frac{\\text{número de casos favorables}}{\\text{número de casos posibles}} = \\frac{1}{2}$$"
+          "value": "$$P(\\text{corona}) = \\frac{\\text{número de casos favorables}}{\\text{número de casos posibles}} = \\frac{1}{2}$$",
+          "px_size": 12
         },
         {
           "type": "text",
@@ -134,7 +136,8 @@
         },
         {
           "type": "text",
-          "value": "$$P(\\text{evento}) \\approx \\frac{\\text{número de veces que ocurrió el evento}}{\\text{número total de repeticiones del experimento}}$$"
+          "value": "$$P(\\text{evento}) \\approx \\frac{\\text{número de veces que ocurrió el evento}}{\\text{número total de repeticiones del experimento}}$$",
+          "px_size": 10
         },
         {
           "type": "text",
@@ -146,54 +149,7 @@
           "isExercise": true,
           "id": 0
         },
-        { "type": "explanation", "id": 0, "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit augue nec metus dignissim auctor sit amet ac magna. Etiam efficitur, ante ut ornare placerat, urna risus sagittis enim, ac hendrerit est odio in eros. Integer eget consequat mauris, sit amet elementum magna. Vestibulum blandit eget diam et congue. Sed vel sapien lectus. Integer ultricies turpis in risus sagittis, et aliquet neque convallis. Nam non semper erat. Vestibulum felis sem, euismod vel luctus vitae, interdum ut dui. Ut scelerisque accumsan elit, sit amet pulvinar erat feugiat in. Curabitur consectetur quam non euismod varius. In quis ornare ligula, vel sodales est. Nulla facilisi. In a arcu et ex auctor consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus ullamcorper luctus nulla et pellentesque. Pellentesque vulputate eleifend elementum."}
-      ]
-    },
-    {
-      "content": [
-        {
-          "type": "text",
-          "value": "¿Cuál es la probabilidad de que el dado caiga en 6?"
-        },
-        {
-          "type": "component",
-          "name": "FreeResponse",
-          "isExercise": true,
-          "id": 1
-        },
-        { "type": "explanation", "id": 1, "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit augue nec metus dignissim auctor sit amet ac magna. Etiam efficitur, ante ut ornare placerat, urna risus sagittis enim, ac hendrerit est odio in eros. Integer eget consequat mauris, sit amet elementum magna. Vestibulum blandit eget diam et congue. Sed vel sapien lectus. Integer ultricies turpis in risus sagittis, et aliquet neque convallis. Nam non semper erat. Vestibulum felis sem, euismod vel luctus vitae, interdum ut dui. Ut scelerisque accumsan elit, sit amet pulvinar erat feugiat in. Curabitur consectetur quam non euismod varius. In quis ornare ligula, vel sodales est. Nulla facilisi. In a arcu et ex auctor consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus ullamcorper luctus nulla et pellentesque. Pellentesque vulputate eleifend elementum."}
-
-      ]
-    },
-    {
-      "content": [
-        {
-          "type": "text",
-          "value": "¿Cuál es la probabilidad de que el dado caiga ya sea en un 4 o en un 3?"
-        },
-        {
-          "type": "component",
-          "name": "FreeResponse",
-          "isExercise": true,
-          "id": 2
-        },
-        { "type": "explanation", "id": 2, "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit augue nec metus dignissim auctor sit amet ac magna. Etiam efficitur, ante ut ornare placerat, urna risus sagittis enim, ac hendrerit est odio in eros. Integer eget consequat mauris, sit amet elementum magna. Vestibulum blandit eget diam et congue. Sed vel sapien lectus. Integer ultricies turpis in risus sagittis, et aliquet neque convallis. Nam non semper erat. Vestibulum felis sem, euismod vel luctus vitae, interdum ut dui. Ut scelerisque accumsan elit, sit amet pulvinar erat feugiat in. Curabitur consectetur quam non euismod varius. In quis ornare ligula, vel sodales est. Nulla facilisi. In a arcu et ex auctor consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus ullamcorper luctus nulla et pellentesque. Pellentesque vulputate eleifend elementum."}
-
-      ]
-    },
-    {
-      "content": [
-        {
-          "type": "text",
-          "value": "¿Cuál es la probabilidad de que el dado caiga en un 7?"
-        },
-        {
-          "type": "component",
-          "name": "FreeResponse",
-          "isExercise": true,
-          "id": 3
-        },
-        { "type": "explanation", "id": 3, "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit augue nec metus dignissim auctor sit amet ac magna. Etiam efficitur, ante ut ornare placerat, urna risus sagittis enim, ac hendrerit est odio in eros. Integer eget consequat mauris, sit amet elementum magna. Vestibulum blandit eget diam et congue. Sed vel sapien lectus. Integer ultricies turpis in risus sagittis, et aliquet neque convallis. Nam non semper erat. Vestibulum felis sem, euismod vel luctus vitae, interdum ut dui. Ut scelerisque accumsan elit, sit amet pulvinar erat feugiat in. Curabitur consectetur quam non euismod varius. In quis ornare ligula, vel sodales est. Nulla facilisi. In a arcu et ex auctor consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus ullamcorper luctus nulla et pellentesque. Pellentesque vulputate eleifend elementum."}
+        { "type": "explanation", "id": 0, "explanation": "Para calcular la probabilidad aproximada de obtener escudo en la moneda, usamos la definición experimental de probabilidad, que se aplica cuando no estamos seguros de que todos los resultados sean igualmente probables. La fórmula es: $$P(\\text{evento}) \\approx \\frac{\\text{número de veces que ocurrió el evento}}{\\text{número total de repeticiones}}$$ En este caso, el evento es “obtener escudo”. La moneda se lanzó 40,000 veces y salió escudo en 28,000 ocasiones. Entonces: $$P(\\text{escudo}) \\approx \\frac{28000}{40000} = 0.7$$ Esto significa que, aproximadamente, la probabilidad de obtener escudo es 70% según los resultados experimentales."}
       ]
     }
   ],

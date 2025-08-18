@@ -3,7 +3,7 @@
   "sections": [
     {
       "content": [
-        { "type": "text", "value": "En una escuela se hizo una encuesta a 5 estudiantes acerca de sus gustos musicales." },
+        { "type": "text", "value": "En una escuela se hizo una encuesta a 5 estudiantes acerca de sus preferencias deportivas." },
         {
           "type": "component",
           "name": "BasicTable",
@@ -20,24 +20,24 @@
         },
         { "type": "text", "value": "Arrastra cada nombre a la zona correcta del diagrama de Venn" },
         { "type": "component", "isExercise": true, "id": 0, "name": "VennDiagramDragNDrop"},
-        { "type": "explanation", "id": 0, "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit augue nec metus dignissim auctor sit amet ac magna. Etiam efficitur, ante ut ornare placerat, urna risus sagittis enim, ac hendrerit est odio in eros. Integer eget consequat mauris, sit amet elementum magna."}
+        { "type": "explanation", "id": 0, "explanation": "En este ejercicio debes colocar cada estudiante en la zona del diagrama que corresponde a sus preferencias musicales. Observa la tabla: si un estudiante gusta de ambos géneros, irá en la intersección de los conjuntos; si gusta de solo uno, irá en la región correspondiente a ese conjunto; y si no gusta de ninguno, irá fuera de los conjuntos."}
       ]
     },
     {
       "content": [
-        { "type": "text", "value": "Los diagramas de Venn nos permiten visualizar las relaciones que existen entre los conjuntos" },
+        { "type": "text", "value": "Los diagramas de Venn nos permiten visualizar las relaciones que existen entre los conjuntos. Selecciona varias regiones del siguiente diagrama para observar qué representan." },
         { "type": "component", "name": "VennDiagramInfo" }
       ]
     },
     {
       "content": [
-        { "type": "text", "value": "El conjunto $G$ representa a las personas que tocan guitarra, mientras que el conjunto $S$ a los que tocan saxofón. " },
+        { "type": "text", "value": "Se realizó una encuesta a un grupo de estudiantes acerca de los instrumentos que practican. El conjunto $G$ representa a las personas que tocan guitarra, mientras que el conjunto $S$ a los que tocan saxofón. " },
         { "type": "text", "value": "Seleccione las regiones que contienen estudiantes que tocan **solo** saxofón."},
         { "type": "component", "name": "VennDiagram", "id": 1, "isExercise": true, "props": {
           "leftSet": "S",
           "rightSet": "G"
         }},
-        { "type": "explanation", "id": 1, "explanation": "Esta región representa la diferencia entre el conjunto $G$ y el conjunto $S$." }
+        { "type": "explanation", "id": 1, "explanation": "Aquí se busca la región donde están los estudiantes que pertenecen al conjunto $S$ pero no al conjunto $G$. Esta región se llama la diferencia de conjuntos $S \\setminus G$. Representa todos los elementos que cumplen la condición “toca saxofón” y no toca guitarra." }
 
     ]
     },
@@ -48,7 +48,7 @@
           "leftSet": "S",
           "rightSet": "G"
         }},
-        { "type": "explanation", "id": 2, "explanation": "Esta región representa la **intersección** entre ambos conjuntos. Es un conjunto que contiene todos los elementos de $S$ que también pertenecen a $G$." }
+        { "type": "explanation", "id": 2, "explanation": "Esta región corresponde a la **intersección** de los conjuntos $S$ y $G$, es decir, los estudiantes que cumplen ambas condiciones: tocan saxofón y guitarra al mismo tiempo." }
       ]
     },
     {
@@ -58,7 +58,7 @@
           "leftSet": "S",
           "rightSet": "G"
         }},
-        { "type": "explanation", "id": 3, "explanation": "Estas regiones representan el conjunto $G$." }
+        { "type": "explanation", "id": 3, "explanation": "Para este ejercicio, debes seleccionar todas las regiones del diagrama que incluyen estudiantes que tocan saxofón. Esto incluye tanto a los que solo tocan saxofón como a los que tocan saxofón y guitarra. La región seleccionada representa el conjunto $S$ completo." }
       ]
     },
     {
@@ -68,7 +68,7 @@
           "leftSet": "S",
           "rightSet": "G"
         }},
-        { "type": "explanation", "id": 4, "explanation": "Estas regiones representan la **unión** entre ambos conjuntos. Es un conjunto que contiene todos los elementos de $G$ y de $S$." }
+        { "type": "explanation", "id": 4, "explanation": "Aquí se busca la **unión** de los conjuntos $S$ y $G$. La región incluye todos los estudiantes que tocan al menos uno de los instrumentos: saxofón, guitarra, o ambos. La unión combina todos los elementos de ambos conjuntos en un solo conjunto." }
       ]
     },
     {
@@ -78,7 +78,7 @@
           "leftSet": "S",
           "rightSet": "G"
         }},
-        { "type": "explanation", "id": 5, "explanation": "Esta región representa el complemento de $S$." }
+        { "type": "explanation", "id": 5, "explanation": "Este ejercicio se refiere al **complemento** del conjunto $S$. Debes seleccionar las regiones del diagrama que contienen a los estudiantes que no pertenecen a $S$, es decir, aquellos que no tocan saxofón." }
       ]
     }
   ]

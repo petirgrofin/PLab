@@ -132,7 +132,7 @@ export default function MainPage() {
             "contenido": "Definición y ejemplos"
         },
         {
-            "titulo": "Operaciones sobre conjuntos",
+            "titulo": "Diagramas de Venn",
             "curso_id": 2,
             "orden_en_curso": 2,
             "id": 4,
@@ -150,51 +150,57 @@ export default function MainPage() {
     4: "SetOperations",
   };
 
-  return (
-    <div className="min-h-screen bg-gradient-to-tl">
-      <Navbar />
-      <div className="p-6 m-8 flex flex-col">
-        {joinedCourses.length === 0 ? (
-          <p>You haven't joined any courses yet.</p>
-        ) : (
-          <div className="flex flex-wrap p-4 gap-6 justify-center items-center">
-            {joinedCourses.map((course) => (
-              <div
-                key={course.id}
-                className="bg-black relative flex flex-col h-96 items-center w-110 border-1 border-black hover:scale-102 rounded-lg transition-all"
-              >
-                <div className="w-full h-fit p-6 flex justify-between items-center gap-2">
-                  <div className="flex flex-col justify-evenly text-white">
-                    <h3 className="font-semibold text-xl">{course.titulo}</h3>
-                    <p>{course.descripcion}</p>
-                  </div>
-                 {/*  <button
-                    onClick={() => handleLeave(course.curso_id)}
-                    className="flex justify-center items-center p-1 border-red-500 text-red-500 rounded transition-all hover:bg-red-500 hover:text-white hover:cursor-pointer"
-                  >
-                    <X size={30} />
-                  </button> */}
-                </div>
-
-                <div className="w-full bg-white h-full border-t-1 border-t-slate-300 rounded-b-md p-4 overflow-y-auto">
-                  <ul className="m-4 decoration-0 text-lg space-y-4">
-                    {(courseLessons[course.curso_id] || []).map((lesson) => (
-                      <li key={lesson.id}>
-                        <Link
-                          to={`/lesson/${course.curso_id}/${lessonFilesById[lesson.id] || lesson.id}`}
-                          className="font-semibold flex items-center text-black hover:text-indigo-700"
-                        >
-                          <CircleSmall></CircleSmall>{lesson.titulo}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
+return (
+  <div className="min-h-screen">
+    <Navbar />
+    <div className="p-4 sm:p-6 md:m-8 flex flex-col">
+      {joinedCourses.length === 0 ? (
+        <p className="text-center text-gray-600 text-base sm:text-lg">
+          No te has unido a ningún curso todavía.
+        </p>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center w-full">
+          {joinedCourses.map((course) => (
+            <div
+              key={course.id}
+              className="bg-black relative flex flex-col w-full max-w-sm sm:max-w-md lg:max-w-lg min-h-[20rem] rounded-lg transition-transform hover:scale-[1.02]"
+            >
+              {/* Header */}
+              <div className="w-full p-4 sm:p-6 flex justify-between items-start gap-2">
+                <div className="flex flex-col text-white">
+                  <h3 className="font-semibold text-lg sm:text-xl">
+                    {course.titulo}
+                  </h3>
+                  <p className="text-sm sm:text-base opacity-90">
+                    {course.descripcion}
+                  </p>
                 </div>
               </div>
-            ))}
-          </div>
-        )}
-      </div>
+
+              {/* Lessons */}
+              <div className="w-full bg-white flex-1 border border-black rounded-b-md p-4 overflow-y-auto">
+                <ul className="m-2 sm:m-4 text-sm sm:text-base space-y-3 sm:space-y-4">
+                  {(courseLessons[course.curso_id] || []).map((lesson) => (
+                    <li key={lesson.id}>
+                      <Link
+                        to={`/lesson/${course.curso_id}/${
+                          lessonFilesById[lesson.id] || lesson.id
+                        }`}
+                        className="font-semibold flex items-center gap-1 text-black hover:text-indigo-700 transition-colors"
+                      >
+                        <CircleSmall className="w-5 h-5 flex-shrink-0" />
+                        <span className="truncate">{lesson.titulo}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
-  );
+  </div>
+);
+
 }

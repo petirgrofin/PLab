@@ -2,8 +2,8 @@ import { renderContentBlock } from "../utils/LessonUtils";
 
 const LessonSection = ({ articleRef, sectionRefs, lessonData, shownIndex, setIsAsideActive, setAsideTitle, setAsideContent}) => {
   return (
-    <article ref={articleRef} className="flex flex-col gap-6 justify-center pt-14 max-w-xl mx-auto px-4 transition-opacity duration-500">
-      <h1 className="font-bold text-4xl">{lessonData.title}</h1>
+    <article ref={articleRef} className="flex flex-col gap-6 justify-center pt-14 max-w-xl mx-auto px-2 sm:px-4 transition-opacity duration-500">
+      <h1 className="font-bold text-3xl md:text-4xl">{lessonData.title}</h1>
       {lessonData.sections.map((section, i) => (
         <section
           key={`section-${i}`}

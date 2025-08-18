@@ -1,3 +1,4 @@
+import { useMediaQuery } from "react-responsive";
 import { InlineMath } from "react-katex";
 
 /**
@@ -15,12 +16,41 @@ export default function VennDiagramMutuallyExclusive({
   cardinalities = {},
   highlightedRegions = []
 }) {
-  const width = 500;
-  const height = 300;
-  const radius = 100;
-  const cxA = 130;
-  const cxB = 370;
-  const cy = 150;
+  // 🔎 Choose config responsively
+  const isExtraSmall = useMediaQuery({ maxWidth: 480 });
+  const isSmall = useMediaQuery({ minWidth: 481, maxWidth: 768 });
+
+  const config = isExtraSmall
+    ? {
+        width: 300,
+        height: 300,
+        radius: 60,
+        cxA: 150 - 65,
+        cxB: 150 + 65,
+        cy: 150,
+        labelOffsetY: -45,
+      }
+    : isSmall
+    ? {
+        width: 360,
+        height: 300,
+        radius: 75,
+        cxA: 100,
+        cxB: 260,
+        cy: 150,
+        labelOffsetY: -60,
+      }
+    : {
+        width: 500,
+        height: 300,
+        radius: 100,
+        cxA: 130,
+        cxB: 370,
+        cy: 150,
+        labelOffsetY: -85,
+      };
+
+  const { width, height, radius, cxA, cxB, cy, labelOffsetY } = config;
 
   const regionCenters = {
     A: { x: cxA, y: cy },
@@ -34,11 +64,7 @@ export default function VennDiagramMutuallyExclusive({
       : "fill-white stroke-black stroke-2";
 
   return (
-    <svg
-      className="ml-auto mr-auto block"
-      width={width}
-      height={height}
-    >
+    <svg className="mx-auto block" width={width} height={height}>
       {/* Outside background */}
       <rect
         x={0}
@@ -49,25 +75,15 @@ export default function VennDiagramMutuallyExclusive({
       />
 
       {/* Left circle (Set A) */}
-      <circle
-        cx={cxA}
-        cy={cy}
-        r={radius}
-        className={isHighlighted("A")}
-      />
+      <circle cx={cxA} cy={cy} r={radius} className={isHighlighted("A")} />
       {/* Right circle (Set B) */}
-      <circle
-        cx={cxB}
-        cy={cy}
-        r={radius}
-        className={isHighlighted("B")}
-      />
+      <circle cx={cxB} cy={cy} r={radius} className={isHighlighted("B")} />
 
       {/* Set labels */}
-      <foreignObject x={cxA - 8} y={cy - 10} width={30} height={30}>
+      <foreignObject x={cxA - 8} y={cy - radius - labelOffsetY} width={30} height={30}>
         <InlineMath math={leftSet} />
       </foreignObject>
-      <foreignObject x={cxB - 8} y={cy - 10} width={30} height={30}>
+      <foreignObject x={cxB - 8} y={cy - radius - labelOffsetY} width={30} height={30}>
         <InlineMath math={rightSet} />
       </foreignObject>
 

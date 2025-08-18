@@ -26,8 +26,8 @@ const initialItems = {
 
 
 const containers = [
-  { id: 'ge10', label: '≥ 10 gramos' },
-  { id: 'le10', label: '< 10 gramos' },
+  { id: 'ge10', label: 'cristales con masa mayor o igual 10 gramos' },
+  { id: 'le10', label: 'cristales con masa menor a 10 gramos' },
   { id: 'nonCrystal', label: 'objetos no cristalinos' },
 ];
 

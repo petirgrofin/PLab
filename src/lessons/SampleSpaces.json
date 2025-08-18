@@ -3,7 +3,10 @@
   "sections": [
     {
       "content": [
-        { "type": "text", "value": "Tiremos una moneda de dos caras:" },        { "type": "text", "value": "Tirar una moneda tiene dos posibles resultados: que caiga en cara o que caiga en escudo." }      ]
+        { "type": "text", "value": "Tiremos una moneda de dos caras:" },        
+        { "type": "image", "src": "/coins.png"},
+        { "type": "text", "value": "Tirar una moneda tiene dos posibles resultados: que caiga en cara o que caiga en escudo." }
+      ]
     },
     {
       "content": [
@@ -34,8 +37,8 @@
           "type": "text",
           "value": "Arrastra las caras de la moneda ($E$ y $C$) para formar todos los posibles resultados del experimento anterior. El orden es importante (por ejemplo, $CE$ no es lo mismo que $EC$)."
         },
-        { "type": "component", "isExercise": false, "id": "0", "name": "CoinSampleSpaceDnD" },
-        { "type": "explanation", "id": "0", "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit augue nec metus dignissim auctor sit amet ac magna. Etiam efficitur, ante ut ornare placerat, urna risus sagittis enim, ac hendrerit est odio in eros. Integer eget consequat mauris, sit amet elementum magna. Vestibulum blandit eget diam et congue. Sed vel sapien lectus. Integer ultricies turpis in risus sagittis, et aliquet neque convallis. Nam non semper erat. Vestibulum felis sem, euismod vel luctus vitae, interdum ut dui. Ut scelerisque accumsan elit, sit amet pulvinar erat feugiat in. Curabitur consectetur quam non euismod varius. In quis ornare ligula, vel sodales est. Nulla facilisi. In a arcu et ex auctor consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus ullamcorper luctus nulla et pellentesque. Pellentesque vulputate eleifend elementum."}
+        { "type": "component", "isExercise": true, "id": "0", "name": "CoinSampleSpaceDnD" },
+        { "type": "explanation", "id": "0", "explanation": "En este ejercicio construimos el espacio muestral de lanzar una moneda dos veces. Cada resultado posible se representa como un par ordenado donde el primer elemento corresponde al primer lanzamiento y el segundo al segundo. Así, los resultados posibles son: $CC$, $CE$, $EC$, y $EE$."}
 
       ]
     },
@@ -87,7 +90,7 @@
           "id": "20",
           "isExercise": true
         },
-        { "type": "explanation", "id": "20", "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit augue nec metus dignissim auctor sit amet ac magna. Etiam efficitur, ante ut ornare placerat, urna risus sagittis enim, ac hendrerit est odio in eros. Integer eget consequat mauris, sit amet elementum magna. Vestibulum blandit eget diam et congue. Sed vel sapien lectus. Integer ultricies turpis in risus sagittis, et aliquet neque convallis. Nam non semper erat. Vestibulum felis sem, euismod vel luctus vitae, interdum ut dui. Ut scelerisque accumsan elit, sit amet pulvinar erat feugiat in. Curabitur consectetur quam non euismod varius. In quis ornare ligula, vel sodales est. Nulla facilisi. In a arcu et ex auctor consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus ullamcorper luctus nulla et pellentesque. Pellentesque vulputate eleifend elementum."}
+        { "type": "explanation", "id": "20", "explanation": "Existen 36 combinaciones posibles al lanzar dos dados (6 resultados por dado). Como hay 6 eventos donde la suma es mayor que 9, la probabilidad se calcula como $$P(\\text{suma} > 9) = \\frac{6}{36} = 1/6 \\approx 0.17$$"}
       ]
     },
     {
@@ -137,7 +140,7 @@
       "content": [
         {
           "type": "text",
-          "value": "Supongamos que se realiza una encuesta a un grupo de 30 estudiantes sobre su participación en actividades extracurriculares. Se les preguntó si participaban en el club de ciencia o el club de teatro. Los resultados se muestran a continuación:"
+          "value": "Supongamos que se realiza una encuesta a un grupo de 30 estudiantes sobre su participación en actividades extracurriculares. Se les preguntó si participaban en el club de ciencia $(C)$ o el club de teatro $(T)$. Los resultados se muestran a continuación:"
         },
         {
           "type": "ul",
@@ -167,7 +170,7 @@
             }
           }
         },
-        { "type": "explanation", "id": "11", "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit augue nec metus dignissim auctor sit amet ac magna. Etiam efficitur, ante ut ornare placerat, urna risus sagittis enim, ac hendrerit est odio in eros. Integer eget consequat mauris, sit amet elementum magna. Vestibulum blandit eget diam et congue. Sed vel sapien lectus. Integer ultricies turpis in risus sagittis, et aliquet neque convallis. Nam non semper erat. Vestibulum felis sem, euismod vel luctus vitae, interdum ut dui. Ut scelerisque accumsan elit, sit amet pulvinar erat feugiat in. Curabitur consectetur quam non euismod varius. In quis ornare ligula, vel sodales est. Nulla facilisi. In a arcu et ex auctor consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus ullamcorper luctus nulla et pellentesque. Pellentesque vulputate eleifend elementum."}
+        { "type": "explanation", "id": "11", "explanation": "Para organizar correctamente los datos en el diagrama de Venn, coloca 10 en la región de solo $C$, 8 en la región de solo $T$, 6 en la intersección $C \\cap T$ (ambos clubes) y 6 fuera de ambos conjuntos."}
       ]
     },
     {
@@ -200,7 +203,7 @@
           "isExercise": true,
           "id": "4"
         },
-        { "type": "explanation", "id": "4", "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit augue nec metus dignissim auctor sit amet ac magna. Etiam efficitur, ante ut ornare placerat, urna risus sagittis enim, ac hendrerit est odio in eros. Integer eget consequat mauris, sit amet elementum magna. Vestibulum blandit eget diam et congue. Sed vel sapien lectus. Integer ultricies turpis in risus sagittis, et aliquet neque convallis. Nam non semper erat. Vestibulum felis sem, euismod vel luctus vitae, interdum ut dui. Ut scelerisque accumsan elit, sit amet pulvinar erat feugiat in. Curabitur consectetur quam non euismod varius. In quis ornare ligula, vel sodales est. Nulla facilisi. In a arcu et ex auctor consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus ullamcorper luctus nulla et pellentesque. Pellentesque vulputate eleifend elementum."}
+        { "type": "explanation", "id": "4", "explanation": "La probabilidad de que un estudiante esté en ambos clubes se calcula dividiendo la cantidad de estudiantes en ambos clubes entre el total de estudiantes: $$P(\\text{ambos clubes}) = \\frac{6}{30} = 0.2$$ El diagrama de Venn facilita identificar la intersección y calcular esta probabilidad de manera visual."}
       ]
     }
   ]

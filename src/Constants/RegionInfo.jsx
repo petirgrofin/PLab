@@ -92,6 +92,33 @@ export const RegionInfo = {
     )
   },
 
+  "(AiB)'": {
+    notation: <InlineMath math={"(A \\cap B)'"}/>,
+    explanation: (
+      <span>
+        El <b>complemento de la intersección</b> <InlineMath math={"(A \\cap B)'"} /> contiene todos los elementos que <b>no</b> están simultáneamente en <InlineMath math={"A"} /> y <InlineMath math={"B"} />. Por las leyes de De Morgan: <InlineMath math={"(A \\cap B)' = A' \\cup B'"} />. En la encuesta, representa a las personas que <b>no practican ambos deportes</b> (pueden practicar solo uno o ninguno). En el diagrama de Venn, es todo excepto la región de superposición.
+      </span>
+    )
+  },
+
+  "(AdB)'": {
+    notation: <InlineMath math={"(A \\setminus B)'"}/>,
+    explanation: (
+      <span>
+        El <b>complemento de la diferencia</b> <InlineMath math={"(A \\setminus B)'"} /> contiene todos los elementos que <b>no</b> están en <InlineMath math={"A \\setminus B"} />. Esto incluye a las personas que <b>solo practican baloncesto o ambos deportes o ninguno</b>. En el diagrama de Venn, es la región fuera de la parte exclusiva de <InlineMath math={"A"} />.
+      </span>
+    )
+  },
+
+  "(BdA)'": {
+    notation: <InlineMath math={"(B \\setminus A)'"}/>,
+    explanation: (
+      <span>
+        El <b>complemento de la diferencia</b> <InlineMath math={"(B \\setminus A)'"} /> incluye todos los elementos que <b>no</b> están en <InlineMath math={"B \\setminus A"} />. Esto abarca a las personas que <b>solo practican atletismo, ambos deportes o ninguno</b>. En el diagrama de Venn, es la región fuera de la parte exclusiva de <InlineMath math={"B"} />.
+      </span>
+    )
+  },
+
   "empty": {
     notation: <InlineMath math={"\\varnothing"}/>,
     explanation: (

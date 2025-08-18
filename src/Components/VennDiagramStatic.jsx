@@ -1,5 +1,10 @@
+import { useMediaQuery } from "react-responsive";
 import { REGION_IDS } from "../Constants/regions";
-import { DEFAULT_VENN_CONFIG } from "../Constants/vennConfig";
+import {
+  DEFAULT_VENN_CONFIG,
+  SMALL_VENN_CONFIG,
+  EXTRA_SMALL_VENN_CONFIG,
+} from "../Constants/vennConfig";
 import { constructVennDiagram } from "../utils/vennUtils";
 import { InlineMath } from "react-katex";
 import { VennRegion } from "./VennRegion";
@@ -10,8 +15,18 @@ export default function VennDiagramStatic({
   cardinalities = {},
   highlightedRegions = []
 }) {
-  const shapes = constructVennDiagram(DEFAULT_VENN_CONFIG);
-  const { width, height, overlap } = DEFAULT_VENN_CONFIG;
+  // 🔎 Select config responsively
+  const isExtraSmall = useMediaQuery({ maxWidth: 480 });
+  const isSmall = useMediaQuery({ minWidth: 481, maxWidth: 768 });
+
+  const config = isExtraSmall
+    ? EXTRA_SMALL_VENN_CONFIG
+    : isSmall
+    ? SMALL_VENN_CONFIG
+    : DEFAULT_VENN_CONFIG;
+
+  const shapes = constructVennDiagram(config);
+  const { width, height, overlap } = config;
 
   const cxA = width / 2 - overlap;
   const cxB = width / 2 + overlap;
@@ -26,11 +41,7 @@ export default function VennDiagramStatic({
   };
 
   return (
-    <svg
-      className="ml-auto mr-auto"
-      width={width}
-      height={height}
-    >
+    <svg className="mx-auto" width={width} height={height}>
       {/* Outside region */}
       <VennRegion
         regionId={REGION_IDS.Outside}
@@ -54,11 +65,11 @@ export default function VennDiagramStatic({
         ))}
 
       {/* Set labels */}
-      <foreignObject x={cxA - 10} y={cy - 80} width={30} height={30}>
-        <InlineMath math={leftSet} />
-      </foreignObject>
-      <foreignObject x={cxB - 10} y={cy - 80} width={30} height={30}>
-        <InlineMath math={rightSet} />
+      <foreignObject x={cxA - 30} y={cy - 15} width={30} height={30}> 
+        <InlineMath math={leftSet} /> 
+      </foreignObject> 
+      <foreignObject x={cxB + 20} y={cy - 15} width={30} height={30}> 
+        <InlineMath math={rightSet} /> 
       </foreignObject>
 
       {/* Cardinalities */}

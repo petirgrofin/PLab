@@ -11,13 +11,19 @@ const BasicTable = () => {
   };
 
   return (
-    <div className="overflow-x-auto">
-      <table className="table-auto border-collapse border border-gray-300 shadow-lg rounded-lg w-full">
+    <div className="w-full overflow-x-auto">
+      <table className="min-w-full border-collapse border border-gray-300 shadow-lg rounded-lg">
         <thead className="bg-gray-100 text-gray-700">
           <tr>
-            <th className="border border-gray-300 px-4 py-1 text-left">Estudiantes</th>
-            <th className="border border-gray-300 px-4 py-1 text-left">Practica atletismo <InlineMath math={"(A)"}/></th>
-            <th className="border border-gray-300 px-4 py-1 text-left">Practica baloncesto <InlineMath math={"(B)"}/></th>
+            <th className="border border-gray-300 px-2 sm:px-4 py-2 text-left text-xs sm:text-sm">
+              Estudiantes
+            </th>
+            <th className="border border-gray-300 px-2 sm:px-4 py-2 text-left text-xs sm:text-sm">
+              Practica atletismo <InlineMath math={"(A)"} />
+            </th>
+            <th className="border border-gray-300 px-2 sm:px-4 py-2 text-left text-xs sm:text-sm">
+              Practica baloncesto <InlineMath math={"(B)"} />
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -26,9 +32,15 @@ const BasicTable = () => {
               key={name}
               className={index % 2 === 0 ? "bg-white" : "bg-gray-50"}
             >
-              <td className="border border-gray-300 px-4 py-1 font-medium">{name}</td>
-              <td className="border border-gray-300 px-4 py-1">{atletismo}</td>
-              <td className="border border-gray-300 px-4 py-1">{baloncesto}</td>
+              <td className="border border-gray-300 px-2 sm:px-4 py-2 font-medium text-xs sm:text-sm">
+                {name}
+              </td>
+              <td className="border border-gray-300 px-2 sm:px-4 py-2 text-xs sm:text-sm">
+                {atletismo}
+              </td>
+              <td className="border border-gray-300 px-2 sm:px-4 py-2 text-xs sm:text-sm">
+                {baloncesto}
+              </td>
             </tr>
           ))}
         </tbody>

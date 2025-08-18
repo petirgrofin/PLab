@@ -1,46 +1,19 @@
 import React, { useState, useMemo, useRef } from "react";
+import { useMediaQuery } from "react-responsive";
 import { REGION_IDS } from "../Constants/regions";
-import { VennRegion } from "./VennRegion"; // adjust path if different
-import { constructVennDiagram } from "../utils/vennUtils"; // adjust path if different
+import { VennRegion } from "./VennRegion"; 
+import { constructVennDiagram } from "../utils/vennUtils"; 
 import { useComponentContext } from "../lessons/ComponentContext";
 import { InlineMath } from "react-katex";
 
-/** ********************************************************************
- * TwoSetVennCardinality
- * --------------------------------------------------------------------
- * Renders a 2‑set Venn diagram (A, B) with 4 disjoint regions:
- *   Outside = (A ∪ B)'
- *   OnlyA   = A \ B
- *   OnlyB   = B \ A
- *   Intersection = A ∩ B
- *
- * Each region has an overlaid <input type="number"> for entering the
- * cardinality (number of elements) *in that exact region*.
- *
- * Props ---------------------------------------------------------------
- * width, height, radius, overlap : numbers forwarded to constructVennDiagram
- * initialCounts : { [regionId]: number }
- * onCountsChange?: (counts, derived) => void  // derived = {A, B, union, universe}
- * showTotals?: boolean (default true)  // show derived table under diagram
- * className?: string                    // tailwind classes on wrapper
- * inputClassName?: string               // tailwind classes merged onto each input
- * showRegionOutlines?: boolean          // if false, hides svg stroke
- *
- * Behavior ------------------------------------------------------------
- * • Clicking a region highlights it and focuses its input.
- * • Counts are clamped to >= 0 (empty string allowed while editing).
- * • Derived totals recompute on every change:
- *     A = OnlyA + Intersection
- *     B = OnlyB + Intersection
- *     union = OnlyA + OnlyB + Intersection
- *     universe = union + Outside
- * • All numbers are integers; non‑numeric -> 0 in derived.
- */
+// ✅ Import shared responsive configs
+import {
+  DEFAULT_VENN_CONFIG,
+  SMALL_VENN_CONFIG,
+  EXTRA_SMALL_VENN_CONFIG,
+} from "../Constants/vennConfig";
+
 export function TwoSetVennCardinality({
-  width = 500,
-  height = 300,
-  radius = 100,
-  overlap = 60,
   initialCounts = {},
   onCountsChange,
   showTotals = true,
@@ -50,21 +23,31 @@ export function TwoSetVennCardinality({
   inputClassName = "",
   showRegionOutlines = true,
 }) {
-  
-  // ------------------------------------------------------------------
-  // Build the geometry once (stable for given dims).
-  const config = { width, height, radius, overlap };
-  const shapes = useMemo(() => constructVennDiagram(config), [width, height, radius, overlap]);
+  // 🔎 Pick config responsively
+  const isExtraSmall = useMediaQuery({ maxWidth: 480 });
+  const isSmall = useMediaQuery({ minWidth: 481, maxWidth: 768 });
 
-  // Precompute some geometry helpers for positioning inputs.
+  const config = isExtraSmall
+    ? EXTRA_SMALL_VENN_CONFIG
+    : isSmall
+    ? SMALL_VENN_CONFIG
+    : DEFAULT_VENN_CONFIG;
+
+  const { width, height, radius, overlap } = config;
+
+  // ------------------------------------------------------------------
+  // Build the geometry once for this config
+  const shapes = useMemo(() => constructVennDiagram(config), [config]);
+
+  // Precompute circle centers for positioning inputs
   const cxA = width / 2 - overlap;
   const cxB = width / 2 + overlap;
   const cy = height / 2;
 
-  // Input positions (px, relative to wrapper). Tuned heuristically.
+  // Input positions (px, relative to wrapper)
   const positions = useMemo(
     () => ({
-      [REGION_IDS.Outside]: { left: 52, top: 32 },
+      [REGION_IDS.Outside]: { left: 48, top: 28 }, // 🔧 may tweak per config if needed
       [REGION_IDS.OnlyA]: { left: cxA - radius * 0.45, top: cy },
       [REGION_IDS.OnlyB]: { left: cxB + radius * 0.45, top: cy },
       [REGION_IDS.Intersection]: { left: width / 2, top: cy },
@@ -84,7 +67,7 @@ export function TwoSetVennCardinality({
 
   const { setExerciseResponse } = useComponentContext();
 
-  // Refs so clicking the svg region can focus input.
+  // Refs for focusing inputs
   const inputRefs = {
     [REGION_IDS.Outside]: useRef(null),
     [REGION_IDS.OnlyA]: useRef(null),
@@ -105,23 +88,30 @@ export function TwoSetVennCardinality({
     return { A, B, union, universe };
   }, [counts]);
 
-  // Notify parent whenever counts change.
+  // Emit to parent
   const emit = (nextCounts) => {
-    if (onCountsChange) onCountsChange(nextCounts, {
-      A: (+nextCounts[REGION_IDS.OnlyA] || 0) + (+nextCounts[REGION_IDS.Intersection] || 0),
-      B: (+nextCounts[REGION_IDS.OnlyB] || 0) + (+nextCounts[REGION_IDS.Intersection] || 0),
-      union: (+nextCounts[REGION_IDS.OnlyA] || 0) + (+nextCounts[REGION_IDS.OnlyB] || 0) + (+nextCounts[REGION_IDS.Intersection] || 0),
-      universe: (+nextCounts[REGION_IDS.OnlyA] || 0) + (+nextCounts[REGION_IDS.OnlyB] || 0) + (+nextCounts[REGION_IDS.Intersection] || 0) + (+nextCounts[REGION_IDS.Outside] || 0),
-    });
+    if (onCountsChange)
+      onCountsChange(nextCounts, {
+        A: (+nextCounts[REGION_IDS.OnlyA] || 0) + (+nextCounts[REGION_IDS.Intersection] || 0),
+        B: (+nextCounts[REGION_IDS.OnlyB] || 0) + (+nextCounts[REGION_IDS.Intersection] || 0),
+        union:
+          (+nextCounts[REGION_IDS.OnlyA] || 0) +
+          (+nextCounts[REGION_IDS.OnlyB] || 0) +
+          (+nextCounts[REGION_IDS.Intersection] || 0),
+        universe:
+          (+nextCounts[REGION_IDS.OnlyA] || 0) +
+          (+nextCounts[REGION_IDS.OnlyB] || 0) +
+          (+nextCounts[REGION_IDS.Intersection] || 0) +
+          (+nextCounts[REGION_IDS.Outside] || 0),
+      });
   };
 
   const handleInputChange = (regionId, value) => {
-    // Allow empty string while editing; convert on blur.
     const numeric = value === "" ? "" : Math.max(0, parseInt(value, 10) || 0);
-      const next = { ...counts, [regionId]: numeric };
-      emit(next);
-      setCounts(next);
-      setExerciseResponse({"vennCardinality": true, "response": next})
+    const next = { ...counts, [regionId]: numeric };
+    emit(next);
+    setCounts(next);
+    setExerciseResponse({ vennCardinality: true, response: next });
   };
 
   const handleInputBlur = (regionId) => {
@@ -139,28 +129,23 @@ export function TwoSetVennCardinality({
     ref?.current?.focus();
   };
 
-  // Region label placeholders -------------------------------------------
   const placeholders = {
-    [REGION_IDS.Outside]: "(A∪B)'",
-    [REGION_IDS.OnlyA]: "A only",
-    [REGION_IDS.OnlyB]: "B only",
-    [REGION_IDS.Intersection]: "A∩B",
+    [REGION_IDS.Outside]: "Exterior'",
+    [REGION_IDS.OnlyA]: "Solo C",
+    [REGION_IDS.OnlyB]: "Solo T",
+    [REGION_IDS.Intersection]: "Intersección",
   };
 
-  // Stroke toggle -------------------------------------------------------
   const strokeProps = showRegionOutlines
     ? {}
     : { stroke: "transparent", strokeWidth: 0 };
 
-  // ------------------------------------------------------------------ UI
   return (
-    <div className={"mx-auto relative inline-block select-none " + className} style={{ width, height }}>
-      <svg
-        width={width}
-        height={height}
-        viewBox={`0 0 ${width} ${height}`}
-        className="block"
-      >
+    <div
+      className={"mx-auto relative inline-block select-none " + className}
+      style={{ width, height }}
+    >
+      <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} className="block">
         {shapes.map((s) => (
           <VennRegion
             key={s.id}
@@ -173,10 +158,20 @@ export function TwoSetVennCardinality({
             {...strokeProps}
           />
         ))}
-        <foreignObject x={100} y={40} width={30} height={30}>
+        <foreignObject x={
+                        config === DEFAULT_VENN_CONFIG
+                          ? 100
+                          : config === SMALL_VENN_CONFIG
+                          ? 60
+                          : 60 // extra small label position
+                      } y={50} width={30} height={30}>
           <InlineMath math={leftSet} />
         </foreignObject>
-        <foreignObject x={380} y={40} width={30} height={30}>
+        <foreignObject x={config === DEFAULT_VENN_CONFIG
+                          ? 385
+                          : config === SMALL_VENN_CONFIG
+                          ? 330
+                          : 230} y={50} width={30} height={30}>
           <InlineMath math={rightSet} />
         </foreignObject>
       </svg>
@@ -194,51 +189,12 @@ export function TwoSetVennCardinality({
           onBlur={() => handleInputBlur(rid)}
           onFocus={() => setSelectedRegion(rid)}
           className={[
-            "absolute -translate-x-1/2 -translate-y-1/2 w-16 px-1 py-0.5 text-center text-sm border rounded bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500",
+            "absolute -translate-x-1/2 -translate-y-1/2 w-12 sm:w-16 px-1 py-0.5 text-center text-sm border rounded bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500",
             inputClassName,
           ].join(" ")}
           style={{ left: pos.left, top: pos.top }}
         />
       ))}
-
-      {/*showTotals && (
-        <div className="mt-2 w-full text-xs text-gray-700 font-medium flex flex-col gap-1">
-          <TotalsTable derived={derived} />
-        </div>
-      )*/}
     </div>
   );
 }
-
-// ----------------------------------------------------------------------
-// Totals mini-table
-function TotalsTable({ derived }) {
-  const { A, B, union, universe } = derived;
-  return (
-    <div className="grid grid-cols-4 gap-1 w-full max-w-xs mx-auto text-center">
-      <div className="p-1 bg-gray-100 rounded">A: {A}</div>
-      <div className="p-1 bg-gray-100 rounded">B: {B}</div>
-      <div className="p-1 bg-gray-100 rounded">A∪B: {union}</div>
-      <div className="p-1 bg-gray-100 rounded">U: {universe}</div>
-    </div>
-  );
-}
-
-// ----------------------------------------------------------------------
-// Convenience export of region list (optional)
-export const TWO_SET_REGIONS = [
-  REGION_IDS.Outside,
-  REGION_IDS.OnlyA,
-  REGION_IDS.OnlyB,
-  REGION_IDS.Intersection,
-];
-
-// Example usage ---------------------------------------------------------
-// <TwoSetVennCardinality
-//   width={320}
-//   height={200}
-//   radius={70}
-//   overlap={35}
-//   initialCounts={{ [REGION_IDS.OnlyA]: 5, [REGION_IDS.Intersection]: 3 }}
-//   onCountsChange={(counts, derived) => console.log(counts, derived)}
-// />

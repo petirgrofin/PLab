@@ -226,19 +226,27 @@ export function DemoMultiSelectTextR() {
 /* ------------------------------------------------------
  * Demo / Storybook helper w/ image options
  * ------------------------------------------------------ */
-export function DemoMultiSelectImages() {
+
+export function DemoMultiSelectImages({ srcs, id }) {
   const [selected, setSelected] = useState([]);
-  const imgBase = "https://via.placeholder.com/128x128.png?text="; // placeholder only
+  const { setExerciseResponse } = useComponentContext();
+
+  // Expect srcs to be an array of 4 image URLs (or more if you add options)
   const options = [
-    { id: "A", label: "A", imgSrc: `${imgBase}A`, imgAlt: "Opción A" },
-    { id: "B", label: "B", imgSrc: `${imgBase}B`, imgAlt: "Opción B" },
-    { id: "C", label: "C", imgSrc: `${imgBase}C`, imgAlt: "Opción C" },
-    { id: "D", label: "D", imgSrc: `${imgBase}D`, imgAlt: "Opción D" },
+    { id: "A", label: "A", imgSrc: srcs[0], imgAlt: "Opción A" },
+    { id: "B", label: "B", imgSrc: srcs[1], imgAlt: "Opción B" },
+    { id: "C", label: "C", imgSrc: srcs[2], imgAlt: "Opción C" },
+    { id: "D", label: "D", imgSrc: srcs[3], imgAlt: "Opción D" },
   ];
+
+  useEffect(() => {
+    setExerciseResponse({multiSelect: true, id: id, response: selected});
+  }, [selected]);
+
   return (
     <div className="p-4">
       <MultiSelectExercise
-        prompt="Selecciona todas las imágenes que cumplen la condición (ejemplo)."
+        prompt="Selecciona todas las imágenes que cumplen la condición"
         options={options}
         value={selected}
         onChange={setSelected}

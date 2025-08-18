@@ -7,7 +7,7 @@
         { "type": "text", "value": "Sin embargo, debido a una pequeña colisión con un asteroide, los contenedores dentro de la nave se desorganizaron." },
         { "type": "text", "value": "Reorganiza los objetos en los contenedores según corresponda." },
         { "type": "component", "id": 0, "isExercise": true, "name": "SetClassifierDndKit" },
-        { "type": "explanation", "id": 0, "src":"/solvedSet.png", "explanation": "Si se ordenan los cristales adecuadamente resulta esta distribución. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit augue nec metus dignissim auctor sit amet ac magna. Etiam efficitur, ante ut ornare placerat, urna risus sagittis enim, ac hendrerit est odio in eros. Integer eget consequat mauris, sit amet elementum magna. Vestibulum blandit eget diam et congue. Sed vel sapien lectus. Integer ultricies turpis in risus sagittis, et aliquet neque convallis. Nam non semper erat. Vestibulum felis sem, euismod vel luctus vitae, interdum ut dui. Ut scelerisque accumsan elit, sit amet pulvinar erat feugiat in. Curabitur consectetur quam non euismod varius. In quis ornare ligula, vel sodales est. Nulla facilisi. In a arcu et ex auctor consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus ullamcorper luctus nulla et pellentesque. Pellentesque vulputate eleifend elementum."}
+        { "type": "explanation", "id": 0, "src":"/solvedSet.png", "explanation": "Si se ordenan los cristales adecuadamente resulta esta distribución."}
       ]
     },
     {
@@ -40,42 +40,54 @@
     {
       "content": [
         { "type": "image", "src": "/solvedSet.png" },
-        { "type": "text", "value": "En este caso, tenemos tres conjuntos: uno que agrupa cristales con masa menor a 10 gramos $(L)$, otro que contiene cristales con masa mayor o igual a 10 gramos $(P)$ y otro que colecciona objetos no cristalinos $(N)$." },
-        { "type": "text", "value": "$L = \\{ \\text{Cristales con masa menor a 10g} \\} = \\{ ... \\}$" },
-        { "type": "text", "value": "$P = \\{ \\text{Cristales con masa mayor o igual a 10g} \\} = \\{ ... \\}$" },
-        { "type": "text", "value": "$N = \\{ \\text{Objetos no cristalinos} \\} = \\{ ... \\}$" }
+        { "type": "text", "value": "En este caso, tenemos tres conjuntos. Llamaremos $M_{\\geq 10}$ al conjunto de cristales cuya masa es mayor o igual a 10 gramos, $M_{<10}$ al conjunto de cristales cuya masa es menor a 10 gramos, y $NC$ al conjunto de objetos que no son cristales. Por lo tanto, en notación de conjuntos:" },
+        { "type": "text", "value": "$M_{\\geq 10} = \\text{\\{cristal de berilo, cristal de rubí\\}}$" },
+        { "type": "text", "value": "$M_{<10} =  \\text{\\{cristal de amatista, cristal de cuarzo, cristal de topacio\\}}$" },
+        { "type": "text", "value": "$NC = \\text{\\{guijarro de arcilla\\}}$" }
       ]
     },
     {
       "content": [
         { "type": "text", "value": "Para especificar las propiedades que deben seguir los elementos de un conjunto, se suele utilizar la siguiente notación:" },
-        { "type": "formula", "value": "L = \\{\\text{cristal | masa del cristal < 10g}\\}" },
-        { "type": "text", "value": "La barra vertical se lee como \"tal que\". Por lo tanto, lo anterior se puede leer como: \"$L$ es el conjunto conformado por todos los cristales tales que su masa es menor a 10 gramos\"." },
+        { "type": "text", "value": "$$M_{<10} = \\{\\text{cristal | masa del cristal < 10g}\\}$$" },
+        { "type": "text", "value": "La barra vertical se lee como \"tal que\". Por lo tanto, lo anterior se puede leer como: \"$M_{<10}$ es el conjunto conformado por todos los cristales tales que su masa es menor a 10 gramos\"." },
         { "type": "text", "value": "O de manera más formal, asumiendo que existe un conjunto \"Cristales\" que contiene todos los cristales de la tripulación:" },
-        { "type": "formula", "value": "L = \\{c \\in \\text{Cristales} \\mid \\text{masa de c < 10g} \\}" }
+        { "type": "text", "value": "$$M_{<10} = \\{c \\in \\text{Cristales} \\mid \\text{masa de c < 10g} \\}$$" }
       ]
     },
     {
       "content": [
         { "type": "text", "value": "El conjunto $Q$ está definido del siguiente modo:" },
-        { "type": "formula", "value": "Q =\\{c \\in \\text{Cristales} \\mid \\text{color de c es rojo} \\}" },
-        { "type": "component", "id": 1, "isExercise": true, "name": "DemoMultiSelectTextQ", "props": {
+        { "type": "text", "value": "$$Q =\\{c \\in \\text{Cristales} \\mid \\text{color de c es rojo} \\}$$" },
+        { "type": "component", "id": 1, "isExercise": true, "name": "DemoMultiSelectImages", "props": {
+          "id": "Q",
             "options": [
-                { "id": "A", "label": "Cristal rojo" },
-                { "id": "B", "label": "Cristal rojo 2" },
+                { "id": "A", "label": "Cristal rojo"},
+                { "id": "B", "label": "Cristal morado" },
                 { "id": "C", "label": "Cristal azul" },
                 { "id": "D", "label": "Cristal verde" }
-            ]
+            ],
+            "srcs": ["/red_crystal.png", "/purple_crystal.png", "/blue_crystal.png", "/green_crystal.png"]
         }},
-        { "type": "explanation", "id": 1, "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit augue nec metus dignissim auctor sit amet ac magna. Etiam efficitur, ante ut ornare placerat, urna risus sagittis enim, ac hendrerit est odio in eros. Integer eget consequat mauris, sit amet elementum magna. Vestibulum blandit eget diam et congue. Sed vel sapien lectus. Integer ultricies turpis in risus sagittis, et aliquet neque convallis. Nam non semper erat. Vestibulum felis sem, euismod vel luctus vitae, interdum ut dui. Ut scelerisque accumsan elit, sit amet pulvinar erat feugiat in. Curabitur consectetur quam non euismod varius. In quis ornare ligula, vel sodales est. Nulla facilisi. In a arcu et ex auctor consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus ullamcorper luctus nulla et pellentesque. Pellentesque vulputate eleifend elementum."}
+        { "type": "explanation", "id": 1, "explanation": "El conjunto $Q$ está formado por todos los cristales cuyo color es rojo. Esto significa que, al observar los cristales disponibles, debemos seleccionar únicamente aquellos que tienen un color rojo. Los demás cristales, aunque sean cristales válidos, no pertenecen a este conjunto porque su color es diferente. Este tipo de conjunto se llama subconjunto definido por una propiedad: aquí, la propiedad es “ser rojo”."}
       ]
     },
     {
       "content": [
         { "type": "text", "value": "El conjunto $R$ está definido del siguiente modo:" },
-        { "type": "formula", "value": "R =\\{c \\in \\text{Cristales} \\mid \\text{color de c es azul o color de c es morado} \\}" },
-        { "type": "component", "isExercise": true, "id": 2, "name": "DemoMultiSelectTextR" },
-        { "type": "explanation", "id": 2, "explanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit augue nec metus dignissim auctor sit amet ac magna. Etiam efficitur, ante ut ornare placerat, urna risus sagittis enim, ac hendrerit est odio in eros. Integer eget consequat mauris, sit amet elementum magna. Vestibulum blandit eget diam et congue. Sed vel sapien lectus. Integer ultricies turpis in risus sagittis, et aliquet neque convallis. Nam non semper erat. Vestibulum felis sem, euismod vel luctus vitae, interdum ut dui. Ut scelerisque accumsan elit, sit amet pulvinar erat feugiat in. Curabitur consectetur quam non euismod varius. In quis ornare ligula, vel sodales est. Nulla facilisi. In a arcu et ex auctor consectetur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus ullamcorper luctus nulla et pellentesque. Pellentesque vulputate eleifend elementum."}
+        { "type": "text", "value": "$R =\\{c \\in \\text{Cristales} \\mid \\text{color de c es azul o color de c es morado} \\}$", "px_size": 12 },
+        { "type": "component", "isExercise": true, "id": 2, "name": "DemoMultiSelectImages", "props": {
+          "id": "R",
+            "options": [
+                { "id": "A", "label": "Cristal rojo"},
+                { "id": "B", "label": "Cristal morado" },
+                { "id": "C", "label": "Cristal azul" },
+                { "id": "D", "label": "Cristal verde" }
+            ],
+            "srcs": ["/red_crystal.png", "/purple_crystal.png", "/blue_crystal.png", "/green_crystal.png"]
+
+        }},
+        { "type": "explanation", "id": 2, "explanation": "El conjunto $R$ contiene todos los cristales que son azules o morados. En otras palabras, cualquier cristal que tenga alguno de estos dos colores forma parte del conjunto. Al igual que en el conjunto anterior, estamos usando una condición para determinar qué elementos incluir: un cristal solo entra si cumple al menos una de las dos propiedades (“ser azul” o “ser morado”)."}
       ]
     }
   ]

@@ -66,7 +66,7 @@ function tokenizeBold(text) {
 }
 
 // Step 3: Renderer
-export function renderInlineMathText(value, keyPrefix = 'txt') {
+export function renderInlineMathText(value, keyPrefix = 'txt', px_size = 13) {
   const tokens = tokenizeMathAndBold(value);
   return (
     <>
@@ -74,8 +74,16 @@ export function renderInlineMathText(value, keyPrefix = 'txt') {
         const key = `${keyPrefix}-${i}`;
         if (t.kind === 'text') return <React.Fragment key={key}>{t.value}</React.Fragment>;
         if (t.kind === 'bold') return <strong key={key}>{t.value}</strong>;
-        if (t.kind === 'math-inline') return <InlineMath key={key} math={t.value} />;
-        if (t.kind === 'math-block') return <BlockMath key={key} math={t.value} />;
+        if (t.kind === 'math-inline') return (
+          <div className={`text-[${px_size}px] inline sm:text-base`}>
+            <InlineMath key={key} math={t.value} />
+          </div>
+        );
+        if (t.kind === 'math-block') return (
+          <div className={`text-[${px_size}px] sm:text-base`}>
+            <BlockMath key={key} math={t.value} />
+          </div>
+        );
         return null;
       })}
     </>
