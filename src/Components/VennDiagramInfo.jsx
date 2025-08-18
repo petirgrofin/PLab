@@ -41,6 +41,10 @@ function combineRegions(regions) {
   if (r === "BdA") return "BdA";
   if (r === "(AuB)'") return "(AuB)'";
 
+  if (r === "AdB,BdA") return "AdBUBdA";
+
+  if (r === "(AuB)',AiB") return "(AuB)'UAiB";
+
   // Fallback
   return "empty";
 }

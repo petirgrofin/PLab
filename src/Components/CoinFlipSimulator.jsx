@@ -31,8 +31,9 @@ import * as d3 from "d3";
 */
 
 // ----- Utility random flip -----
-function flipCoin(probabilityHeads) {
-  return Math.random() < probabilityHeads ? "H" : "T"; // fair coin
+// Return "C" = Corona (Heads), "E" = Escudo (Tails)
+function flipCoin(probabilityCorona) {
+  return Math.random() < probabilityCorona ? "C" : "E";
 }
 
 // ----- Bar Chart Subcomponent (D3) -----
@@ -41,8 +42,8 @@ function CoinBarChart({ heads, tails, width = 300, height = 160, animate = true 
 
   useEffect(() => {
     const data = [
-      { label: "H", value: heads },
-      { label: "T", value: tails },
+      { label: "C", value: heads }, // Corona
+      { label: "E", value: tails }, // Escudo
     ];
 
     const svg = d3.select(ref.current);
@@ -52,41 +53,32 @@ function CoinBarChart({ heads, tails, width = 300, height = 160, animate = true 
     const innerW = width - margin.left - margin.right;
     const innerH = height - margin.top - margin.bottom;
 
-    // Root group
     let g = svg.selectAll("g.chart-root").data([null]);
     g = g.enter().append("g").attr("class", "chart-root").merge(g);
     g.attr("transform", `translate(${margin.left},${margin.top})`);
 
-    // Scales
-    const x = d3
-      .scaleBand()
-      .domain(data.map((d) => d.label))
-      .range([0, innerW])
-      .padding(0.3);
+    const x = d3.scaleBand().domain(data.map((d) => d.label)).range([0, innerW]).padding(0.3);
 
-    const maxVal = Math.max(1, d3.max(data, (d) => d.value) ?? 1); // avoid 0 range
+    const maxVal = Math.max(1, d3.max(data, (d) => d.value) ?? 1);
     const y = d3.scaleLinear().domain([0, maxVal]).nice().range([innerH, 0]);
 
-    // Axes (update)
     let gx = g.selectAll("g.x-axis").data([null]);
     gx = gx.enter().append("g").attr("class", "x-axis").merge(gx);
     gx.attr("transform", `translate(0,${innerH})`).call(d3.axisBottom(x));
 
     let gy = g.selectAll("g.y-axis").data([null]);
     gy = gy.enter().append("g").attr("class", "y-axis").merge(gy);
-    gy.call(d3.axisLeft(y).ticks(5).tickFormat(d3.format("~s")));
+    gy.call(d3.axisLeft(y).ticks(5));
 
-    // Bars
     const bars = g.selectAll("rect.bar").data(data, (d) => d.label);
-    bars
-      .enter()
+    bars.enter()
       .append("rect")
       .attr("class", "bar")
       .attr("x", (d) => x(d.label))
       .attr("width", x.bandwidth())
       .attr("y", innerH)
       .attr("height", 0)
-      .attr("fill", (d) => (d.label === "H" ? "#FACC15" : "#9CA3AF")) // yellow-400 / gray-400
+      .attr("fill", (d) => (d.label === "C" ? "#FACC15" : "#9CA3AF")) // Corona yellow, Escudo gray
       .merge(bars)
       .transition()
       .duration(animate ? 300 : 0)
@@ -97,10 +89,8 @@ function CoinBarChart({ heads, tails, width = 300, height = 160, animate = true 
 
     bars.exit().remove();
 
-    // Value labels
     const labels = g.selectAll("text.bar-label").data(data, (d) => d.label);
-    labels
-      .enter()
+    labels.enter()
       .append("text")
       .attr("class", "bar-label text-xs font-mono")
       .attr("text-anchor", "middle")
@@ -227,27 +217,25 @@ export default function CoinFlipSimulator({
   const runFlipsAccurate = useCallback(
     (n) => {
       if (n <= 0) return;
-      setHistory((prev) => {
-        const newHist = [...prev];
-        let addH = 0;
-        let addT = 0;
-        for (let i = 0; i < n; i++) {
-          const r = flipCoin(probabilityHeads);
-          newHist.push(r);
-          if (r === "H") addH += 1; else addT += 1;
-        }
-        // truncate history if too long
-        if (newHist.length > maxHistory) {
-          newHist.splice(0, newHist.length - maxHistory);
-        }
-        // update counts AFTER building newHist
-        setHeads((prev) => prev + addH);
-        setTails((prev) => prev + addT);
-        return newHist;
-      });
+      const newHist = [...history];
+      let addC = 0;
+      let addE = 0;
+      for (let i = 0; i < n; i++) {
+        console.log(n)
+        const r = flipCoin(probabilityHeads);
+        newHist.push(r);
+        if (r === "C") addC += 1; else addE += 1;
+      }
+      if (newHist.length > maxHistory) {
+        newHist.splice(0, newHist.length - maxHistory);
+      }
+      setHeads((prev) => prev + addC);
+      setTails((prev) => prev + addE);
+      setHistory(newHist);
     },
-    [maxHistory]
+    [maxHistory, probabilityHeads]
   );
+
 
   // We'll expose a single wrapper that uses the accurate version.
   const flipOnce = useCallback(() => runFlipsAccurate(1), [runFlipsAccurate]);

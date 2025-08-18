@@ -65,10 +65,10 @@ export default function VennDiagramStatic({
         ))}
 
       {/* Set labels */}
-      <foreignObject x={cxA - 30} y={cy - 15} width={30} height={30}> 
+      <foreignObject x={cxA - 30} y={Object.keys(cardinalities).length > 0 ? cy - 60 : cy - 15} width={30} height={30}> 
         <InlineMath math={leftSet} /> 
       </foreignObject> 
-      <foreignObject x={cxB + 20} y={cy - 15} width={30} height={30}> 
+      <foreignObject x={cxB + 20} y={Object.keys(cardinalities).length > 0 ? cy - 60 : cy - 15} width={30} height={30}> 
         <InlineMath math={rightSet} /> 
       </foreignObject>
 

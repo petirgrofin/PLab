@@ -90,7 +90,7 @@
           "id": "20",
           "isExercise": true
         },
-        { "type": "explanation", "id": "20", "explanation": "Existen 36 combinaciones posibles al lanzar dos dados (6 resultados por dado). Como hay 6 eventos donde la suma es mayor que 9, la probabilidad se calcula como $$P(\\text{suma} > 9) = \\frac{6}{36} = 1/6 \\approx 0.17$$"}
+        { "type": "explanation", "id": "20", "explanation": "Existen 36 combinaciones posibles al lanzar dos dados (6 resultados por dado). Como hay 6 eventos donde la suma es mayor que 9, la probabilidad se calcula como $$P(\\text{suma} > 9) = \\frac{6}{36} = \\frac{1}{6} \\approx 0.17$$"}
       ]
     },
     {

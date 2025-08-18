@@ -119,6 +119,30 @@ export const RegionInfo = {
     )
   },
 
+  "AdBUBdA": {
+    notation: <InlineMath math={"A \\triangle B = (A \\setminus B) \\cup (B \\setminus A)"}/>,
+    explanation: (
+      <span>
+        La <b>diferencia simétrica</b> <InlineMath math={"A \\triangle B"} /> reúne a los elementos que están en{" "}
+        <InlineMath math={"A"} /> o en <InlineMath math={"B"} />, pero <b>no en ambos</b>.  
+        En la encuesta, esto representa a las personas que practican <b>solo atletismo o solo baloncesto</b>.  
+        Gráficamente, corresponde a las dos regiones exclusivas de cada círculo en el diagrama de Venn, dejando fuera la intersección.
+      </span>
+    )
+  },
+
+  "(AuB)'UAiB": {
+    notation: <InlineMath math={"(A \\cup B)' \\cup (A \\cap B)"}/>,
+    explanation: (
+      <span>
+        La unión <InlineMath math={"(A \\cup B)' \\cup (A \\cap B)"} /> incluye a los elementos que{" "}
+        <b>no pertenecen a ningún conjunto</b> o que pertenecen <b>a ambos conjuntos simultáneamente</b>.  
+        En la encuesta, representa a las personas que <b>no practican ni atletismo ni baloncesto</b> o que practican <b>los dos deportes</b>.  
+        Gráficamente, corresponde a la región exterior a los círculos junto con la intersección (el lente).
+      </span>
+    )
+  },
+
   "empty": {
     notation: <InlineMath math={"\\varnothing"}/>,
     explanation: (
