@@ -54,7 +54,7 @@ export function getComponent(name, props = {}, key) {
 
 export function renderContentBlock(item, i, setAsideContent, setAsideTitle, setIsAsideActive) {
   if (item.type === "text") {
-    return item.px_size ? <div className="" key={i}>{renderInlineMathText(item.value, `sec-${i}`, item.px_size)}</div> : <div className="" key={i}>{renderInlineMathText(item.value, `sec-${i}`)}</div>;
+    return item.px_size != undefined ? <div className="" key={i}>{renderInlineMathText(item.value, `sec-${i}`, item.px_size)}</div> : <div className="" key={i}>{renderInlineMathText(item.value, `sec-${i}`)}</div>;
   }
   if (item.type === "component") {
     return item.props ? getComponent(item.name, item.props, i) : getComponent(item.name, {}, i);

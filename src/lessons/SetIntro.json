@@ -41,24 +41,24 @@
       "content": [
         { "type": "image", "src": "/solvedSet.png" },
         { "type": "text", "value": "En este caso, tenemos tres conjuntos. Llamaremos $M_{\\geq 10}$ al conjunto de cristales cuya masa es mayor o igual a 10 gramos, $M_{<10}$ al conjunto de cristales cuya masa es menor a 10 gramos, y $NC$ al conjunto de objetos que no son cristales. Por lo tanto, en notación de conjuntos:" },
-        { "type": "text", "value": "$M_{\\geq 10} = \\text{\\{cristal de berilo, cristal de rubí\\}}$" },
-        { "type": "text", "value": "$M_{<10} =  \\text{\\{cristal de amatista, cristal de cuarzo, cristal de topacio\\}}$" },
-        { "type": "text", "value": "$NC = \\text{\\{guijarro de arcilla\\}}$" }
+        { "type": "text", "value": "$M_{\\geq 10} = \\text{\\{cristal de berilo, cristal de rubí\\}}$", "px_size": 13},
+        { "type": "text", "value": "$M_{<10} =  \\text{\\{cristal de amatista, cristal de cuarzo, cristal de topacio\\}}$", "px_size": 10},
+        { "type": "text", "value": "$NC = \\text{\\{guijarro de arcilla\\}}$", "px_size": 13 }
       ]
     },
     {
       "content": [
         { "type": "text", "value": "Para especificar las propiedades que deben seguir los elementos de un conjunto, se suele utilizar la siguiente notación:" },
-        { "type": "text", "value": "$$M_{<10} = \\{\\text{cristal | masa del cristal < 10g}\\}$$" },
+        { "type": "text", "value": "$$M_{<10} = \\{\\text{cristal | masa del cristal < 10g}\\}$$", "px_size": 13 },
         { "type": "text", "value": "La barra vertical se lee como \"tal que\". Por lo tanto, lo anterior se puede leer como: \"$M_{<10}$ es el conjunto conformado por todos los cristales tales que su masa es menor a 10 gramos\"." },
         { "type": "text", "value": "O de manera más formal, asumiendo que existe un conjunto \"Cristales\" que contiene todos los cristales de la tripulación:" },
-        { "type": "text", "value": "$$M_{<10} = \\{c \\in \\text{Cristales} \\mid \\text{masa de c < 10g} \\}$$" }
+        { "type": "text", "value": "$$M_{<10} = \\{c \\in \\text{Cristales} \\mid \\text{masa de c < 10g} \\}$$", "px_size": 13}
       ]
     },
     {
       "content": [
         { "type": "text", "value": "El conjunto $Q$ está definido del siguiente modo:" },
-        { "type": "text", "value": "$$Q =\\{c \\in \\text{Cristales} \\mid \\text{color de c es rojo} \\}$$" },
+        { "type": "text", "value": "$$Q =\\{c \\in \\text{Cristales} \\mid \\text{color de c es rojo} \\}$$"},
         { "type": "component", "id": 1, "isExercise": true, "name": "DemoMultiSelectImages", "props": {
           "id": "Q",
             "options": [
@@ -75,7 +75,7 @@
     {
       "content": [
         { "type": "text", "value": "El conjunto $R$ está definido del siguiente modo:" },
-        { "type": "text", "value": "$R =\\{c \\in \\text{Cristales} \\mid \\text{color de c es azul o color de c es morado} \\}$", "px_size": 12 },
+        { "type": "text", "value": "$R =\\{c \\in \\text{Cristales} \\mid \\text{color de c es azul o color de c es morado} \\}$", "px_size": 10 },
         { "type": "component", "isExercise": true, "id": 2, "name": "DemoMultiSelectImages", "props": {
           "id": "R",
             "options": [

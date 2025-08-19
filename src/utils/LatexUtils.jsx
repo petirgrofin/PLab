@@ -66,24 +66,40 @@ function tokenizeBold(text) {
 }
 
 // Step 3: Renderer
-export function renderInlineMathText(value, keyPrefix = 'txt', px_size = 13) {
+export function renderInlineMathText(value, keyPrefix = 'txt', px_size = 12) {
   const tokens = tokenizeMathAndBold(value);
   return (
     <>
       {tokens.map((t, i) => {
         const key = `${keyPrefix}-${i}`;
-        if (t.kind === 'text') return <React.Fragment key={key}>{t.value}</React.Fragment>;
-        if (t.kind === 'bold') return <strong key={key}>{t.value}</strong>;
-        if (t.kind === 'math-inline') return (
-          <div className={`text-[${px_size}px] inline sm:text-base`}>
-            <InlineMath key={key} math={t.value} />
-          </div>
-        );
-        if (t.kind === 'math-block') return (
-          <div className={`text-[${px_size}px] sm:text-base`}>
-            <BlockMath key={key} math={t.value} />
-          </div>
-        );
+        if (t.kind === 'text')
+          return <React.Fragment key={key}>{t.value}</React.Fragment>;
+
+        if (t.kind === 'bold')
+          return <strong key={key}>{t.value}</strong>;
+
+        if (t.kind === 'math-inline')
+          return (
+            <span
+              key={key}
+              style={{ fontSize: `${px_size}px` }}
+              className="inline sm:text-base"
+            >
+              <InlineMath math={t.value} />
+            </span>
+          );
+
+        if (t.kind === 'math-block')
+          return (
+            <span
+              key={key}
+              style={{ fontSize: `${px_size}px` }}
+              className="sm:text-base"
+            >
+              <BlockMath math={t.value} />
+            </span>
+          );
+
         return null;
       })}
     </>
