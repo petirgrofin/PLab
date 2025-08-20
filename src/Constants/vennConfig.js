@@ -13,7 +13,7 @@ export const SMALL_VENN_CONFIG = {
 }
 
 export const EXTRA_SMALL_VENN_CONFIG = {
-  width: 280,
+  width: 300,
   height: 300,
   radius: 80,
   overlap: 50,
