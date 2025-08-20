@@ -5,9 +5,9 @@
       "content": [
         { "type": "text", "value": "En el año 2056, la tripulación cósmica Atlas viaja por el universo en una nave espacial recolectando objetos extraños para el Archivo de Conocimiento Galáctico." },
         { "type": "text", "value": "Sin embargo, debido a una pequeña colisión con un asteroide, los contenedores dentro de la nave se desorganizaron." },
-        { "type": "text", "value": "Reorganiza los objetos en los contenedores según corresponda." },
+        { "type": "text", "value": "Arrastra los objetos dentro de los contenedores según corresponda." },
         { "type": "component", "id": 0, "isExercise": true, "name": "SetClassifierDndKit" },
-        { "type": "explanation", "id": 0, "src":"/solvedSet.png", "explanation": "Si se ordenan los cristales adecuadamente resulta esta distribución."}
+        { "type": "explanation", "id": 0, "src":"/solvedSet.png", "explanation": "Si se organizan los cristales adecuadamente resulta esta distribución."}
       ]
     },
     {
@@ -75,7 +75,7 @@
     {
       "content": [
         { "type": "text", "value": "El conjunto $R$ está definido del siguiente modo:" },
-        { "type": "text", "value": "$R =\\{c \\in \\text{Cristales} \\mid \\text{color de c es azul o color de c es morado} \\}$", "px_size": 10 },
+        { "type": "text", "value": "$$R =\\{c \\in \\text{Cristales} \\mid \\text{color de c es azul o color de c es morado} \\}$$", "px_size": 9 },
         { "type": "component", "isExercise": true, "id": 2, "name": "DemoMultiSelectImages", "props": {
           "id": "R",
             "options": [

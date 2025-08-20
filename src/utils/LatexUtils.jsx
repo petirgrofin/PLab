@@ -65,35 +65,42 @@ function tokenizeBold(text) {
   return tokens;
 }
 
+import { useMediaQuery } from "react-responsive";
+
 // Step 3: Renderer
-export function renderInlineMathText(value, keyPrefix = 'txt', px_size = 12) {
+export function renderInlineMathText(value, keyPrefix = "txt", px_size = 13) {
   const tokens = tokenizeMathAndBold(value);
+
+  // Detect very small screens
+  const isSmallScreen = useMediaQuery({ query: "(max-width: 767px)" });
+
   return (
     <>
       {tokens.map((t, i) => {
         const key = `${keyPrefix}-${i}`;
-        if (t.kind === 'text')
+
+        if (t.kind === "text")
           return <React.Fragment key={key}>{t.value}</React.Fragment>;
 
-        if (t.kind === 'bold')
+        if (t.kind === "bold")
           return <strong key={key}>{t.value}</strong>;
 
-        if (t.kind === 'math-inline')
+        if (t.kind === "math-inline")
           return (
             <span
               key={key}
-              style={{ fontSize: `${px_size}px` }}
+              style={isSmallScreen ? { fontSize: `${px_size}px` } : undefined}
               className="inline sm:text-base"
             >
               <InlineMath math={t.value} />
             </span>
           );
 
-        if (t.kind === 'math-block')
+        if (t.kind === "math-block")
           return (
             <span
               key={key}
-              style={{ fontSize: `${px_size}px` }}
+              style={isSmallScreen ? { fontSize: `${px_size}px` } : undefined}
               className="sm:text-base"
             >
               <BlockMath math={t.value} />
