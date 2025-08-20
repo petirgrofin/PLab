@@ -99,14 +99,14 @@
           "type": "component",
           "name": "NarrativeQuestion",
           "props": {
-            "options": ["Sí, la proporción de cabeza y escudo es muy similar", "No, un resultado aparece más frecuentemente"]
+            "options": ["Sí, la proporción de corona y escudo es muy similar", "No, un resultado aparece más frecuentemente"]
           }
         }
       ]
     },
     {
       "content": [
-        {"type": "text", "value": "Si tiramos la moneda muchas veces, observamos que la proporción entre cabeza y escudo se aproxima mucho a un 50%. Esto indica que la moneda es justa."}
+        {"type": "text", "value": "Si tiramos la moneda muchas veces, observamos que la proporción entre corona y escudo se aproxima mucho a un 50%. Esto indica que la moneda es justa."}
       ]
     },
     {

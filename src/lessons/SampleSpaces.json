@@ -5,7 +5,7 @@
       "content": [
         { "type": "text", "value": "Tiremos una moneda de dos caras:" },        
         { "type": "image", "src": "/coins.png"},
-        { "type": "text", "value": "Tirar una moneda tiene dos posibles resultados: que caiga en cara o que caiga en escudo." }
+        { "type": "text", "value": "Tirar una moneda tiene dos posibles resultados: que caiga en corona o que caiga en escudo." }
       ]
     },
     {
@@ -19,7 +19,7 @@
         },
         {
           "type": "text",
-          "value": "Si le asignamos una letra a cada resultado ($C$ para cara y $E$ para escudo), el espacio muestral de tirar una moneda es el conjunto $\\Omega = \\{C, E\\}$."
+          "value": "Si le asignamos una letra a cada resultado ($C$ para corona y $E$ para escudo), el espacio muestral de tirar una moneda es el conjunto $\\Omega = \\{C, E\\}$."
         }
       ]
     },

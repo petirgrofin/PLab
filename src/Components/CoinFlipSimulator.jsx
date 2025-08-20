@@ -302,7 +302,7 @@ export default function CoinFlipSimulator({
       {/* Counts + probs */}
       <div className="grid grid-cols-3 gap-4 text-center text-sm">
         <div className="p-2 rounded border bg-white shadow-sm">
-          <div className="font-bold">Cabeza</div>
+          <div className="font-bold">Corona</div>
           <div>{heads}</div>
           <div className="text-xs text-slate-500">{(pH * 100).toFixed(1)}%</div>
         </div>
