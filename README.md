@@ -39,54 +39,48 @@ El sistema está dividido en dos capas principales:
 ```bash
 git clone https://github.com/usuario/probabilidad-platform.git
 cd probabilidad-platform
+```
 📌 Backend (FastAPI)
 Entrar a la carpeta del backend:
 
-bash
-Copiar
-Editar
+```bash
 cd backend
+```
 Crear y activar un entorno virtual:
 
-bash
-Copiar
-Editar
+```bash
 python -m venv venv
 source venv/bin/activate   # En Linux/Mac
 venv\Scripts\activate      # En Windows
+```
 Instalar dependencias:
 
-bash
-Copiar
-Editar
+```bash
 pip install -r requirements.txt
+```
 Ejecutar el servidor:
 
-bash
-Copiar
-Editar
+```bash
 uvicorn main:app --reload
 El backend estará disponible en: http://127.0.0.1:8000
+```
 
 🎨 Frontend (React)
 Entrar a la carpeta del frontend:
 
-bash
-Copiar
-Editar
+```bash
 cd frontend
+```
 Instalar dependencias:
 
-bash
-Copiar
-Editar
+```bash
 npm install
+```
 Ejecutar la aplicación en modo desarrollo:
 
-bash
-Copiar
-Editar
+```bash
 npm run dev
+```
 El frontend estará disponible en: http://localhost:5173 (o el puerto configurado en Vite).
 
 🧪 Tecnologías Principales
@@ -94,6 +88,6 @@ Frontend: React, Vite, TailwindCSS
 
 Backend: FastAPI, SQLAlchemy, Pydantic
 
-Base de datos: SQLite (modo local) o PostgreSQL (producción)
+Base de datos: SQLite 
 
 
